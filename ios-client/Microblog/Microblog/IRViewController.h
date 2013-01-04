@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRViewController : UIViewController
+@interface IRViewController : UIViewController <UITextFieldDelegate>
+
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6353D2BD16979ACF00F415D3 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */; };
 		6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904C169791E400C3BE51 /* UIKit.framework */; };
 		6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904E169791E400C3BE51 /* Foundation.framework */; };
 		63759051169791E400C3BE51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63759050169791E400C3BE51 /* CoreGraphics.framework */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6353D2BB16979ACF00F415D3 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
+		6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
 		63759048169791E300C3BE51 /* Microblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375904C169791E400C3BE51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6375904E169791E400C3BE51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,9 +115,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6353D2B916979AB700F415D3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6353D2BB16979ACF00F415D3 /* UIViewController+AlertView.h */,
+				6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
+				6353D2B916979AB700F415D3 /* Categories */,
 				6375909E169793A500C3BE51 /* Libraries */,
 				63759052169791E400C3BE51 /* Microblog */,
 				63759070169791E400C3BE51 /* MicroblogTests */,
@@ -353,6 +366,7 @@
 				6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */,
 				637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */,
+				6353D2BD16979ACF00F415D3 /* UIViewController+AlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +536,7 @@
 				6375907D169791E500C3BE51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6375907E169791E500C3BE51 /* Build configuration list for PBXNativeTarget "MicroblogTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +545,7 @@
 				63759080169791E500C3BE51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

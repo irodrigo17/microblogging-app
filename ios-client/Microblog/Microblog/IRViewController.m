@@ -7,8 +7,21 @@
 //
 
 #import "IRViewController.h"
+#import "UIViewController+AlertView.h"
+
+@interface IRViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+- (IBAction)login;
+
+@end
+
 
 @implementation IRViewController
+@synthesize emailTextField;
+@synthesize passwordTextField;
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,6 +39,8 @@
 
 - (void)viewDidUnload
 {
+    [self setEmailTextField:nil];
+    [self setPasswordTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -55,6 +70,24 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField == self.emailTextField){
+        [self.passwordTextField becomeFirstResponder];
+    }
+    else if(textField == self.passwordTextField){
+        [textField resignFirstResponder];
+        [self login];
+    }
+    return YES;
+}
+
+- (IBAction)login {
+    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
 }
 
 @end
