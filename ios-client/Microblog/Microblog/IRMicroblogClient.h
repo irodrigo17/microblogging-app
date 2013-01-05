@@ -7,6 +7,8 @@
 //
 
 #import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
+#import "IRHTTPStatusCodes.h"
 
 @interface IRMicroblogClient : AFHTTPClient
 

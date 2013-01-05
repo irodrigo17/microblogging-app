@@ -13,7 +13,7 @@
 		6353D2C81697A04300F415D3 /* IRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRMessage.m */; };
 		6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2CC1697A10B00F415D3 /* IRModel.m */; };
 		6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */; };
-		6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D51697AEC600F415D3 /* IRLoginViewController.m */; };
+		6353D2D71697AEC600F415D3 /* IRSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D51697AEC600F415D3 /* IRSignInViewController.m */; };
 		6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904C169791E400C3BE51 /* UIKit.framework */; };
 		6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904E169791E400C3BE51 /* Foundation.framework */; };
 		63759051169791E400C3BE51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63759050169791E400C3BE51 /* CoreGraphics.framework */; };
@@ -42,6 +42,7 @@
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
 		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
 		63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E731DF16987D4500492E23 /* QuartzCore.framework */; };
+		63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731E31698972D00492E23 /* IRAccountViewController.m */; };
 		63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */; };
 		63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */; };
 /* End PBXBuildFile section */
@@ -70,8 +71,8 @@
 		6353D2CC1697A10B00F415D3 /* IRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModel.m; sourceTree = "<group>"; };
 		6353D2CF1697A1F200F415D3 /* IRMicroblogClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMicroblogClient.h; sourceTree = "<group>"; };
 		6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMicroblogClient.m; sourceTree = "<group>"; };
-		6353D2D41697AEC600F415D3 /* IRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLoginViewController.h; sourceTree = "<group>"; };
-		6353D2D51697AEC600F415D3 /* IRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLoginViewController.m; sourceTree = "<group>"; };
+		6353D2D41697AEC600F415D3 /* IRSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = IRSignInViewController.h; sourceTree = "<group>"; };
+		6353D2D51697AEC600F415D3 /* IRSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignInViewController.m; sourceTree = "<group>"; };
 		63759048169791E300C3BE51 /* Microblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375904C169791E400C3BE51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6375904E169791E400C3BE51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +122,9 @@
 		63E731D716987CB600492E23 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		63E731D816987CB600492E23 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		63E731DF16987D4500492E23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		63E731E11698904700492E23 /* IRHTTPStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRHTTPStatusCodes.h; sourceTree = "<group>"; };
+		63E731E21698972C00492E23 /* IRAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRAccountViewController.h; sourceTree = "<group>"; };
+		63E731E31698972D00492E23 /* IRAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRAccountViewController.m; sourceTree = "<group>"; };
 		63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignUpViewController.h; sourceTree = "<group>"; };
 		63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignUpViewController.m; sourceTree = "<group>"; };
 		63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessagesViewController.h; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			children = (
 				6353D2CF1697A1F200F415D3 /* IRMicroblogClient.h */,
 				6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */,
+				63E731E11698904700492E23 /* IRHTTPStatusCodes.h */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -217,12 +222,14 @@
 			children = (
 				63759061169791E400C3BE51 /* IRViewController.h */,
 				63759062169791E400C3BE51 /* IRViewController.m */,
-				6353D2D41697AEC600F415D3 /* IRLoginViewController.h */,
-				6353D2D51697AEC600F415D3 /* IRLoginViewController.m */,
+				6353D2D41697AEC600F415D3 /* IRSignInViewController.h */,
+				6353D2D51697AEC600F415D3 /* IRSignInViewController.m */,
 				63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */,
 				63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */,
 				63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */,
 				63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */,
+				63E731E21698972C00492E23 /* IRAccountViewController.h */,
+				63E731E31698972D00492E23 /* IRAccountViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -490,11 +497,12 @@
 				6353D2C81697A04300F415D3 /* IRMessage.m in Sources */,
 				6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */,
 				6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */,
-				6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */,
+				6353D2D71697AEC600F415D3 /* IRSignInViewController.m in Sources */,
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
 				63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */,
 				63E731D0169877D300492E23 /* UIViewController+ProgressHUD.m in Sources */,
 				63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */,
+				63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

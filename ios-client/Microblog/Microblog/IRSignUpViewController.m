@@ -79,7 +79,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@ error: %@", operation, error);
         [self dismissProgressHUD];
-#warning Show proper error messages
+#warning Show proper error messages.
         [self showSimpleAlertViewWithMessage:@"Can't sign up"];
     }];
 }

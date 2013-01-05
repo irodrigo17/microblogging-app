@@ -8,7 +8,7 @@
 
 #import "IRViewController.h"
 
-@interface IRLoginViewController : IRViewController  <UITextFieldDelegate>
+@interface IRSignInViewController : IRViewController  <UITextFieldDelegate>
 
 
 @end
