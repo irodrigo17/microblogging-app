@@ -1,5 +1,5 @@
 //
-//  UIViewController+AlertView.h
+//  NSObject+AlertView.h
 //  AlertViewCategoryDemo
 //
 //  Created by Ignacio Rodrigo on 12/14/12.
@@ -11,7 +11,7 @@
 /**
  * This category is meant to encapsulate and simplify common tasks that involve showing an UIAlertView.
  */
-@interface UIViewController (AlertView)
+@interface NSObject (AlertView)
 
 /**
  * Shows a simple UIAlertView on the calling view controller with the given message.

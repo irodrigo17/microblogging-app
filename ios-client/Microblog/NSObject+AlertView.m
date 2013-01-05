@@ -1,16 +1,16 @@
 //
-//  UIViewController+AlertView.m
+//  NSObject+AlertView.m
 //  AlertViewCategoryDemo
 //
 //  Created by Ignacio Rodrigo on 12/14/12.
 //  Copyright (c) 2012 Ignacio Rodrigo. All rights reserved.
 //
 
-#import "UIViewController+AlertView.h"
+#import "NSObject+AlertView.h"
 
 #define IRCancelButtonTitle @"OK" // Default title for the cancel button of the alert views.
 
-@implementation UIViewController (AlertView)
+@implementation NSObject (AlertView)
 
 - (void)showSimpleAlertViewWithMessage:(NSString*)message
 {

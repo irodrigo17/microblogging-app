@@ -10,4 +10,14 @@
 
 @implementation IRDateFormatterCache
 
+static ISO8601DateFormatter* sharedISO8601DateFormatter;
+
++ (ISO8601DateFormatter*)sharedISO8601DateFormatter
+{
+    if(!sharedISO8601DateFormatter){
+        sharedISO8601DateFormatter = [[ISO8601DateFormatter alloc] init];
+    }
+    return sharedISO8601DateFormatter;
+}
+
 @end

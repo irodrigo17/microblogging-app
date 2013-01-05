@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ISO8601DateFormatter.h"
 
 @interface IRDateFormatterCache : NSObject
+
++ (ISO8601DateFormatter*)sharedISO8601DateFormatter;
 
 @end

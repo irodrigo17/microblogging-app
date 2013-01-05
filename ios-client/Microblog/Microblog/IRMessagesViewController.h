@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+AlertView.h"
 
 @interface IRMessagesViewController : UITableViewController
 

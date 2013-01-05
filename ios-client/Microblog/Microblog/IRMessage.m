@@ -8,6 +8,8 @@
 
 #import "IRMessage.h"
 
+#define IRTextField @"text"
+
 @implementation IRMessage
 
 @synthesize text = _text;
@@ -19,6 +21,22 @@
         self.text = text;
     }
     return self;
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if(self){
+        self.text = [dictionary valueForKey:IRTextField];
+    }
+    return self;
+}
+
+- (NSMutableDictionary*)dictionaryRepresentation
+{
+    NSMutableDictionary *dic = [super dictionaryRepresentation];
+    [dic setValue:self.text forKey:IRTextField];
+    return dic;
 }
 
 @end

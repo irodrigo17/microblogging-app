@@ -7,6 +7,7 @@
 //
 
 #import "IRAccountViewController.h"
+#import "IRMicroblogClient.h"
 
 @interface IRAccountViewController ()
 
@@ -66,6 +67,7 @@
 #pragma mark - Event handling
 
 - (IBAction)signOut {
+    [IRMicroblogClient sharedClient].user = nil;
     [self dismissModalViewControllerAnimated:YES];
 }
 

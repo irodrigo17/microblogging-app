@@ -8,6 +8,9 @@
 
 #import "IRMessagesViewController.h"
 #import "IRMessage.h"
+#import "IRMicroblogClient.h"
+#import "NSObject+AlertView.h"
+#import "NSObject+ProgressHUD.h"
 
 @interface IRMessagesViewController ()
 
@@ -24,11 +27,25 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-#warning Load messages from the server.
-    self.messages = [NSMutableArray arrayWithObjects:
-                     [[IRMessage alloc] initWithText:@"First message"], 
-                     [[IRMessage alloc] initWithText:@"Second message"], 
-                     nil];
+    // load messages from server
+    [self showDefaultProgressHUD];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
+    [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self dismissProgressHUD];
+        self.messages = [NSMutableArray array];
+        for(NSDictionary *dic in responseObject){
+            [self.messages addObject:[[IRMessage alloc] initWithDictionary:dic]];
+        }
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        IRELog(@"operation: %@\n"
+               "error: %@", operation, error);
+        [self dismissProgressHUD];
+        self.messages = nil;
+        [self showSimpleAlertViewWithMessage:@"Can't load messages."];
+    }];
+
 }
 
 #pragma mark - Table view data source

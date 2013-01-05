@@ -1,15 +1,15 @@
 //
-//  UIViewController+ProgressHUD.m
+//  NSObject+ProgressHUD.m
 //  Lively
 //
 //  Created by Ignacio Rodrigo on 11/12/12.
 //
 //
 
-#import "UIViewController+ProgressHUD.h"
+#import "NSObject+ProgressHUD.h"
 #import "SVProgressHUD.h"
 
-@implementation UIViewController (ProgressHUD)
+@implementation NSObject (ProgressHUD)
 
 - (void)showDefaultProgressHUD
 {

@@ -9,8 +9,11 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "IRHTTPStatusCodes.h"
+#import "IRUser.h"
 
 @interface IRMicroblogClient : AFHTTPClient
+
+@property (strong, nonatomic) IRUser *user; // the signed in user
 
 + (IRMicroblogClient*)sharedClient;
 

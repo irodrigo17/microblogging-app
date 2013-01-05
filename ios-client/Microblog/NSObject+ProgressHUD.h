@@ -1,5 +1,5 @@
 //
-//  UIViewController+ProgressHUD.h
+//  NSObject+ProgressHUD.h
 //  Lively
 //
 //  Created by Ignacio Rodrigo on 11/12/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (ProgressHUD)
+@interface NSObject (ProgressHUD)
 
 /**
  * Shows a default prograss HUD with a default message.

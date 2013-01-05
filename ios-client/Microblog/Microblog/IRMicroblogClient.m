@@ -14,6 +14,8 @@
 
 static NSString * const IRMicroblogBaseURLString = @"http://localhost:3000/";
 
+@synthesize user = _user;
+
 + (IRMicroblogClient*)sharedClient{
     static IRMicroblogClient *_sharedClient = nil;
     static dispatch_once_t onceToken;

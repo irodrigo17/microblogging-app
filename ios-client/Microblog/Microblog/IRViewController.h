@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+AlertView.h"
-#import "UIViewController+ProgressHUD.h"
+#import "NSObject+AlertView.h"
+#import "NSObject+ProgressHUD.h"
 
 @interface IRViewController : UIViewController
 

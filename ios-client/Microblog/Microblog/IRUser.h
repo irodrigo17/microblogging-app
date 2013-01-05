@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "IRDictianaryRepresentation.h"
+#import "IRModel.h"
 
-@interface IRUser : NSObject <IRDictianaryRepresentation>
+@interface IRUser : IRModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;

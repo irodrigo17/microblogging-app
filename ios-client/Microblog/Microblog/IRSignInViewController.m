@@ -62,6 +62,8 @@
                "operation: %@\n"
                "responseObject: %@", operation, responseObject);
         [self dismissProgressHUD];
+        IRUser *user = [[IRUser alloc] initWithDictionary:responseObject];
+        [IRMicroblogClient sharedClient].user = user;
         [self performSegueWithIdentifier:@"IRModalMessages" sender:self];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self dismissProgressHUD];
