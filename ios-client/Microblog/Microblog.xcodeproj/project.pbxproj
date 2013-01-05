@@ -39,6 +39,7 @@
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
 		63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */; };
+		63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignUpViewController.h; sourceTree = "<group>"; };
 		63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignUpViewController.m; sourceTree = "<group>"; };
+		63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessagesViewController.h; sourceTree = "<group>"; };
+		63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMessagesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +206,8 @@
 				6353D2D51697AEC600F415D3 /* IRLoginViewController.m */,
 				63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */,
 				63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */,
+				63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */,
+				63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */,
 				6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */,
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
+				63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

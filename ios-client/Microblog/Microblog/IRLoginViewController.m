@@ -51,7 +51,8 @@
 
 - (IBAction)login {
     [self.view endEditing:YES];
-    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
+#warning Check data with server.
+    [self performSegueWithIdentifier:@"IRPushMessages" sender:self];
 }
 
 @end

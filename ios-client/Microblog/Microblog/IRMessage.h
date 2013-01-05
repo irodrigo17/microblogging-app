@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSString *text;
 
+- (id)initWithText:(NSString*)text;
+
 @end

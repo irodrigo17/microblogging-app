@@ -10,6 +10,15 @@
 
 @implementation IRMessage
 
-@synthesize text;
+@synthesize text = _text;
+
+- (id)initWithText:(NSString*)text
+{
+    self = [super init];
+    if(self){
+        self.text = text;
+    }
+    return self;
+}
 
 @end
