@@ -1,15 +1,14 @@
 //
-//  IRViewController.h
+//  IRLoginViewController.h
 //  Microblog
 //
 //  Created by Ignacio Rodrigo on 1/4/13.
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "UIViewController+AlertView.h"
+#import "IRViewController.h"
 
-@interface IRViewController : UIViewController
+@interface IRLoginViewController : IRViewController  <UITextFieldDelegate>
 
 
 @end

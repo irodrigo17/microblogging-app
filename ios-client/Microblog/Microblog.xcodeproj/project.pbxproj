@@ -13,6 +13,7 @@
 		6353D2C81697A04300F415D3 /* IRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRMessage.m */; };
 		6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2CC1697A10B00F415D3 /* IRModel.m */; };
 		6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */; };
+		6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D51697AEC600F415D3 /* IRLoginViewController.m */; };
 		6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904C169791E400C3BE51 /* UIKit.framework */; };
 		6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904E169791E400C3BE51 /* Foundation.framework */; };
 		63759051169791E400C3BE51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63759050169791E400C3BE51 /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		6353D2CC1697A10B00F415D3 /* IRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModel.m; sourceTree = "<group>"; };
 		6353D2CF1697A1F200F415D3 /* IRMicroblogClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMicroblogClient.h; sourceTree = "<group>"; };
 		6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMicroblogClient.m; sourceTree = "<group>"; };
+		6353D2D41697AEC600F415D3 /* IRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLoginViewController.h; sourceTree = "<group>"; };
+		6353D2D51697AEC600F415D3 /* IRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLoginViewController.m; sourceTree = "<group>"; };
 		63759048169791E300C3BE51 /* Microblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375904C169791E400C3BE51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6375904E169791E400C3BE51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,6 +109,8 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignUpViewController.h; sourceTree = "<group>"; };
+		63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,27 @@
 			name = APIClient;
 			sourceTree = "<group>";
 		};
+		6353D2D21697AE5800F415D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6375905E169791E400C3BE51 /* MainStoryboard.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6353D2D31697AE6100F415D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63759061169791E400C3BE51 /* IRViewController.h */,
+				63759062169791E400C3BE51 /* IRViewController.m */,
+				6353D2D41697AEC600F415D3 /* IRLoginViewController.h */,
+				6353D2D51697AEC600F415D3 /* IRLoginViewController.m */,
+				63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */,
+				63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
@@ -215,14 +242,13 @@
 		63759052169791E400C3BE51 /* Microblog */ = {
 			isa = PBXGroup;
 			children = (
+				6353D2D31697AE6100F415D3 /* Controllers */,
+				6353D2D21697AE5800F415D3 /* Views */,
 				6353D2CE1697A1CB00F415D3 /* APIClient */,
 				6353D2C216979FA700F415D3 /* Models */,
 				6353D2BE16979DFB00F415D3 /* Utils */,
 				6375905B169791E400C3BE51 /* IRAppDelegate.h */,
 				6375905C169791E400C3BE51 /* IRAppDelegate.m */,
-				6375905E169791E400C3BE51 /* MainStoryboard.storyboard */,
-				63759061169791E400C3BE51 /* IRViewController.h */,
-				63759062169791E400C3BE51 /* IRViewController.m */,
 				63759053169791E400C3BE51 /* Supporting Files */,
 			);
 			path = Microblog;
@@ -431,6 +457,8 @@
 				6353D2C81697A04300F415D3 /* IRMessage.m in Sources */,
 				6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */,
 				6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */,
+				6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */,
+				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
