@@ -41,6 +41,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.user = User.find(params[:user_id])
 
     respond_to do |format|
       if @message.save

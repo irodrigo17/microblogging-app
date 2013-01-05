@@ -2,7 +2,9 @@ Microblog::Application.routes.draw do
   resources :messages
 
 
-  resources :users
+  resources :users do
+    resource :messages
+  end
 
   match 'sign_in' => 'users#sign_in', :via => :post
 

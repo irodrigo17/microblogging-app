@@ -92,4 +92,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_messages
+    @messages = Message.find_all_by_user_id(params[:id])
+
+    respond_to do |format|
+      # TODO: add support for HTML      
+      format.json { render json: @messages }
+    end
+  end
+
+  def post_message
+    @message = Message.new(params[:message])
+    @message.user = User.find(params[:id])
+    message.save
+    respond_to do |format|
+      # TODO: add support for HTML      
+      format.json { render json: @message }
+    end
+  end
+
 end
