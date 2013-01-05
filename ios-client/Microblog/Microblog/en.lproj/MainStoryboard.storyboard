@@ -274,10 +274,49 @@
                             <outlet property="delegate" destination="wbI-gA-G2Z" id="Jrg-iy-Nim"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messages" id="bW1-T7-b2Z"/>
+                    <navigationItem key="navigationItem" title="Messages" id="bW1-T7-b2Z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sn0-5X-7Rv">
+                            <connections>
+                                <segue destination="ybc-M7-YgF" kind="push" id="aL6-gy-p0V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1765" y="445"/>
+        </scene>
+        <scene sceneID="jji-Qi-Lpb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNx-np-hwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ybc-M7-YgF" customClass="IRNewMessageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ph-O2-BMB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GQv-vr-O9b">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New message" id="FTR-y5-Pqf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WEN-Gy-nFX">
+                            <connections>
+                                <action selector="postMessage:" destination="ybc-M7-YgF" id="qD2-Es-fkk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="GQv-vr-O9b" id="WyO-by-q9I"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2211" y="445"/>
         </scene>
         <scene sceneID="WHH-hd-1W4">
             <objects>
@@ -353,6 +392,13 @@
         </class>
         <class className="IRMessagesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRMessagesViewController.h"/>
+        </class>
+        <class className="IRNewMessageViewController" superclassName="IRViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRNewMessageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="postMessage:"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
         </class>
         <class className="IRSignInViewController" superclassName="IRViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignInViewController.h"/>

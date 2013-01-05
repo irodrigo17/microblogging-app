@@ -38,6 +38,7 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63DE1A5F1698DE720083E0EC /* IRNewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */; };
 		63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */; };
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
 		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
@@ -119,6 +120,8 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63DE1A5D1698DE720083E0EC /* IRNewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewMessageViewController.h; sourceTree = "<group>"; };
+		63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewMessageViewController.m; sourceTree = "<group>"; };
 		63E731C616986C0B00492E23 /* IRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLog.h; sourceTree = "<group>"; };
 		63E731CE169877D300492E23 /* NSObject+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProgressHUD.h"; sourceTree = "<group>"; };
 		63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProgressHUD.m"; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */,
 				63E731E21698972C00492E23 /* IRAccountViewController.h */,
 				63E731E31698972D00492E23 /* IRAccountViewController.m */,
+				63DE1A5D1698DE720083E0EC /* IRNewMessageViewController.h */,
+				63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */,
 				63E731EA16989F8500492E23 /* ISO8601DateFormatter.m in Sources */,
 				63E731EF1698A02F00492E23 /* IRDateFormatterCache.m in Sources */,
+				63DE1A5F1698DE720083E0EC /* IRNewMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
