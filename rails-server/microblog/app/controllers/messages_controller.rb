@@ -13,11 +13,18 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @message }
+    if(params[:user_id])
+      @messages = Message.find_all_by_user_id(params[:user_id])
+      respond_to do |format|
+        # TODO: support HTML
+        format.json { render json: @messages }
+      end
+    else
+      @message = Message.find(params[:id])
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @message }
+      end
     end
   end
 
