@@ -80,4 +80,16 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def sign_in
+    # TODO: encrypt password in the database
+    # TODO: use SSL
+    @user = User.where("email = :email AND password = :password", {:email => params[:email], :password => params[:password]}).first!
+
+    respond_to do |format|
+      # TODO: add support for HTML      
+      format.json { render json: @user }
+    end
+  end
+
 end

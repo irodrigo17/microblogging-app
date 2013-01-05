@@ -4,6 +4,8 @@ Microblog::Application.routes.draw do
 
   resources :users
 
+  match 'sign_in' => 'users#sign_in', :via => :post
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
