@@ -38,6 +38,10 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63E731D0169877D300492E23 /* UIViewController+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731CF169877D300492E23 /* UIViewController+ProgressHUD.m */; };
+		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
+		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
+		63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E731DF16987D4500492E23 /* QuartzCore.framework */; };
 		63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */; };
 		63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */; };
 /* End PBXBuildFile section */
@@ -110,6 +114,13 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63E731C616986C0B00492E23 /* IRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLog.h; sourceTree = "<group>"; };
+		63E731CE169877D300492E23 /* UIViewController+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ProgressHUD.h"; sourceTree = "<group>"; };
+		63E731CF169877D300492E23 /* UIViewController+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ProgressHUD.m"; sourceTree = "<group>"; };
+		63E731D616987CB600492E23 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		63E731D716987CB600492E23 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		63E731D816987CB600492E23 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		63E731DF16987D4500492E23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignUpViewController.h; sourceTree = "<group>"; };
 		63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignUpViewController.m; sourceTree = "<group>"; };
 		63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessagesViewController.h; sourceTree = "<group>"; };
@@ -121,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */,
 				6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */,
 				6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */,
 				63759051169791E400C3BE51 /* CoreGraphics.framework in Frameworks */,
@@ -143,6 +155,8 @@
 		6353D2B916979AB700F415D3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				63E731CE169877D300492E23 /* UIViewController+ProgressHUD.h */,
+				63E731CF169877D300492E23 /* UIViewController+ProgressHUD.m */,
 				6353D2BB16979ACF00F415D3 /* UIViewController+AlertView.h */,
 				6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */,
 			);
@@ -154,6 +168,7 @@
 			children = (
 				6353D2BF16979E2400F415D3 /* IRValidationUtils.h */,
 				6353D2C016979E2400F415D3 /* IRValidationUtils.m */,
+				63E731C616986C0B00492E23 /* IRLog.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -215,6 +230,7 @@
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
+				63E731DF16987D4500492E23 /* QuartzCore.framework */,
 				6353D2B916979AB700F415D3 /* Categories */,
 				6375909E169793A500C3BE51 /* Libraries */,
 				63759052169791E400C3BE51 /* Microblog */,
@@ -319,6 +335,7 @@
 		6375909E169793A500C3BE51 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				63E731D516987CB600492E23 /* SVProgressHUD */,
 				6375909F169793D000C3BE51 /* TPKeyboardAvoiding */,
 				63759081169793A000C3BE51 /* AFNetworking */,
 			);
@@ -334,6 +351,16 @@
 				637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */,
 			);
 			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		63E731D516987CB600492E23 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				63E731D616987CB600492E23 /* SVProgressHUD.bundle */,
+				63E731D716987CB600492E23 /* SVProgressHUD.h */,
+				63E731D816987CB600492E23 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +435,7 @@
 			files = (
 				63759057169791E400C3BE51 /* InfoPlist.strings in Resources */,
 				63759060169791E400C3BE51 /* MainStoryboard.storyboard in Resources */,
+				63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +493,8 @@
 				6353D2D71697AEC600F415D3 /* IRLoginViewController.m in Sources */,
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
 				63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */,
+				63E731D0169877D300492E23 /* UIViewController+ProgressHUD.m in Sources */,
+				63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

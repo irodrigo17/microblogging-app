@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IRDictianaryRepresentation.h"
 
-@interface IRModel : NSObject
+@interface IRModel : NSObject <IRDictianaryRepresentation>
+
+@property (strong, nonatomic) NSNumber *modelId;
+@property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSDate *updatedAt;
 
 @end

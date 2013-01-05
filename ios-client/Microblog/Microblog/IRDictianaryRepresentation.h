@@ -13,6 +13,6 @@
 @required
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
-- (NSDictionary*)dictionaryRepresentation;
+- (NSMutableDictionary*)dictionaryRepresentation;
 
 @end

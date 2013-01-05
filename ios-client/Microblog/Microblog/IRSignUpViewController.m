@@ -7,6 +7,8 @@
 //
 
 #import "IRSignUpViewController.h"
+#import "IRUser.h"
+#import "IRMicroblogClient.h"
 
 @interface IRSignUpViewController ()
 
@@ -61,7 +63,25 @@
 - (IBAction)signUp
 {
     [self.view endEditing:YES];
-    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
+#warning Validate fields!
+    // create user
+    IRUser *user = [[IRUser alloc] initWithName:self.nameTextField.text 
+                                          email:self.emailTextField.text 
+                                       password:self.passwordTextField.text];
+    // post user
+#warning Some of this could be encapsulated.
+    [self showDefaultProgressHUD];
+    [[IRMicroblogClient sharedClient] postPath:@"/users/" parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        IRDLog(@"Sign up success!\noperation: %@\nresponseObject: %@", operation, responseObject);
+        [self dismissProgressHUD];
+#warning Could add a SignUpDelegate and notify it about successfull sign up, so it can perform a login for example.
+        [self dismissModalViewControllerAnimated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        IRELog(@"operation: %@ error: %@", operation, error);
+        [self dismissProgressHUD];
+#warning Show proper error messages
+        [self showSimpleAlertViewWithMessage:@"Can't sign up"];
+    }];
 }
 
 - (IBAction)cancel

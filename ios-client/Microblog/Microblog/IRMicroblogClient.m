@@ -8,7 +8,7 @@
 
 #import "IRMicroblogClient.h"
 #import "AFJSONRequestOperation.h"
-
+#import "AFHTTPRequestOperation.h"
 
 @implementation IRMicroblogClient
 
@@ -29,10 +29,13 @@ static NSString * const IRMicroblogBaseURLString = @"http://localhost:3000/";
         return nil;
     }
     
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    
-    // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
+    // register AFJSONRequestOperation
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];    
+    // set default headers
     [self setDefaultHeader:@"Accept" value:@"application/json"];
+    [self setDefaultHeader:@"Content-Type" value:@"application/json"];    
+    // set parameter encoding
+    self.parameterEncoding = AFJSONParameterEncoding;
     
     return self;
 }

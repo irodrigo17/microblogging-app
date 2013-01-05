@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IRDictianaryRepresentation.h"
 
-@interface IRUser : NSObject
+@interface IRUser : NSObject <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *name;
+
+- (id)initWithName:(NSString*)name 
+             email:(NSString*)email 
+          password:(NSString*)password;
 
 @end

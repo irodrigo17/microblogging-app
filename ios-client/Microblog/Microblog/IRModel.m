@@ -10,4 +10,10 @@
 
 @implementation IRModel
 
+@synthesize modelId = _modelId;
+@synthesize createdAt = _createdAt;
+@synthesize updatedAt = _updatedAt;
+
+
+
 @end
