@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6353D2BD16979ACF00F415D3 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */; };
+		6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C016979E2400F415D3 /* IRValidationUtils.m */; };
+		6353D2C516979FC500F415D3 /* IRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C416979FC500F415D3 /* IRUser.m */; };
+		6353D2C81697A04300F415D3 /* IRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRMessage.m */; };
+		6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2CC1697A10B00F415D3 /* IRModel.m */; };
+		6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */; };
 		6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904C169791E400C3BE51 /* UIKit.framework */; };
 		6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904E169791E400C3BE51 /* Foundation.framework */; };
 		63759051169791E400C3BE51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63759050169791E400C3BE51 /* CoreGraphics.framework */; };
@@ -47,6 +52,17 @@
 /* Begin PBXFileReference section */
 		6353D2BB16979ACF00F415D3 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
 		6353D2BC16979ACF00F415D3 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
+		6353D2BF16979E2400F415D3 /* IRValidationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRValidationUtils.h; sourceTree = "<group>"; };
+		6353D2C016979E2400F415D3 /* IRValidationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRValidationUtils.m; sourceTree = "<group>"; };
+		6353D2C316979FC500F415D3 /* IRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUser.h; sourceTree = "<group>"; };
+		6353D2C416979FC500F415D3 /* IRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUser.m; sourceTree = "<group>"; };
+		6353D2C61697A04300F415D3 /* IRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessage.h; sourceTree = "<group>"; };
+		6353D2C71697A04300F415D3 /* IRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMessage.m; sourceTree = "<group>"; };
+		6353D2CA1697A0B500F415D3 /* IRDictianaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRDictianaryRepresentation.h; sourceTree = "<group>"; };
+		6353D2CB1697A10B00F415D3 /* IRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRModel.h; sourceTree = "<group>"; };
+		6353D2CC1697A10B00F415D3 /* IRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModel.m; sourceTree = "<group>"; };
+		6353D2CF1697A1F200F415D3 /* IRMicroblogClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMicroblogClient.h; sourceTree = "<group>"; };
+		6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMicroblogClient.m; sourceTree = "<group>"; };
 		63759048169791E300C3BE51 /* Microblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Microblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375904C169791E400C3BE51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6375904E169791E400C3BE51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +140,46 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		6353D2BE16979DFB00F415D3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6353D2BF16979E2400F415D3 /* IRValidationUtils.h */,
+				6353D2C016979E2400F415D3 /* IRValidationUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		6353D2C216979FA700F415D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6353D2C91697A07500F415D3 /* Protocols */,
+				6353D2C316979FC500F415D3 /* IRUser.h */,
+				6353D2C416979FC500F415D3 /* IRUser.m */,
+				6353D2C61697A04300F415D3 /* IRMessage.h */,
+				6353D2C71697A04300F415D3 /* IRMessage.m */,
+				6353D2CB1697A10B00F415D3 /* IRModel.h */,
+				6353D2CC1697A10B00F415D3 /* IRModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6353D2C91697A07500F415D3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6353D2CA1697A0B500F415D3 /* IRDictianaryRepresentation.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		6353D2CE1697A1CB00F415D3 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				6353D2CF1697A1F200F415D3 /* IRMicroblogClient.h */,
+				6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */,
+			);
+			name = APIClient;
+			sourceTree = "<group>";
+		};
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +215,9 @@
 		63759052169791E400C3BE51 /* Microblog */ = {
 			isa = PBXGroup;
 			children = (
+				6353D2CE1697A1CB00F415D3 /* APIClient */,
+				6353D2C216979FA700F415D3 /* Models */,
+				6353D2BE16979DFB00F415D3 /* Utils */,
 				6375905B169791E400C3BE51 /* IRAppDelegate.h */,
 				6375905C169791E400C3BE51 /* IRAppDelegate.m */,
 				6375905E169791E400C3BE51 /* MainStoryboard.storyboard */,
@@ -367,6 +426,11 @@
 				637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */,
 				6353D2BD16979ACF00F415D3 /* UIViewController+AlertView.m in Sources */,
+				6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */,
+				6353D2C516979FC500F415D3 /* IRUser.m in Sources */,
+				6353D2C81697A04300F415D3 /* IRMessage.m in Sources */,
+				6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */,
+				6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

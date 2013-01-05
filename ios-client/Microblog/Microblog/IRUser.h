@@ -10,4 +10,8 @@
 
 @interface IRUser : NSObject
 
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *name;
+
 @end

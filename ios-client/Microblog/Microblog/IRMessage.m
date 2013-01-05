@@ -10,4 +10,6 @@
 
 @implementation IRMessage
 
+@synthesize text;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface IRMessage : NSObject
 
+@property (strong, nonatomic) NSString *text;
+
 @end

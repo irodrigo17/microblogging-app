@@ -10,4 +10,9 @@
 
 @protocol IRDictianaryRepresentation <NSObject>
 
+@required
+
+- (id)initWithDictionary:(NSDictionary*)dictionary;
+- (NSDictionary*)dictionaryRepresentation;
+
 @end

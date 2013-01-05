@@ -10,4 +10,11 @@
 
 @implementation IRValidationUtils
 
++ (BOOL)isValidEmail:(NSString*)email
+{
+    NSString *emailRegex = @".+@.+\\.[A-Za-z]{2,}";
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailPredicate evaluateWithObject:email];
+}
+
 @end

@@ -10,4 +10,6 @@
 
 @interface IRValidationUtils : NSObject
 
++ (BOOL)isValidEmail:(NSString*)email;
+
 @end

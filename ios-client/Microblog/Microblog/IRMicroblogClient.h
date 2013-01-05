@@ -10,4 +10,6 @@
 
 @interface IRMicroblogClient : AFHTTPClient
 
++ (IRMicroblogClient*)sharedClient;
+
 @end

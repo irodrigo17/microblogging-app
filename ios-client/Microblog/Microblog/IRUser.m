@@ -10,4 +10,8 @@
 
 @implementation IRUser
 
+@synthesize email;
+@synthesize password;
+@synthesize name;
+
 @end
