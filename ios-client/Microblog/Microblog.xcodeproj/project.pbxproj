@@ -254,7 +254,6 @@
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
-				63E731DF16987D4500492E23 /* QuartzCore.framework */,
 				6353D2B916979AB700F415D3 /* Categories */,
 				6375909E169793A500C3BE51 /* Libraries */,
 				63759052169791E400C3BE51 /* Microblog */,
@@ -276,6 +275,7 @@
 		6375904B169791E400C3BE51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63E731DF16987D4500492E23 /* QuartzCore.framework */,
 				6375904C169791E400C3BE51 /* UIKit.framework */,
 				6375904E169791E400C3BE51 /* Foundation.framework */,
 				63759050169791E400C3BE51 /* CoreGraphics.framework */,
