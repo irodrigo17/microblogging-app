@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IRModel.h"
 
-@interface IRMessage : IRModel <IRDictianaryRepresentation>
+@interface IRPost : IRModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *text;
 

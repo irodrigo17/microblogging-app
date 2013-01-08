@@ -10,7 +10,7 @@
 		6353D2BD16979ACF00F415D3 /* NSObject+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2BC16979ACF00F415D3 /* NSObject+AlertView.m */; };
 		6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C016979E2400F415D3 /* IRValidationUtils.m */; };
 		6353D2C516979FC500F415D3 /* IRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C416979FC500F415D3 /* IRUser.m */; };
-		6353D2C81697A04300F415D3 /* IRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRMessage.m */; };
+		6353D2C81697A04300F415D3 /* IRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRPost.m */; };
 		6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2CC1697A10B00F415D3 /* IRModel.m */; };
 		6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D01697A1F200F415D3 /* IRMicroblogClient.m */; };
 		6353D2D71697AEC600F415D3 /* IRSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2D51697AEC600F415D3 /* IRSignInViewController.m */; };
@@ -26,7 +26,6 @@
 		6375906C169791E400C3BE51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904C169791E400C3BE51 /* UIKit.framework */; };
 		6375906D169791E400C3BE51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6375904E169791E400C3BE51 /* Foundation.framework */; };
 		63759075169791E400C3BE51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63759073169791E400C3BE51 /* InfoPlist.strings */; };
-		63759078169791E400C3BE51 /* MicroblogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759077169791E400C3BE51 /* MicroblogTests.m */; };
 		63759095169793A000C3BE51 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759083169793A000C3BE51 /* AFHTTPClient.m */; };
 		63759096169793A000C3BE51 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759085169793A000C3BE51 /* AFHTTPRequestOperation.m */; };
 		63759097169793A000C3BE51 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759087169793A000C3BE51 /* AFImageRequestOperation.m */; };
@@ -38,7 +37,8 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
-		63DE1A5F1698DE720083E0EC /* IRNewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */; };
+		63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */; };
+		63E628A2169B9F1700595534 /* IRUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E628A1169B9F1700595534 /* IRUserTests.m */; };
 		63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */; };
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
 		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
@@ -49,7 +49,7 @@
 		63E731EC16989F8500492E23 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63E731E916989F8500492E23 /* README.txt */; };
 		63E731EF1698A02F00492E23 /* IRDateFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731EE1698A02F00492E23 /* IRDateFormatterCache.m */; };
 		63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */; };
-		63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */; };
+		63EBE9181697B75E0088C4E1 /* IRPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EBE9171697B75D0088C4E1 /* IRPostsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +69,8 @@
 		6353D2C016979E2400F415D3 /* IRValidationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRValidationUtils.m; sourceTree = "<group>"; };
 		6353D2C316979FC500F415D3 /* IRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUser.h; sourceTree = "<group>"; };
 		6353D2C416979FC500F415D3 /* IRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUser.m; sourceTree = "<group>"; };
-		6353D2C61697A04300F415D3 /* IRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessage.h; sourceTree = "<group>"; };
-		6353D2C71697A04300F415D3 /* IRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMessage.m; sourceTree = "<group>"; };
+		6353D2C61697A04300F415D3 /* IRPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPost.h; sourceTree = "<group>"; };
+		6353D2C71697A04300F415D3 /* IRPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPost.m; sourceTree = "<group>"; };
 		6353D2CA1697A0B500F415D3 /* IRDictianaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRDictianaryRepresentation.h; sourceTree = "<group>"; };
 		6353D2CB1697A10B00F415D3 /* IRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRModel.h; sourceTree = "<group>"; };
 		6353D2CC1697A10B00F415D3 /* IRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModel.m; sourceTree = "<group>"; };
@@ -95,8 +95,6 @@
 		6375906A169791E400C3BE51 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		63759072169791E400C3BE51 /* MicroblogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MicroblogTests-Info.plist"; sourceTree = "<group>"; };
 		63759074169791E400C3BE51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		63759076169791E400C3BE51 /* MicroblogTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroblogTests.h; sourceTree = "<group>"; };
-		63759077169791E400C3BE51 /* MicroblogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicroblogTests.m; sourceTree = "<group>"; };
 		63759082169793A000C3BE51 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		63759083169793A000C3BE51 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		63759084169793A000C3BE51 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -120,8 +118,10 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
-		63DE1A5D1698DE720083E0EC /* IRNewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewMessageViewController.h; sourceTree = "<group>"; };
-		63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewMessageViewController.m; sourceTree = "<group>"; };
+		63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewPostViewController.h; sourceTree = "<group>"; };
+		63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewPostViewController.m; sourceTree = "<group>"; };
+		63E628A0169B9F1700595534 /* IRUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserTests.h; sourceTree = "<group>"; };
+		63E628A1169B9F1700595534 /* IRUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUserTests.m; sourceTree = "<group>"; };
 		63E731C616986C0B00492E23 /* IRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLog.h; sourceTree = "<group>"; };
 		63E731CE169877D300492E23 /* NSObject+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProgressHUD.h"; sourceTree = "<group>"; };
 		63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProgressHUD.m"; sourceTree = "<group>"; };
@@ -140,8 +140,8 @@
 		63E731EE1698A02F00492E23 /* IRDateFormatterCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRDateFormatterCache.m; sourceTree = "<group>"; };
 		63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignUpViewController.h; sourceTree = "<group>"; };
 		63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSignUpViewController.m; sourceTree = "<group>"; };
-		63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRMessagesViewController.h; sourceTree = "<group>"; };
-		63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRMessagesViewController.m; sourceTree = "<group>"; };
+		63EBE9161697B75D0088C4E1 /* IRPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPostsViewController.h; sourceTree = "<group>"; };
+		63EBE9171697B75D0088C4E1 /* IRPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,8 +198,8 @@
 				6353D2C91697A07500F415D3 /* Protocols */,
 				6353D2C316979FC500F415D3 /* IRUser.h */,
 				6353D2C416979FC500F415D3 /* IRUser.m */,
-				6353D2C61697A04300F415D3 /* IRMessage.h */,
-				6353D2C71697A04300F415D3 /* IRMessage.m */,
+				6353D2C61697A04300F415D3 /* IRPost.h */,
+				6353D2C71697A04300F415D3 /* IRPost.m */,
 				6353D2CB1697A10B00F415D3 /* IRModel.h */,
 				6353D2CC1697A10B00F415D3 /* IRModel.m */,
 			);
@@ -241,12 +241,12 @@
 				6353D2D51697AEC600F415D3 /* IRSignInViewController.m */,
 				63EBE9121697B2C20088C4E1 /* IRSignUpViewController.h */,
 				63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */,
-				63EBE9161697B75D0088C4E1 /* IRMessagesViewController.h */,
-				63EBE9171697B75D0088C4E1 /* IRMessagesViewController.m */,
+				63EBE9161697B75D0088C4E1 /* IRPostsViewController.h */,
+				63EBE9171697B75D0088C4E1 /* IRPostsViewController.m */,
 				63E731E21698972C00492E23 /* IRAccountViewController.h */,
 				63E731E31698972D00492E23 /* IRAccountViewController.m */,
-				63DE1A5D1698DE720083E0EC /* IRNewMessageViewController.h */,
-				63DE1A5E1698DE720083E0EC /* IRNewMessageViewController.m */,
+				63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */,
+				63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -313,8 +313,7 @@
 		63759070169791E400C3BE51 /* MicroblogTests */ = {
 			isa = PBXGroup;
 			children = (
-				63759076169791E400C3BE51 /* MicroblogTests.h */,
-				63759077169791E400C3BE51 /* MicroblogTests.m */,
+				63E62899169B9E5B00595534 /* Models */,
 				63759071169791E400C3BE51 /* Supporting Files */,
 			);
 			path = MicroblogTests;
@@ -376,6 +375,15 @@
 				637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */,
 			);
 			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		63E62899169B9E5B00595534 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				63E628A0169B9F1700595534 /* IRUserTests.h */,
+				63E628A1169B9F1700595534 /* IRUserTests.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		63E731D516987CB600492E23 /* SVProgressHUD */ = {
@@ -525,18 +533,18 @@
 				6353D2BD16979ACF00F415D3 /* NSObject+AlertView.m in Sources */,
 				6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */,
 				6353D2C516979FC500F415D3 /* IRUser.m in Sources */,
-				6353D2C81697A04300F415D3 /* IRMessage.m in Sources */,
+				6353D2C81697A04300F415D3 /* IRPost.m in Sources */,
 				6353D2CD1697A10B00F415D3 /* IRModel.m in Sources */,
 				6353D2D11697A1F200F415D3 /* IRMicroblogClient.m in Sources */,
 				6353D2D71697AEC600F415D3 /* IRSignInViewController.m in Sources */,
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
-				63EBE9181697B75E0088C4E1 /* IRMessagesViewController.m in Sources */,
+				63EBE9181697B75E0088C4E1 /* IRPostsViewController.m in Sources */,
 				63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */,
 				63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */,
 				63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */,
 				63E731EA16989F8500492E23 /* ISO8601DateFormatter.m in Sources */,
 				63E731EF1698A02F00492E23 /* IRDateFormatterCache.m in Sources */,
-				63DE1A5F1698DE720083E0EC /* IRNewMessageViewController.m in Sources */,
+				63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63759078169791E400C3BE51 /* MicroblogTests.m in Sources */,
+				63E628A2169B9F1700595534 /* IRUserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

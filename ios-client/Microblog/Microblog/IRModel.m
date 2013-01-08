@@ -24,8 +24,17 @@
     self = [super init];
     if(self){
         self.modelId = [dictionary valueForKey:IRIdField];
-        self.createdAt = [[IRDateFormatterCache sharedISO8601DateFormatter] dateFromString:[dictionary valueForKey:IRCreatedAtField]];
-        self.updatedAt = [[IRDateFormatterCache sharedISO8601DateFormatter] dateFromString:[dictionary valueForKey:IRUpdatedAtField]];
+        
+        // get dates
+        NSString *createdAt = [dictionary valueForKey:IRCreatedAtField];
+        ISO8601DateFormatter *df = [IRDateFormatterCache sharedISO8601DateFormatter];
+        if(createdAt){
+            self.createdAt = [df dateFromString:createdAt];
+        }
+        NSString *updatedAt = [dictionary valueForKey:IRUpdatedAtField];
+        if(updatedAt){
+            self.updatedAt = [df dateFromString:updatedAt];
+        }        
     }
     return self;
 }

@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "IRNewMessageViewController.h"
+#import "IRNewPostViewController.h"
 #import "IRMicroblogClient.h"
-#import "IRMessage.h"
+#import "IRPost.h"
 #import "IRUser.h"
 
-@interface IRNewMessageViewController ()
+@interface IRNewPostViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation IRNewMessageViewController
+@implementation IRNewPostViewController
 @synthesize textView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -75,7 +75,7 @@
     [self showDefaultProgressHUD];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
-    IRMessage *message = [[IRMessage alloc] initWithText:self.textView.text];
+    IRPost *message = [[IRPost alloc] initWithText:self.textView.text];
     [[IRMicroblogClient sharedClient] postPath:path parameters:[message dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self dismissProgressHUD];
         [self.navigationController popViewControllerAnimated:YES];

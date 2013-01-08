@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "IRMessage.h"
+#import "IRPost.h"
 
 #define IRTextField @"text"
 
-@implementation IRMessage
+@implementation IRPost
 
 @synthesize text = _text;
 

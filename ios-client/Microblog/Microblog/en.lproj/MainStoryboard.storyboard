@@ -244,7 +244,7 @@
         <scene sceneID="LSD-5V-04y">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-zE-RjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="wbI-gA-G2Z" customClass="IRMessagesViewController" sceneMemberID="viewController">
+                <tableViewController id="wbI-gA-G2Z" customClass="IRPostsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e8A-pq-mJ3">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,7 +274,7 @@
                             <outlet property="delegate" destination="wbI-gA-G2Z" id="Jrg-iy-Nim"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messages" id="bW1-T7-b2Z">
+                    <navigationItem key="navigationItem" title="Posts" id="bW1-T7-b2Z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sn0-5X-7Rv">
                             <connections>
                                 <segue destination="ybc-M7-YgF" kind="push" id="aL6-gy-p0V"/>
@@ -288,7 +288,7 @@
         <scene sceneID="jji-Qi-Lpb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNx-np-hwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ybc-M7-YgF" customClass="IRNewMessageViewController" sceneMemberID="viewController">
+                <viewController id="ybc-M7-YgF" customClass="IRNewPostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ph-O2-BMB">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -304,7 +304,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New message" id="FTR-y5-Pqf">
+                    <navigationItem key="navigationItem" title="New post" id="FTR-y5-Pqf">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="WEN-Gy-nFX">
                             <connections>
                                 <action selector="postMessage:" destination="ybc-M7-YgF" id="qD2-Es-fkk"/>
@@ -371,7 +371,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RqH-m0-0IG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="loY-kU-IEA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="Q7i-h2-hw2"/>
+                    <tabBarItem key="tabBarItem" title="Posts" id="Q7i-h2-hw2"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GEx-hB-Ik8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -388,16 +388,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRAccountViewController.h"/>
             <relationships>
                 <relationship kind="action" name="signOut"/>
-            </relationships>
-        </class>
-        <class className="IRMessagesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRMessagesViewController.h"/>
-        </class>
-        <class className="IRNewMessageViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRNewMessageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="postMessage:"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="IRSignInViewController" superclassName="IRViewController">

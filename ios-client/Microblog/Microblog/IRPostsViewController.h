@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRMessagesViewController : UITableViewController
+@interface IRPostsViewController : UITableViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import "IRViewController.h"
 
-@interface IRNewMessageViewController : IRViewController
+@interface IRNewPostViewController : IRViewController
 
 
 @end

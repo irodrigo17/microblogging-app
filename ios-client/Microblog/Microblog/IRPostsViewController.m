@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "IRMessagesViewController.h"
-#import "IRMessage.h"
+#import "IRPostsViewController.h"
+#import "IRPost.h"
 #import "IRMicroblogClient.h"
 #import "NSObject+AlertView.h"
 #import "NSObject+ProgressHUD.h"
 
-@interface IRMessagesViewController ()
+@interface IRPostsViewController ()
 
 @property (strong, nonatomic) NSMutableArray *messages; // LIMessage
 
 @end
 
-@implementation IRMessagesViewController
+@implementation IRPostsViewController
 
 @synthesize messages;
 
@@ -35,7 +35,7 @@
         [self dismissProgressHUD];
         self.messages = [NSMutableArray array];
         for(NSDictionary *dic in responseObject){
-            [self.messages addObject:[[IRMessage alloc] initWithDictionary:dic]];
+            [self.messages addObject:[[IRPost alloc] initWithDictionary:dic]];
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -69,7 +69,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    IRMessage *message = [self.messages objectAtIndex:indexPath.row];
+    IRPost *message = [self.messages objectAtIndex:indexPath.row];
     cell.textLabel.text = message.text;
     
     return cell;
