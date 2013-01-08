@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "IRModel.h"
 
+#define IRTextFieldKey @"text"
+
 @interface IRPost : IRModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *text;

@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "IRDictianaryRepresentation.h"
 
+#define IRIdFieldKey @"id"
+#define IRCreatedAtFieldKey @"created_at"
+#define IRUpdatedAtFieldKey @"updated_at"
+
 @interface IRModel : NSObject <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSNumber *modelId;

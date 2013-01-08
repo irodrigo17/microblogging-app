@@ -16,6 +16,7 @@ static ISO8601DateFormatter* sharedISO8601DateFormatter;
 {
     if(!sharedISO8601DateFormatter){
         sharedISO8601DateFormatter = [[ISO8601DateFormatter alloc] init];
+        sharedISO8601DateFormatter.includeTime = YES;
     }
     return sharedISO8601DateFormatter;
 }

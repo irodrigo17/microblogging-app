@@ -37,6 +37,7 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2038D169BA9B500C8337D /* IRModelTests.m */; };
 		63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */; };
 		63E628A2169B9F1700595534 /* IRUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E628A1169B9F1700595534 /* IRUserTests.m */; };
 		63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */; };
@@ -118,6 +119,8 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63C2038C169BA9B500C8337D /* IRModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRModelTests.h; sourceTree = "<group>"; };
+		63C2038D169BA9B500C8337D /* IRModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModelTests.m; sourceTree = "<group>"; };
 		63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewPostViewController.h; sourceTree = "<group>"; };
 		63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewPostViewController.m; sourceTree = "<group>"; };
 		63E628A0169B9F1700595534 /* IRUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserTests.h; sourceTree = "<group>"; };
@@ -382,6 +385,8 @@
 			children = (
 				63E628A0169B9F1700595534 /* IRUserTests.h */,
 				63E628A1169B9F1700595534 /* IRUserTests.m */,
+				63C2038C169BA9B500C8337D /* IRModelTests.h */,
+				63C2038D169BA9B500C8337D /* IRModelTests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E628A2169B9F1700595534 /* IRUserTests.m in Sources */,
+				63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

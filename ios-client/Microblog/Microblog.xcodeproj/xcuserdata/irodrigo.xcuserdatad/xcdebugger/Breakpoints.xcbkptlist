@@ -2,4 +2,18 @@
 <Bucket
    type = "1"
    version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Microblog/IRUser.h"
+         timestampString = "379300551.365869"
+         startingColumnNumber = "2147483647"
+         endingColumnNumber = "2147483647"
+         startingLineNumber = "7"
+         endingLineNumber = "7">
+      </FileBreakpoint>
+   </FileBreakpoints>
 </Bucket>

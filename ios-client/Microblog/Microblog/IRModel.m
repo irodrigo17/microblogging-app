@@ -9,9 +9,7 @@
 #import "IRModel.h"
 #import "IRDateFormatterCache.h"
 
-#define IRIdField @"id"
-#define IRCreatedAtField @"created_at"
-#define IRUpdatedAtField @"updated_at"
+
 
 @implementation IRModel
 
@@ -23,15 +21,15 @@
 {
     self = [super init];
     if(self){
-        self.modelId = [dictionary valueForKey:IRIdField];
+        self.modelId = [dictionary valueForKey:IRIdFieldKey];
         
         // get dates
-        NSString *createdAt = [dictionary valueForKey:IRCreatedAtField];
+        NSString *createdAt = [dictionary valueForKey:IRCreatedAtFieldKey];
         ISO8601DateFormatter *df = [IRDateFormatterCache sharedISO8601DateFormatter];
         if(createdAt){
             self.createdAt = [df dateFromString:createdAt];
         }
-        NSString *updatedAt = [dictionary valueForKey:IRUpdatedAtField];
+        NSString *updatedAt = [dictionary valueForKey:IRUpdatedAtFieldKey];
         if(updatedAt){
             self.updatedAt = [df dateFromString:updatedAt];
         }        
@@ -42,9 +40,10 @@
 - (NSMutableDictionary*)dictionaryRepresentation
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.modelId forKey:IRIdField];
-    [dic setValue:[[IRDateFormatterCache sharedISO8601DateFormatter] stringFromDate:self.createdAt] forKey:IRCreatedAtField];
-    [dic setValue:[[IRDateFormatterCache sharedISO8601DateFormatter] stringFromDate:self.updatedAt] forKey:IRUpdatedAtField];
+    [dic setValue:self.modelId forKey:IRIdFieldKey];
+    ISO8601DateFormatter *df = [IRDateFormatterCache sharedISO8601DateFormatter];
+    [dic setValue:[df stringFromDate:self.createdAt] forKey:IRCreatedAtFieldKey];
+    [dic setValue:[df stringFromDate:self.updatedAt] forKey:IRUpdatedAtFieldKey];
     return dic;
 }
 

@@ -8,7 +8,7 @@
 
 #import "IRPost.h"
 
-#define IRTextField @"text"
+
 
 @implementation IRPost
 
@@ -27,7 +27,7 @@
 {
     self = [super initWithDictionary:dictionary];
     if(self){
-        self.text = [dictionary valueForKey:IRTextField];
+        self.text = [dictionary valueForKey:IRTextFieldKey];
     }
     return self;
 }
@@ -35,7 +35,7 @@
 - (NSMutableDictionary*)dictionaryRepresentation
 {
     NSMutableDictionary *dic = [super dictionaryRepresentation];
-    [dic setValue:self.text forKey:IRTextField];
+    [dic setValue:self.text forKey:IRTextFieldKey];
     return dic;
 }
 

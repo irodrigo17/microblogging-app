@@ -8,9 +8,7 @@
 
 #import "IRUser.h"
 
-#define IRNameField @"name"
-#define IREmailField @"email"
-#define IRPasswordField @"password"
+
 
 @implementation IRUser
 
@@ -35,9 +33,9 @@
 {
     self = [super initWithDictionary:dictionary];
     if(self){
-        self.name = [dictionary valueForKey:IRNameField];
-        self.email = [dictionary valueForKey:IREmailField];
-        self.password = [dictionary valueForKey:IRPasswordField];
+        self.name = [dictionary valueForKey:IRNameFieldKey];
+        self.email = [dictionary valueForKey:IREmailFieldKey];
+        self.password = [dictionary valueForKey:IRPasswordFieldKey];
     }
     return self;
 }
@@ -46,9 +44,9 @@
 {
 #warning Field names could be constants
     NSMutableDictionary *dic = [super dictionaryRepresentation];
-    [dic setValue:self.name forKey:@"name"];
-    [dic setValue:self.email forKey:@"email"];
-    [dic setValue:self.password forKey:@"password"];
+    [dic setValue:self.name forKey:IRNameFieldKey];
+    [dic setValue:self.email forKey:IREmailFieldKey];
+    [dic setValue:self.password forKey:IRPasswordFieldKey];
     return dic;
 }
 

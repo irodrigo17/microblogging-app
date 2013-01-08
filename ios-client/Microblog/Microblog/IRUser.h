@@ -10,6 +10,10 @@
 #import "IRDictianaryRepresentation.h"
 #import "IRModel.h"
 
+#define IRNameFieldKey @"name"
+#define IREmailFieldKey @"email"
+#define IRPasswordFieldKey @"password"
+
 @interface IRUser : IRModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *email;
