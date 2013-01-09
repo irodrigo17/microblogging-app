@@ -11,11 +11,16 @@
 
 @interface IRAccountViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 - (IBAction)signOut;
+- (IBAction)changePassword;
+- (IBAction)editAccountInformation;
 
 @end
 
 @implementation IRAccountViewController
+@synthesize nameLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,16 +48,17 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *name = [IRMicroblogClient sharedClient].user.name;
+    self.nameLabel.text = [self.nameLabel.text stringByReplacingOccurrencesOfString:@"[name]" withString:name];
 }
-*/
+
 
 - (void)viewDidUnload
 {
+    [self setNameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -69,6 +75,16 @@
 - (IBAction)signOut {
     [IRMicroblogClient sharedClient].user = nil;
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)changePassword 
+{
+    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
+}
+
+- (IBAction)editAccountInformation 
+{
+    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
 }
 
 @end

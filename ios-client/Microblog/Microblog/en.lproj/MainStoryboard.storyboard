@@ -327,7 +327,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ij7-WS-okW">
-                                <rect key="frame" x="20" y="20" width="280" height="37"/>
+                                <rect key="frame" x="20" y="211" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign out">
@@ -341,10 +341,50 @@
                                     <action selector="signOut" destination="b8f-Js-J86" eventType="touchUpInside" id="Qcx-pH-Y77"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hey there, you're signed in in as [name]" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="Wnv-Lr-dWI">
+                                <rect key="frame" x="20" y="38" width="280" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vmS-7O-SIB">
+                                <rect key="frame" x="20" y="121" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Edit account information">
+                                    <color key="titleColor" red="0.19607843458652496" green="0.30980393290519714" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editAccountInformation" destination="b8f-Js-J86" eventType="touchUpInside" id="hjV-EG-tBv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UAU-gf-ZyH">
+                                <rect key="frame" x="20" y="166" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Change password">
+                                    <color key="titleColor" red="0.19607843458652496" green="0.30980393290519714" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePassword" destination="b8f-Js-J86" eventType="touchUpInside" id="5Md-Pc-tna"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="efV-kq-deN"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="Wnv-Lr-dWI" id="HSN-0M-QfZ"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1301" y="1073"/>
@@ -387,8 +427,21 @@
         <class className="IRAccountViewController" superclassName="IRViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRAccountViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changePassword"/>
+                <relationship kind="action" name="editAccountInformation"/>
                 <relationship kind="action" name="signOut"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="IRNewPostViewController" superclassName="IRViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRNewPostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="postMessage:"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="IRPostsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostsViewController.h"/>
         </class>
         <class className="IRSignInViewController" superclassName="IRViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignInViewController.h"/>

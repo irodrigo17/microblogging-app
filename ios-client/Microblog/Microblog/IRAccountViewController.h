@@ -10,5 +10,4 @@
 
 @interface IRAccountViewController : IRViewController
 
-
 @end
