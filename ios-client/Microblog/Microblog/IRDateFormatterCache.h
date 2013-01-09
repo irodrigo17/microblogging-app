@@ -13,4 +13,6 @@
 
 + (ISO8601DateFormatter*)sharedISO8601DateFormatter;
 
++ (NSDateFormatter*)sharedDateFormatter;
+
 @end

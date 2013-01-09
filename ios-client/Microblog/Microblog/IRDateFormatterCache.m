@@ -11,6 +11,7 @@
 @implementation IRDateFormatterCache
 
 static ISO8601DateFormatter* sharedISO8601DateFormatter;
+static NSDateFormatter *sharedDateFormatter;
 
 + (ISO8601DateFormatter*)sharedISO8601DateFormatter
 {
@@ -19,6 +20,16 @@ static ISO8601DateFormatter* sharedISO8601DateFormatter;
         sharedISO8601DateFormatter.includeTime = YES;
     }
     return sharedISO8601DateFormatter;
+}
+
++ (NSDateFormatter*)sharedDateFormatter
+{
+    if(!sharedDateFormatter){
+        sharedDateFormatter = [[NSDateFormatter alloc] init];
+        sharedDateFormatter.dateStyle = NSDateFormatterLongStyle;
+        sharedDateFormatter.timeStyle = NSDateFormatterMediumStyle;
+    }
+    return sharedDateFormatter;
 }
 
 @end

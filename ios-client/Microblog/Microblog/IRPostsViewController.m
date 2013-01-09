@@ -11,41 +11,54 @@
 #import "IRMicroblogClient.h"
 #import "NSObject+AlertView.h"
 #import "NSObject+ProgressHUD.h"
+#import "IRPostDetailsViewController.h"
+
+#define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
 
 @interface IRPostsViewController ()
 
-@property (strong, nonatomic) NSMutableArray *messages; // LIMessage
+@property (strong, nonatomic) NSMutableArray *posts; // IRPost
+@property (weak, nonatomic) IRPost *selectedPost;
 
 @end
 
 @implementation IRPostsViewController
 
-@synthesize messages;
+@synthesize posts;
+@synthesize selectedPost;
 
 #pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    // load messages from server
+    // load posts from server
     [self showDefaultProgressHUD];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
     [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self dismissProgressHUD];
-        self.messages = [NSMutableArray array];
+        self.posts = [NSMutableArray array];
         for(NSDictionary *dic in responseObject){
-            [self.messages addObject:[[IRPost alloc] initWithDictionary:dic]];
+            [self.posts addObject:[[IRPost alloc] initWithDictionary:dic]];
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"
                "error: %@", operation, error);
         [self dismissProgressHUD];
-        self.messages = nil;
-        [self showSimpleAlertViewWithMessage:@"Can't load messages."];
+        self.posts = nil;
+        [self showSimpleAlertViewWithMessage:@"Can't load posts."];
     }];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:IRPushPostDetailsSegue]){
+        IRPostDetailsViewController *vc = segue.destinationViewController;
+        vc.post = self.selectedPost;
+    }
 }
 
 #pragma mark - Table view data source
@@ -57,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.messages count];
+    return [self.posts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +82,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    IRPost *message = [self.messages objectAtIndex:indexPath.row];
+    IRPost *message = [self.posts objectAtIndex:indexPath.row];
     cell.textLabel.text = message.text;
     
     return cell;
@@ -115,6 +128,13 @@
 */
 
 #pragma mark - Table view delegate
+
+- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+#warning Check this tableView:willSelectRowAtIndexPath: -> prepareForSegue:sender: flow
+    self.selectedPost = [self.posts objectAtIndex:indexPath.row];
+    return indexPath;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
