@@ -56,27 +56,27 @@
                                 self.emailTextField.text, @"email", 
                                 self.passwordTextField.text, @"password",
                                 nil];
-    [self showDefaultProgressHUD];
+    [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] postPath:@"sign_in" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign in successfull!\n"
                "operation: %@\n"
                "responseObject: %@", operation, responseObject);
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
         IRUser *user = [[IRUser alloc] initWithDictionary:responseObject];
         [IRMicroblogClient sharedClient].user = user;
         [self performSegueWithIdentifier:@"IRModalMessages" sender:self];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
         if(!operation.response){
             IRELog(@"operation: %@\n"
                    "error: %@", operation, error);
-            [self showSimpleAlertViewWithMessage:@"Can't sign in."];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign in."];
         }
         else if(operation.response.statusCode == IRHTTPStatusCodeNotFound){
-            [self showSimpleAlertViewWithMessage:@"Invalid user/password combination."];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Invalid user/password combination."];
         }
         else{
-            [self showSimpleAlertViewWithMessage:@"Unexpected error."];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Unexpected error."];
         }
         
     }];

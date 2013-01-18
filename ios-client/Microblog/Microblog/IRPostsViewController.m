@@ -9,8 +9,8 @@
 #import "IRPostsViewController.h"
 #import "IRPost.h"
 #import "IRMicroblogClient.h"
-#import "NSObject+AlertView.h"
-#import "NSObject+ProgressHUD.h"
+#import "UIAlertView+IRUtils.h"
+#import "SVProgressHUD+IRUtils.h"
 #import "IRPostDetailsViewController.h"
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
@@ -33,11 +33,11 @@
 {
     [super viewWillAppear:animated];
     // load posts from server
-    [self showDefaultProgressHUD];
+    [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
     [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
         self.posts = [NSMutableArray array];
         for(NSDictionary *dic in responseObject){
             [self.posts addObject:[[IRPost alloc] initWithDictionary:dic]];
@@ -46,9 +46,9 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"
                "error: %@", operation, error);
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
         self.posts = nil;
-        [self showSimpleAlertViewWithMessage:@"Can't load posts."];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't load posts."];
     }];
 
 }

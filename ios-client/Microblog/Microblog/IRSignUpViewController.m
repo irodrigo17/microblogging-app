@@ -70,17 +70,17 @@
                                        password:self.passwordTextField.text];
     // post user
 #warning Some of this could be encapsulated.
-    [self showDefaultProgressHUD];
+    [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] postPath:@"/users/" parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign up success!\noperation: %@\nresponseObject: %@", operation, responseObject);
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
 #warning Could add a SignUpDelegate and notify it about successfull sign up, so it can perform a login for example.
         [self dismissModalViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@ error: %@", operation, error);
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
 #warning Show proper error messages.
-        [self showSimpleAlertViewWithMessage:@"Can't sign up"];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign up"];
     }];
 }
 

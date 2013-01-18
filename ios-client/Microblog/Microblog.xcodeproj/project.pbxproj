@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6348518A169D1F4F00C3AAD0 /* IRPostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */; };
-		6353D2BD16979ACF00F415D3 /* NSObject+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2BC16979ACF00F415D3 /* NSObject+AlertView.m */; };
+		634AC60A16A8E54500052AE4 /* SVProgressHUD+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60916A8E54500052AE4 /* SVProgressHUD+IRUtils.m */; };
+		634AC60D16A8E5D300052AE4 /* UIAlertView+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */; };
 		6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C016979E2400F415D3 /* IRValidationUtils.m */; };
 		6353D2C516979FC500F415D3 /* IRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C416979FC500F415D3 /* IRUser.m */; };
 		6353D2C81697A04300F415D3 /* IRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2C71697A04300F415D3 /* IRPost.m */; };
@@ -42,7 +43,6 @@
 		63C20391169BBFB300C8337D /* IRPostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C20390169BBFB300C8337D /* IRPostTests.m */; };
 		63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */; };
 		63E628A2169B9F1700595534 /* IRUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E628A1169B9F1700595534 /* IRUserTests.m */; };
-		63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */; };
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
 		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
 		63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E731DF16987D4500492E23 /* QuartzCore.framework */; };
@@ -68,8 +68,10 @@
 /* Begin PBXFileReference section */
 		63485188169D1F4F00C3AAD0 /* IRPostDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPostDetailsViewController.h; sourceTree = "<group>"; };
 		63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostDetailsViewController.m; sourceTree = "<group>"; };
-		6353D2BB16979ACF00F415D3 /* NSObject+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AlertView.h"; sourceTree = "<group>"; };
-		6353D2BC16979ACF00F415D3 /* NSObject+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AlertView.m"; sourceTree = "<group>"; };
+		634AC60816A8E54500052AE4 /* SVProgressHUD+IRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+IRUtils.h"; sourceTree = "<group>"; };
+		634AC60916A8E54500052AE4 /* SVProgressHUD+IRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD+IRUtils.m"; sourceTree = "<group>"; };
+		634AC60B16A8E5D300052AE4 /* UIAlertView+IRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+IRUtils.h"; sourceTree = "<group>"; };
+		634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+IRUtils.m"; sourceTree = "<group>"; };
 		6353D2BF16979E2400F415D3 /* IRValidationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRValidationUtils.h; sourceTree = "<group>"; };
 		6353D2C016979E2400F415D3 /* IRValidationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRValidationUtils.m; sourceTree = "<group>"; };
 		6353D2C316979FC500F415D3 /* IRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUser.h; sourceTree = "<group>"; };
@@ -132,8 +134,6 @@
 		63E628A0169B9F1700595534 /* IRUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserTests.h; sourceTree = "<group>"; };
 		63E628A1169B9F1700595534 /* IRUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUserTests.m; sourceTree = "<group>"; };
 		63E731C616986C0B00492E23 /* IRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLog.h; sourceTree = "<group>"; };
-		63E731CE169877D300492E23 /* NSObject+ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProgressHUD.h"; sourceTree = "<group>"; };
-		63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProgressHUD.m"; sourceTree = "<group>"; };
 		63E731D616987CB600492E23 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		63E731D716987CB600492E23 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		63E731D816987CB600492E23 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -181,10 +181,10 @@
 		6353D2B916979AB700F415D3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				63E731CE169877D300492E23 /* NSObject+ProgressHUD.h */,
-				63E731CF169877D300492E23 /* NSObject+ProgressHUD.m */,
-				6353D2BB16979ACF00F415D3 /* NSObject+AlertView.h */,
-				6353D2BC16979ACF00F415D3 /* NSObject+AlertView.m */,
+				634AC60816A8E54500052AE4 /* SVProgressHUD+IRUtils.h */,
+				634AC60916A8E54500052AE4 /* SVProgressHUD+IRUtils.m */,
+				634AC60B16A8E5D300052AE4 /* UIAlertView+IRUtils.h */,
+				634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -265,9 +265,9 @@
 		6375903D169791E300C3BE51 = {
 			isa = PBXGroup;
 			children = (
+				63759052169791E400C3BE51 /* Microblog */,
 				6353D2B916979AB700F415D3 /* Categories */,
 				6375909E169793A500C3BE51 /* Libraries */,
-				63759052169791E400C3BE51 /* Microblog */,
 				63759070169791E400C3BE51 /* MicroblogTests */,
 				6375904B169791E400C3BE51 /* Frameworks */,
 				63759049169791E300C3BE51 /* Products */,
@@ -467,7 +467,7 @@
 		6375903F169791E300C3BE51 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 63759042169791E300C3BE51 /* Build configuration list for PBXProject "Microblog" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -545,7 +545,6 @@
 				6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */,
 				637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */,
-				6353D2BD16979ACF00F415D3 /* NSObject+AlertView.m in Sources */,
 				6353D2C116979E2400F415D3 /* IRValidationUtils.m in Sources */,
 				6353D2C516979FC500F415D3 /* IRUser.m in Sources */,
 				6353D2C81697A04300F415D3 /* IRPost.m in Sources */,
@@ -554,13 +553,14 @@
 				6353D2D71697AEC600F415D3 /* IRSignInViewController.m in Sources */,
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
 				63EBE9181697B75E0088C4E1 /* IRPostsViewController.m in Sources */,
-				63E731D0169877D300492E23 /* NSObject+ProgressHUD.m in Sources */,
 				63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */,
 				63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */,
 				63E731EA16989F8500492E23 /* ISO8601DateFormatter.m in Sources */,
 				63E731EF1698A02F00492E23 /* IRDateFormatterCache.m in Sources */,
 				63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */,
 				6348518A169D1F4F00C3AAD0 /* IRPostDetailsViewController.m in Sources */,
+				634AC60A16A8E54500052AE4 /* SVProgressHUD+IRUtils.m in Sources */,
+				634AC60D16A8E5D300052AE4 /* UIAlertView+IRUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

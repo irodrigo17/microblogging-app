@@ -1,17 +1,14 @@
 //
-//  NSObject+AlertView.h
-//  AlertViewCategoryDemo
+//  UIAlertView+IRUtils.h
+//  Microblog
 //
-//  Created by Ignacio Rodrigo on 12/14/12.
-//  Copyright (c) 2012 Ignacio Rodrigo. All rights reserved.
+//  Created by Ignacio Rodrigo on 1/18/13.
+//
 //
 
 #import <UIKit/UIKit.h>
 
-/**
- * This category is meant to encapsulate and simplify common tasks that involve showing an UIAlertView.
- */
-@interface NSObject (AlertView)
+@interface UIAlertView (IRUtils)
 
 /**
  * Shows a simple UIAlertView on the calling view controller with the given message.
@@ -19,6 +16,6 @@
  * This is usefull for showing simple informative messages to the user.
  * @param message The message to be displayed in the alert view.
  */
-- (void)showSimpleAlertViewWithMessage:(NSString*)message;
++ (void)showSimpleAlertViewWithMessage:(NSString*)message;
 
 @end

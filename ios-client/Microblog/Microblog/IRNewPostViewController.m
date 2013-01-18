@@ -72,17 +72,17 @@
 - (IBAction)postMessage:(id)sender {
 #warning Validate input.
     // post message to server
-    [self showDefaultProgressHUD];
+    [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
     IRPost *message = [[IRPost alloc] initWithText:self.textView.text];
     [[IRMicroblogClient sharedClient] postPath:path parameters:[message dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self dismissProgressHUD];
+        [SVProgressHUD dismiss];
 #warning Handle this error properly.
-        [self showSimpleAlertViewWithMessage:@"Can't post message."];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't post message."];
     }];
 }
 @end
