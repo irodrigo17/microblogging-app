@@ -12,11 +12,13 @@
 #import "UIAlertView+IRUtils.h"
 #import "SVProgressHUD+IRUtils.h"
 #import "IRPostDetailsViewController.h"
+#import "IRPaginatedArray.h"
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
 
 @interface IRPostsViewController ()
 
+@property (strong, nonatomic) IRPaginationMetadata *pagination;
 @property (strong, nonatomic) NSMutableArray *posts; // IRPost
 @property (weak, nonatomic) IRPost *selectedPost;
 
@@ -35,13 +37,11 @@
     // load posts from server
     [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    NSString *path = [NSString stringWithFormat:@"users/%@/messages", user.modelId];
-    [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] getPath:IRPostResourceURL parameters:@{@"user":user.modelId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
-        self.posts = [NSMutableArray array];
-        for(NSDictionary *dic in responseObject){
-            [self.posts addObject:[[IRPost alloc] initWithDictionary:dic]];
-        }
+        IRPaginatedArray *paginatedPosts = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRPost class]];
+        self.pagination = paginatedPosts.meta;
+        self.posts = paginatedPosts.objects;
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"

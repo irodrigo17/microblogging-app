@@ -13,6 +13,7 @@
 
 @interface IRMicroblogClient : AFHTTPClient
 
+@property (strong, nonatomic) NSString *APIKey;
 @property (strong, nonatomic) IRUser *user; // the signed in user
 
 + (IRMicroblogClient*)sharedClient;

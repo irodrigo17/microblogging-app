@@ -10,13 +10,13 @@
 #import "IRDictianaryRepresentation.h"
 
 #define IRIdFieldKey @"id"
-#define IRCreatedAtFieldKey @"created_at"
-#define IRUpdatedAtFieldKey @"updated_at"
+#define IRResourceURIFieldKey @"resource_uri"
 
 @interface IRModel : NSObject <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSNumber *modelId;
-@property (strong, nonatomic) NSDate *createdAt;
-@property (strong, nonatomic) NSDate *updatedAt;
+@property (strong, nonatomic) NSString *resourceURI;
+
+- (id)NSNullToNil:(id)object;
 
 @end

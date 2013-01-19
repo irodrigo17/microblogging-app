@@ -51,7 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *name = [IRMicroblogClient sharedClient].user.name;
+    NSString *name = [IRMicroblogClient sharedClient].user.username;
     self.nameLabel.text = [self.nameLabel.text stringByReplacingOccurrencesOfString:@"[name]" withString:name];
 }
 

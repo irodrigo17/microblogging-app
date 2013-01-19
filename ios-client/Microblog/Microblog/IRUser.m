@@ -8,23 +8,21 @@
 
 #import "IRUser.h"
 
-
-
 @implementation IRUser
 
-@synthesize email = _email;
-@synthesize password = _password;
-@synthesize name = _name;
-
-- (id)initWithName:(NSString*)name 
-             email:(NSString*)email 
-          password:(NSString*)password
+- (id)initWithFirstName:(NSString *)firstName
+               lastName:(NSString *)lastName
+               username:(NSString*)username
+                  email:(NSString *)email
+               password:(NSString *)password
 {
     self = [super init];
     if(self){
-        self.name = name;
+        self.firstName = firstName;
+        self.lastName = lastName;
         self.email = email;
         self.password = password;
+        self.username = username;
     }
     return self;
 }
@@ -33,20 +31,24 @@
 {
     self = [super initWithDictionary:dictionary];
     if(self){
-        self.name = [dictionary valueForKey:IRNameFieldKey];
+        self.firstName = [dictionary valueForKey:IRFirstNameFieldKey];
+        self.lastName = [dictionary valueForKey:IRLastNameFieldKey];
         self.email = [dictionary valueForKey:IREmailFieldKey];
-        self.password = [dictionary valueForKey:IRPasswordFieldKey];
+        self.username = [dictionary valueForKey:IRUsernameFieldKey];
+        self.followers = [dictionary valueForKey:IRFollowersFieldKey];
+        self.following = [dictionary valueForKey:IRFollowingFieldKey];
     }
     return self;
 }
 
 - (NSMutableDictionary*)dictionaryRepresentation
 {
-#warning Field names could be constants
     NSMutableDictionary *dic = [super dictionaryRepresentation];
-    [dic setValue:self.name forKey:IRNameFieldKey];
+    [dic setValue:self.firstName forKey:IRFirstNameFieldKey];
+    [dic setValue:self.lastName forKey:IRLastNameFieldKey];
     [dic setValue:self.email forKey:IREmailFieldKey];
     [dic setValue:self.password forKey:IRPasswordFieldKey];
+    [dic setValue:self.username forKey:IRUsernameFieldKey];
     return dic;
 }
 

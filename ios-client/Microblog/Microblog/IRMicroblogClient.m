@@ -12,9 +12,7 @@
 
 @implementation IRMicroblogClient
 
-static NSString * const IRMicroblogBaseURLString = @"http://localhost:3000/";
-
-@synthesize user = _user;
+static NSString * const IRMicroblogBaseURLString = @"http://localhost:8000/api/v1/";
 
 + (IRMicroblogClient*)sharedClient{
     static IRMicroblogClient *_sharedClient = nil;
@@ -38,7 +36,6 @@ static NSString * const IRMicroblogBaseURLString = @"http://localhost:3000/";
     [self setDefaultHeader:@"Content-Type" value:@"application/json"];    
     // set parameter encoding
     self.parameterEncoding = AFJSONParameterEncoding;
-    
     return self;
 }
 

@@ -10,18 +10,30 @@
 #import "IRDictianaryRepresentation.h"
 #import "IRModel.h"
 
-#define IRNameFieldKey @"name"
+#define IRFirstNameFieldKey @"first_name"
+#define IRLastNameFieldKey @"last_name"
 #define IREmailFieldKey @"email"
+#define IRUsernameFieldKey @"username"
 #define IRPasswordFieldKey @"password"
+#define IRFollowersFieldKey @"followers"
+#define IRFollowingFieldKey @"following"
+
+#define IRUserResourceURL @"user/"
 
 @interface IRUser : IRModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;
-@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSNumber *following;
+@property (strong, nonatomic) NSNumber *followers;
+@property (strong, nonatomic) NSString *username;
 
-- (id)initWithName:(NSString*)name 
-             email:(NSString*)email 
-          password:(NSString*)password;
+- (id)initWithFirstName:(NSString *)firstName
+               lastName:(NSString *)lastName
+               username:(NSString*)username
+                  email:(NSString *)email
+               password:(NSString *)password;
 
 @end

@@ -57,27 +57,26 @@
                                 self.passwordTextField.text, @"password",
                                 nil];
     [SVProgressHUD showDefault];
-    [[IRMicroblogClient sharedClient] postPath:@"sign_in" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] postPath:@"login/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign in successfull!\n"
                "operation: %@\n"
                "responseObject: %@", operation, responseObject);
-        [SVProgressHUD dismiss];
-        IRUser *user = [[IRUser alloc] initWithDictionary:responseObject];
-        [IRMicroblogClient sharedClient].user = user;
-        [self performSegueWithIdentifier:@"IRModalMessages" sender:self];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        if(!operation.response){
+        [IRMicroblogClient sharedClient].APIKey = [responseObject valueForKey:@"api_key"];
+        [[IRMicroblogClient sharedClient] getPath:[responseObject valueForKey:@"user"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [SVProgressHUD dismiss];
+            [IRMicroblogClient sharedClient].user = [[IRUser alloc] initWithDictionary:responseObject];
+            [self performSegueWithIdentifier:@"IRModalMessages" sender:self];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
             IRELog(@"operation: %@\n"
                    "error: %@", operation, error);
-            [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign in."];
-        }
-        else if(operation.response.statusCode == IRHTTPStatusCodeNotFound){
-            [UIAlertView showSimpleAlertViewWithMessage:@"Invalid user/password combination."];
-        }
-        else{
-            [UIAlertView showSimpleAlertViewWithMessage:@"Unexpected error."];
-        }
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't get user."];
+        }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        IRELog(@"operation: %@\n"
+               "error: %@", operation, error);
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign in."];
         
     }];
     
