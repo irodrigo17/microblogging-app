@@ -7,8 +7,9 @@
 //
 
 #import "IRViewController.h"
+#import "IRSignUpViewController.h"
 
-@interface IRSignInViewController : IRViewController  <UITextFieldDelegate>
+@interface IRSignInViewController : IRViewController  <UITextFieldDelegate, IRSignUpViewControllerDelegate>
 
 
 @end

@@ -17,6 +17,7 @@
 #define IRRepliesFieldKey @"replies"
 #define IRSharesFieldKey @"shares"
 #define IRUserFieldKey @"user"
+#define IRLikedByCurrentUserFieldKey @"liked_by_current_user"
 
 #define IRPostResourceURL @"post/"
 
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSNumber *replies;
 @property (strong, nonatomic) NSNumber *shares;
 @property (strong, nonatomic) NSNumber *likes;
+@property (strong, nonatomic) NSNumber *likedByCurrentUser;
 
 - (id)initWithText:(NSString*)text
               user:(NSString*)user;

@@ -10,6 +10,8 @@
 #import "IRDateFormatterCache.h"
 #import "IRUser.h"
 #import "IRMicroblogClient.h"
+#import "IRLike.h"
+#import "IRPaginatedArray.h"
 
 @interface IRPostDetailsViewController ()
 
@@ -21,11 +23,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *repliesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *repliesButton;
 @property (weak, nonatomic) IBOutlet UIButton *originalPostButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @property (strong, nonatomic) IRUser *user;
 
 - (void)updateUI;
 - (void)loadUser;
+- (void)reloadPost;
 
 - (IBAction)viewReplies;
 - (IBAction)viewOriginalPost;
@@ -74,6 +80,9 @@
     [self setRepliesLabel:nil];
     [self setRepliesButton:nil];
     [self setOriginalPostButton:nil];
+    [self setLikeButton:nil];
+    [self setShareButton:nil];
+    [self setFollowButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -98,6 +107,8 @@
     self.repliesLabel.text = [self.post.replies description];
     self.originalPostButton.enabled = self.post.inReplyTo != nil;
     self.repliesButton.enabled = [self.post.replies integerValue] > 0;
+    NSString *likeButtonTitle = [self.post.likedByCurrentUser boolValue] ? @"Unlike" : @"Like";
+    [self.likeButton setTitle:likeButtonTitle forState:UIControlStateNormal];
 }
 
 - (void)loadUser
@@ -113,6 +124,18 @@
     }];
 }
 
+- (void)reloadPost
+{
+    [[IRMicroblogClient sharedClient] getPath:self.post.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        self.post = [[IRPost alloc] initWithDictionary:responseObject];
+        [self updateUI];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't reload post."];
+    }];
+}
+
 #pragma mark - Event handling
 
 - (IBAction)viewReplies {
@@ -124,7 +147,41 @@
 }
 
 - (IBAction)like {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    [SVProgressHUD showDefault];
+    if([self.post.likedByCurrentUser boolValue]){
+        // find like instance
+#warning Check the possibility of putting the like uri on the post itself.
+        NSDictionary *params = @{@"user":self.user.modelId, @"post":self.post.modelId};
+        [[IRMicroblogClient sharedClient] getPath:IRLikeResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRLike class]];
+            IRLike *like = [array.objects lastObject];
+            [[IRMicroblogClient sharedClient] deletePath:like.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                [SVProgressHUD dismiss];
+                [self reloadPost];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [SVProgressHUD dismiss];
+                [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete like instance."];
+            }];            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't load like instance."];
+        }];
+        // delete like instance
+    }
+    else{
+        // create like instance
+        IRUser *user = [IRMicroblogClient sharedClient].user;
+        IRLike *like = [[IRLike alloc] initWithPost:self.post.resourceURI user:user.resourceURI];
+        // post like instance
+        [[IRMicroblogClient sharedClient] postPath:IRLikeResourceURL parameters:[like dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // reload post
+            [self reloadPost];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't POST like."];
+        }];
+    }
+    
 }
 
 - (IBAction)share {

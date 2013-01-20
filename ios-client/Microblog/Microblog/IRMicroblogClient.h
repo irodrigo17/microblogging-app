@@ -13,9 +13,18 @@
 
 @interface IRMicroblogClient : AFHTTPClient
 
-@property (strong, nonatomic) NSString *APIKey;
 @property (strong, nonatomic) IRUser *user; // the signed in user
 
 + (IRMicroblogClient*)sharedClient;
+
+/**
+ * Sets the username and API key that will be appended to each request for authentication purposes.
+ */
+- (void)setUsername:(NSString*)username APIKey:(NSString*)APIKey;
+
+/**
+ * Clears authentication parameters (username and APIKey) and user.
+ */
+- (void)logout;
 
 @end

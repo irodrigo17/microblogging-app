@@ -7,8 +7,16 @@
 //
 
 #import "IRMicroblogClient.h"
-#import "AFJSONRequestOperation.h"
 #import "AFHTTPRequestOperation.h"
+
+#define IRAuthorizationHeaderKey @"Authorization"
+
+@interface IRMicroblogClient ()
+
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *APIKey;
+
+@end
 
 @implementation IRMicroblogClient
 
@@ -37,6 +45,34 @@ static NSString * const IRMicroblogBaseURLString = @"http://localhost:8000/api/v
     // set parameter encoding
     self.parameterEncoding = AFJSONParameterEncoding;
     return self;
+}
+
+- (void)setUsername:(NSString*)username APIKey:(NSString*)APIKey
+{
+    self.username = username;
+    self.APIKey = APIKey;
+    [self setDefaultHeader:IRAuthorizationHeaderKey
+                     value:[NSString stringWithFormat:@"ApiKey %@:%@",username,APIKey]];
+}
+
+- (void)logout
+{
+    self.user = nil;
+    [self setDefaultHeader:IRAuthorizationHeaderKey value:nil];
+}
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters
+{
+    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
+    if(self.username && self.APIKey){
+        NSDictionary *authParams = @{@"username":self.username, @"api_key":self.APIKey};
+        NSString *oldURLString = [request.URL absoluteString];
+        BOOL hasQuery = [oldURLString rangeOfString:@"?"].location != NSNotFound;
+        NSString *format = hasQuery ? @"&%@" : @"?%@";
+        NSString *newURLString = [oldURLString stringByAppendingFormat:format, AFQueryStringFromParametersWithEncoding(authParams, self.stringEncoding)];
+        request.URL = [NSURL URLWithString:newURLString];
+    }
+    return request;
 }
 
 @end

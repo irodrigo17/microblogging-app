@@ -9,36 +9,45 @@
 #import "IRSignInViewController.h"
 #import "IRMicroblogClient.h"
 
+#define IRModalSignUp @"IRModalSignUp"
+
 @interface IRSignInViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 - (IBAction)login;
+
+- (void)loginWithUsername:(NSString*)username password:(NSString*)password;
 
 @end
 
 @implementation IRSignInViewController
 
-@synthesize emailTextField;
-@synthesize passwordTextField;
-
 #pragma mark - View lifecycle
 
 - (void)viewDidUnload
 {
-    [self setEmailTextField:nil];
+    [self setUsernameTextField:nil];
     [self setPasswordTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:IRModalSignUp]){
+        IRSignUpViewController *vc = (IRSignUpViewController*)segue.destinationViewController;
+        vc.delegate = self;
+    }
+}
+
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if(textField == self.emailTextField){
+    if(textField == self.usernameTextField){
         [self.passwordTextField becomeFirstResponder];
     }
     else if(textField == self.passwordTextField){
@@ -52,34 +61,46 @@
 
 - (IBAction)login {
     [self.view endEditing:YES];
+    [self loginWithUsername:self.usernameTextField.text password:self.passwordTextField.text];
+    
+}
+
+#pragma mark - IRSignUpViewControllerDelegate methods
+
+- (void)didSignupWithUsername:(NSString *)username password:(NSString *)password
+{
+    [self loginWithUsername:username password:password];
+}
+
+#pragma mark - Private methods
+
+- (void)loginWithUsername:(NSString*)username password:(NSString*)password
+{
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                self.emailTextField.text, @"email", 
-                                self.passwordTextField.text, @"password",
+                                username, @"username",
+                                password, @"password",
                                 nil];
     [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] postPath:@"login/" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign in successfull!\n"
                "operation: %@\n"
                "responseObject: %@", operation, responseObject);
-        [IRMicroblogClient sharedClient].APIKey = [responseObject valueForKey:@"api_key"];
+        [[IRMicroblogClient sharedClient] setUsername:username
+                                               APIKey:[responseObject valueForKey:@"api_key"]];
         [[IRMicroblogClient sharedClient] getPath:[responseObject valueForKey:@"user"] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [SVProgressHUD dismiss];
             [IRMicroblogClient sharedClient].user = [[IRUser alloc] initWithDictionary:responseObject];
-            [self performSegueWithIdentifier:@"IRModalMessages" sender:self];
+            [self performSegueWithIdentifier:@"IRModalMessages" sender:self];            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
-            IRELog(@"operation: %@\n"
-                   "error: %@", operation, error);
+            [[IRMicroblogClient sharedClient] logout];
             [UIAlertView showSimpleAlertViewWithMessage:@"Can't get user."];
         }];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        IRELog(@"operation: %@\n"
-               "error: %@", operation, error);
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign in."];
         
     }];
-    
 }
 
 @end

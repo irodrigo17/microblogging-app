@@ -73,7 +73,7 @@
 #pragma mark - Event handling
 
 - (IBAction)signOut {
-    [IRMicroblogClient sharedClient].user = nil;
+    [[IRMicroblogClient sharedClient] logout];
     [self dismissModalViewControllerAnimated:YES];
 }
 

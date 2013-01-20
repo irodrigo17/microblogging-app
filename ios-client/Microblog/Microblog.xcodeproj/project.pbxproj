@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6300C5F816AB52AA0034F1B2 /* IRLike.m */; };
 		6348518A169D1F4F00C3AAD0 /* IRPostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */; };
 		634AC60A16A8E54500052AE4 /* SVProgressHUD+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60916A8E54500052AE4 /* SVProgressHUD+IRUtils.m */; };
 		634AC60D16A8E5D300052AE4 /* UIAlertView+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6300C5F716AB52AA0034F1B2 /* IRLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLike.h; sourceTree = "<group>"; };
+		6300C5F816AB52AA0034F1B2 /* IRLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLike.m; sourceTree = "<group>"; };
 		63485188169D1F4F00C3AAD0 /* IRPostDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPostDetailsViewController.h; sourceTree = "<group>"; };
 		63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostDetailsViewController.m; sourceTree = "<group>"; };
 		634AC60816A8E54500052AE4 /* SVProgressHUD+IRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+IRUtils.h"; sourceTree = "<group>"; };
@@ -184,6 +187,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6300C5F516AB52940034F1B2 /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				63BA96D616AA731000C77FCF /* IRPaginatedArray.h */,
+				63BA96D716AA731000C77FCF /* IRPaginatedArray.m */,
+				63BA96DA16AA734600C77FCF /* IRPaginationMetadata.h */,
+				63BA96DB16AA734600C77FCF /* IRPaginationMetadata.m */,
+			);
+			name = Pagination;
+			sourceTree = "<group>";
+		};
 		6353D2B916979AB700F415D3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +224,7 @@
 		6353D2C216979FA700F415D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6300C5F516AB52940034F1B2 /* Pagination */,
 				6353D2C91697A07500F415D3 /* Protocols */,
 				6353D2C316979FC500F415D3 /* IRUser.h */,
 				6353D2C416979FC500F415D3 /* IRUser.m */,
@@ -217,10 +232,8 @@
 				6353D2C71697A04300F415D3 /* IRPost.m */,
 				6353D2CB1697A10B00F415D3 /* IRModel.h */,
 				6353D2CC1697A10B00F415D3 /* IRModel.m */,
-				63BA96D616AA731000C77FCF /* IRPaginatedArray.h */,
-				63BA96D716AA731000C77FCF /* IRPaginatedArray.m */,
-				63BA96DA16AA734600C77FCF /* IRPaginationMetadata.h */,
-				63BA96DB16AA734600C77FCF /* IRPaginationMetadata.m */,
+				6300C5F716AB52AA0034F1B2 /* IRLike.h */,
+				6300C5F816AB52AA0034F1B2 /* IRLike.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -573,6 +586,7 @@
 				634AC60D16A8E5D300052AE4 /* UIAlertView+IRUtils.m in Sources */,
 				63BA96D816AA731000C77FCF /* IRPaginatedArray.m in Sources */,
 				63BA96DC16AA734600C77FCF /* IRPaginationMetadata.m in Sources */,
+				6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

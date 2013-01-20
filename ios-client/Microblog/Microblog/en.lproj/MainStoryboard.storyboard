@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -23,8 +23,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="vyR-xG-hBQ">
-                                        <rect key="frame" x="20" y="73" width="43" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" minimumFontSize="10" id="vyR-xG-hBQ">
+                                        <rect key="frame" x="20" y="73" width="79" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -91,8 +91,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="oEE-rK-v4L" id="lFQ-5e-RXi"/>
                         <outlet property="passwordTextField" destination="095-Be-a8l" id="hq1-CJ-OLh"/>
+                        <outlet property="usernameTextField" destination="oEE-rK-v4L" id="eIl-gQ-Pzc"/>
                         <segue destination="a5Z-ft-5TV" kind="modal" identifier="IRModalMessages" id="aYW-Yd-G8z"/>
                     </connections>
                 </viewController>
@@ -492,10 +492,13 @@
                     <navigationItem key="navigationItem" title="Post Details" id="BXC-NZ-Uaa"/>
                     <connections>
                         <outlet property="dateLabel" destination="APo-zs-Jwf" id="PBV-Dh-4bF"/>
+                        <outlet property="followButton" destination="NbT-22-SL7" id="VOq-ap-z3Z"/>
+                        <outlet property="likeButton" destination="rdo-fj-9ke" id="r6I-8W-QYd"/>
                         <outlet property="likesLabel" destination="OX0-bh-rZz" id="chU-Qf-iC8"/>
                         <outlet property="originalPostButton" destination="unS-gB-p1F" id="137-Ej-hgH"/>
                         <outlet property="repliesButton" destination="fus-hM-uTr" id="iqf-m9-jpW"/>
                         <outlet property="repliesLabel" destination="lWg-xc-6P8" id="NAW-zL-0sr"/>
+                        <outlet property="shareButton" destination="Imn-HK-FbH" id="fal-sC-K8k"/>
                         <outlet property="sharesLabel" destination="IbW-0B-d5h" id="uiX-60-6y5"/>
                         <outlet property="textView" destination="bZu-PD-OgI" id="Msc-L7-H2t"/>
                         <outlet property="usernameLabel" destination="N0a-a1-OUB" id="wWB-m3-u17"/>
@@ -646,73 +649,6 @@
             <point key="canvasLocation" x="1301" y="445"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="IRAccountViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRAccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changePassword"/>
-                <relationship kind="action" name="editAccountInformation"/>
-                <relationship kind="action" name="signOut"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="IRNewPostViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRNewPostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="postMessage:"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="IRPostDetailsViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="follow"/>
-                <relationship kind="action" name="like"/>
-                <relationship kind="action" name="reply"/>
-                <relationship kind="action" name="share"/>
-                <relationship kind="action" name="viewOriginalPost"/>
-                <relationship kind="action" name="viewReplies"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="likesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="originalPostButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="repliesButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="repliesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sharesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="IRPostsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostsViewController.h"/>
-        </class>
-        <class className="IRSignInViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignInViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="login"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="IRSignUpViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel"/>
-                <relationship kind="action" name="signUp"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordConfirmationTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="IRViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRViewController.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

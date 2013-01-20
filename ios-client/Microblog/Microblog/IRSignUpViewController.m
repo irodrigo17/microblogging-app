@@ -81,12 +81,15 @@
     [[IRMicroblogClient sharedClient] postPath:IRUserResourceURL parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign up success!\noperation: %@\nresponseObject: %@", operation, responseObject);
         [SVProgressHUD dismiss];
-#warning Could add a SignUpDelegate and notify it about successfull sign up, so it can perform a login for example.
-        [self dismissModalViewControllerAnimated:YES];
+        [self.delegate didSignupWithUsername:user.username password:user.password];
+        [self dismissModalViewControllerAnimated:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-#warning Show proper error messages.
-        [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign up"];
+        NSString *message = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];
+        if(!message || operation.response.statusCode == 500){
+            message = @"Can't sign up.";
+        }
+        [UIAlertView showSimpleAlertViewWithMessage:message];
     }];
 }
 

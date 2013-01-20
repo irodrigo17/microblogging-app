@@ -8,6 +8,16 @@
 
 #import "IRViewController.h"
 
+@protocol IRSignUpViewControllerDelegate <NSObject>
+
+@required
+
+- (void)didSignupWithUsername:(NSString*)username password:(NSString*)password;
+
+@end
+
 @interface IRSignUpViewController : IRViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) id<IRSignUpViewControllerDelegate> delegate;
 
 @end
