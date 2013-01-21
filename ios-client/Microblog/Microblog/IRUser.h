@@ -17,6 +17,7 @@
 #define IRPasswordFieldKey @"password"
 #define IRFollowersFieldKey @"followers"
 #define IRFollowingFieldKey @"following"
+#define IRFollowedByCurrentUserFieldKey @"followed_by_current_user"
 
 #define IRUserResourceURL @"user/"
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NSNumber *following;
 @property (strong, nonatomic) NSNumber *followers;
 @property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSNumber *followedByCurrentUser;
 
 - (id)initWithFirstName:(NSString *)firstName
                lastName:(NSString *)lastName

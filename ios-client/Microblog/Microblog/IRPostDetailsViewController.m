@@ -11,6 +11,7 @@
 #import "IRUser.h"
 #import "IRMicroblogClient.h"
 #import "IRLike.h"
+#import "IRFollow.h"
 #import "IRPaginatedArray.h"
 
 @interface IRPostDetailsViewController ()
@@ -109,6 +110,10 @@
     self.repliesButton.enabled = [self.post.replies integerValue] > 0;
     NSString *likeButtonTitle = [self.post.likedByCurrentUser boolValue] ? @"Unlike" : @"Like";
     [self.likeButton setTitle:likeButtonTitle forState:UIControlStateNormal];
+    NSString *followButtonTitle = [self.user.followedByCurrentUser boolValue] ? @"Unfollow" : @"Follow";
+    [self.followButton setTitle:followButtonTitle forState:UIControlStateNormal];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    self.followButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
 }
 
 - (void)loadUser
@@ -148,29 +153,35 @@
 
 - (IBAction)like {
     [SVProgressHUD showDefault];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
     if([self.post.likedByCurrentUser boolValue]){
         // find like instance
 #warning Check the possibility of putting the like uri on the post itself.
-        NSDictionary *params = @{@"user":self.user.modelId, @"post":self.post.modelId};
+        NSDictionary *params = @{@"user":user.modelId, @"post":self.post.modelId};
         [[IRMicroblogClient sharedClient] getPath:IRLikeResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRLike class]];
             IRLike *like = [array.objects lastObject];
-            [[IRMicroblogClient sharedClient] deletePath:like.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                [SVProgressHUD dismiss];
+            if(like){
+                // delete like instance
+                [[IRMicroblogClient sharedClient] deletePath:like.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [SVProgressHUD dismiss];
+                    [self reloadPost];
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [SVProgressHUD dismiss];
+                    [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete like instance."];
+                }];
+            }
+            else{
+                IRWLog(@"like instance with user: %@ and post: %@ already deleted", self.user.resourceURI, self.post.resourceURI);
                 [self reloadPost];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                [SVProgressHUD dismiss];
-                [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete like instance."];
-            }];            
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
             [UIAlertView showSimpleAlertViewWithMessage:@"Can't load like instance."];
-        }];
-        // delete like instance
+        }];        
     }
     else{
         // create like instance
-        IRUser *user = [IRMicroblogClient sharedClient].user;
         IRLike *like = [[IRLike alloc] initWithPost:self.post.resourceURI user:user.resourceURI];
         // post like instance
         [[IRMicroblogClient sharedClient] postPath:IRLikeResourceURL parameters:[like dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -189,7 +200,48 @@
 }
 
 - (IBAction)follow {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    [SVProgressHUD showDefault];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    if([self.user.followedByCurrentUser boolValue]){
+        // find follow instance
+        NSDictionary *params = @{@"follower":user.modelId, @"followee":self.user.modelId};
+        [[IRMicroblogClient sharedClient] getPath:IRFollowResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRFollow class]];
+            IRFollow *follow = [array.objects lastObject];
+            if(follow){
+                // delete follow instance
+                [[IRMicroblogClient sharedClient] deletePath:follow.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [SVProgressHUD dismiss];
+#warning Reload post and user!
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [SVProgressHUD dismiss];
+                    [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete follow instance."];
+                }];
+            }
+            else{
+                IRWLog(@"follow instance with follower: %@ and followee: %@ already deleted", user.resourceURI, self.user.resourceURI);
+#warning Reload post and user!
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't load follow instance."];
+        }];
+    }
+    else{
+        // create follow instance
+        IRFollow *follow = [[IRFollow alloc] initWithFollower:user.resourceURI followee:self.user.resourceURI];
+        // post follow instance
+        [[IRMicroblogClient sharedClient] postPath:IRFollowResourceURL parameters:[follow dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+#warning Reload post and user!
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            NSString *message = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];
+            if(!message || operation.response.statusCode == 500){
+                message = @"Can't post follow.";
+            }
+            [UIAlertView showSimpleAlertViewWithMessage:message];
+        }];
+    }
 }
 
 - (IBAction)reply {

@@ -37,6 +37,7 @@
         self.username = [dictionary valueForKey:IRUsernameFieldKey];
         self.followers = [dictionary valueForKey:IRFollowersFieldKey];
         self.following = [dictionary valueForKey:IRFollowingFieldKey];
+        self.followedByCurrentUser = [dictionary valueForKey:IRFollowedByCurrentUserFieldKey];
     }
     return self;
 }

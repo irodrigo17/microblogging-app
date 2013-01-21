@@ -44,6 +44,7 @@
 		63BA96DC16AA734600C77FCF /* IRPaginationMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BA96DB16AA734600C77FCF /* IRPaginationMetadata.m */; };
 		63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2038D169BA9B500C8337D /* IRModelTests.m */; };
 		63C20391169BBFB300C8337D /* IRPostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C20390169BBFB300C8337D /* IRPostTests.m */; };
+		63CCC46F16ACC49A006A3093 /* IRFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CCC46E16ACC49A006A3093 /* IRFollow.m */; };
 		63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */; };
 		63E628A2169B9F1700595534 /* IRUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E628A1169B9F1700595534 /* IRUserTests.m */; };
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
@@ -138,6 +139,8 @@
 		63C2038D169BA9B500C8337D /* IRModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRModelTests.m; sourceTree = "<group>"; };
 		63C2038F169BBFB300C8337D /* IRPostTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPostTests.h; sourceTree = "<group>"; };
 		63C20390169BBFB300C8337D /* IRPostTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostTests.m; sourceTree = "<group>"; };
+		63CCC46D16ACC49A006A3093 /* IRFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRFollow.h; sourceTree = "<group>"; };
+		63CCC46E16ACC49A006A3093 /* IRFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRFollow.m; sourceTree = "<group>"; };
 		63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewPostViewController.h; sourceTree = "<group>"; };
 		63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewPostViewController.m; sourceTree = "<group>"; };
 		63E628A0169B9F1700595534 /* IRUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserTests.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				6353D2CC1697A10B00F415D3 /* IRModel.m */,
 				6300C5F716AB52AA0034F1B2 /* IRLike.h */,
 				6300C5F816AB52AA0034F1B2 /* IRLike.m */,
+				63CCC46D16ACC49A006A3093 /* IRFollow.h */,
+				63CCC46E16ACC49A006A3093 /* IRFollow.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 				63BA96D816AA731000C77FCF /* IRPaginatedArray.m in Sources */,
 				63BA96DC16AA734600C77FCF /* IRPaginationMetadata.m in Sources */,
 				6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */,
+				63CCC46F16ACC49A006A3093 /* IRFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
