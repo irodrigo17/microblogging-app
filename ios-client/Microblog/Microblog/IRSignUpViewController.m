@@ -76,7 +76,6 @@
                                                email:self.emailTextField.text
                                             password:self.passwordTextField.text];
     // post user
-#warning Some of this could be encapsulated.
     [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] postPath:IRUserResourceURL parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign up success!\noperation: %@\nresponseObject: %@", operation, responseObject);

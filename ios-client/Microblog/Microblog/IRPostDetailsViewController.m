@@ -165,7 +165,6 @@
     IRUser *user = [IRMicroblogClient sharedClient].user;
     if([self.post.likedByCurrentUser boolValue]){
         // find like instance
-#warning Check the possibility of putting the like uri on the post itself.
         NSDictionary *params = @{@"user":user.modelId, @"post":self.post.modelId};
         [[IRMicroblogClient sharedClient] getPath:IRLikeResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRLike class]];

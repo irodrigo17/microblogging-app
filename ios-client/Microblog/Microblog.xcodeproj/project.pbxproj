@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6300C5F816AB52AA0034F1B2 /* IRLike.m */; };
+		63282B9D16AF4F6F008CE032 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63282B9C16AF4F6F008CE032 /* SystemConfiguration.framework */; };
+		63282BA016AF4F97008CE032 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63282B9F16AF4F97008CE032 /* MobileCoreServices.framework */; };
+		63282BA316AF511E008CE032 /* IRShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 63282BA216AF511E008CE032 /* IRShare.m */; };
 		6348518A169D1F4F00C3AAD0 /* IRPostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */; };
 		634AC60A16A8E54500052AE4 /* SVProgressHUD+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60916A8E54500052AE4 /* SVProgressHUD+IRUtils.m */; };
 		634AC60D16A8E5D300052AE4 /* UIAlertView+IRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */; };
@@ -72,6 +75,10 @@
 /* Begin PBXFileReference section */
 		6300C5F716AB52AA0034F1B2 /* IRLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLike.h; sourceTree = "<group>"; };
 		6300C5F816AB52AA0034F1B2 /* IRLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLike.m; sourceTree = "<group>"; };
+		63282B9C16AF4F6F008CE032 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		63282B9F16AF4F97008CE032 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		63282BA116AF511E008CE032 /* IRShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRShare.h; sourceTree = "<group>"; };
+		63282BA216AF511E008CE032 /* IRShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRShare.m; sourceTree = "<group>"; };
 		63485188169D1F4F00C3AAD0 /* IRPostDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPostDetailsViewController.h; sourceTree = "<group>"; };
 		63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostDetailsViewController.m; sourceTree = "<group>"; };
 		634AC60816A8E54500052AE4 /* SVProgressHUD+IRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+IRUtils.h"; sourceTree = "<group>"; };
@@ -170,6 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63282BA016AF4F97008CE032 /* MobileCoreServices.framework in Frameworks */,
+				63282B9D16AF4F6F008CE032 /* SystemConfiguration.framework in Frameworks */,
 				63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */,
 				6375904D169791E400C3BE51 /* UIKit.framework in Frameworks */,
 				6375904F169791E400C3BE51 /* Foundation.framework in Frameworks */,
@@ -239,6 +248,8 @@
 				6300C5F816AB52AA0034F1B2 /* IRLike.m */,
 				63CCC46D16ACC49A006A3093 /* IRFollow.h */,
 				63CCC46E16ACC49A006A3093 /* IRFollow.m */,
+				63282BA116AF511E008CE032 /* IRShare.h */,
+				63282BA216AF511E008CE032 /* IRShare.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +325,8 @@
 		6375904B169791E400C3BE51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63282B9F16AF4F97008CE032 /* MobileCoreServices.framework */,
+				63282B9C16AF4F6F008CE032 /* SystemConfiguration.framework */,
 				63E731DF16987D4500492E23 /* QuartzCore.framework */,
 				6375904C169791E400C3BE51 /* UIKit.framework */,
 				6375904E169791E400C3BE51 /* Foundation.framework */,
@@ -593,6 +606,7 @@
 				63BA96DC16AA734600C77FCF /* IRPaginationMetadata.m in Sources */,
 				6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */,
 				63CCC46F16ACC49A006A3093 /* IRFollow.m in Sources */,
+				63282BA316AF511E008CE032 /* IRShare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

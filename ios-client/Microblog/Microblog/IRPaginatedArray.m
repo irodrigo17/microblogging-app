@@ -16,6 +16,17 @@
 
 @implementation IRPaginatedArray
 
+- (id)initWithDictionary:(NSDictionary*)dictionary
+{
+    self = [super init];
+    if(self){
+        self.meta = [[IRPaginationMetadata alloc] initWithDictionary:[dictionary valueForKey:IRMetaFieldKey]];
+        self.objectClass = [NSDictionary class];
+        self.objects = [dictionary valueForKey:IRObjectsFieldKey];
+    }
+    return self;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary andClass:(__unsafe_unretained Class)objectClass
 {
     self = [super init];

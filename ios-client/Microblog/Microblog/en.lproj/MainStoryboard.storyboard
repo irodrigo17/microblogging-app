@@ -299,7 +299,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Posts" id="bW1-T7-b2Z">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="8jk-KX-ECt">
+                        <barButtonItem key="leftBarButtonItem" id="8jk-KX-ECt">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="R3K-wm-E1K">
                                 <rect key="frame" x="5" y="7" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
