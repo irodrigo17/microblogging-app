@@ -299,6 +299,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Posts" id="bW1-T7-b2Z">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="8jk-KX-ECt">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="R3K-wm-E1K">
+                                <rect key="frame" x="5" y="7" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Feed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changePosts:" destination="wbI-gA-G2Z" eventType="valueChanged" id="sbb-ah-bJ9"/>
+                                </connections>
+                            </segmentedControl>
+                            <connections>
+                                <action selector="selectedPosts:" destination="wbI-gA-G2Z" id="k3U-Gm-107"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sn0-5X-7Rv">
                             <connections>
                                 <segue destination="ybc-M7-YgF" kind="push" id="aL6-gy-p0V"/>
@@ -696,6 +712,9 @@
         </class>
         <class className="IRPostsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changePosts:" candidateClass="UISegmentedControl"/>
+            </relationships>
         </class>
         <class className="IRSignInViewController" superclassName="IRViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignInViewController.h"/>

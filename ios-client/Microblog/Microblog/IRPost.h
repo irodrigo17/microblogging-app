@@ -20,6 +20,7 @@
 #define IRLikedByCurrentUserFieldKey @"liked_by_current_user"
 
 #define IRPostResourceURL @"post/"
+#define IRFeedResourceURL @"feed/"
 
 @interface IRPost : IRModel <IRDictianaryRepresentation>
 

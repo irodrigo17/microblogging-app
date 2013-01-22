@@ -15,12 +15,19 @@
 #import "IRPaginatedArray.h"
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
+#define IRAllPostsSegmentIndex 0
 
 @interface IRPostsViewController ()
 
 @property (strong, nonatomic) IRPaginationMetadata *pagination;
 @property (strong, nonatomic) NSMutableArray *posts; // IRPost
 @property (weak, nonatomic) IRPost *selectedPost;
+
+- (void)loadFeed;
+- (void)loadAllPosts;
+- (void)loadPostsWithPath:(NSString*)path;
+
+- (IBAction)changePosts:(UISegmentedControl *)sender;
 
 @end
 
@@ -34,10 +41,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self loadAllPosts];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:IRPushPostDetailsSegue]){
+        IRPostDetailsViewController *vc = segue.destinationViewController;
+        vc.post = self.selectedPost;
+    }
+}
+
+#pragma mark - Private methods
+
+- (void)loadFeed
+{
+    [self loadPostsWithPath:IRFeedResourceURL];
+}
+
+- (void)loadAllPosts
+{
+    [self loadPostsWithPath:IRPostResourceURL];
+}
+
+- (void)loadPostsWithPath:(NSString*)path
+{
     // load posts from server
     [SVProgressHUD showDefault];
-    IRUser *user = [IRMicroblogClient sharedClient].user;
-    [[IRMicroblogClient sharedClient] getPath:IRPostResourceURL parameters:@{@"user":user.modelId} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         IRPaginatedArray *paginatedPosts = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRPost class]];
         self.pagination = paginatedPosts.meta;
@@ -50,14 +81,16 @@
         self.posts = nil;
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load posts."];
     }];
-
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:IRPushPostDetailsSegue]){
-        IRPostDetailsViewController *vc = segue.destinationViewController;
-        vc.post = self.selectedPost;
+#pragma mark - Event handling
+
+- (IBAction)changePosts:(UISegmentedControl *)sender {
+    if(sender.selectedSegmentIndex == IRAllPostsSegmentIndex){
+        [self loadAllPosts];
+    }
+    else{
+        [self loadFeed];
     }
 }
 
