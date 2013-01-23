@@ -26,6 +26,14 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.usernameTextField.text = @"";
+    self.passwordTextField.text = @"";
+    [self.usernameTextField becomeFirstResponder];
+}
+
 - (void)viewDidUnload
 {
     [self setUsernameTextField:nil];
