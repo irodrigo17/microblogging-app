@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRSignUpViewController.m"
-         timestampString = "380406249.4714"
+         timestampString = "380589629.994291"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
          landmarkName = "-signUp"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380516757.797013"
+         timestampString = "380590040.169743"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
+         startingLineNumber = "190"
+         endingLineNumber = "190"
          landmarkName = "-like"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,37 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380516757.797013"
+         timestampString = "380590040.169743"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
-         landmarkName = "-like"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380516757.797013"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "172"
-         endingLineNumber = "172"
-         landmarkName = "-like"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380516757.797013"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "245"
-         endingLineNumber = "245"
+         startingLineNumber = "286"
+         endingLineNumber = "286"
          landmarkName = "-follow"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380516757.797013"
+         timestampString = "380590040.169743"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224"
+         startingLineNumber = "265"
+         endingLineNumber = "265"
          landmarkName = "-follow"
          landmarkType = "5">
       </FileBreakpoint>

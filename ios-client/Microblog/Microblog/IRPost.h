@@ -18,6 +18,7 @@
 #define IRSharesFieldKey @"shares"
 #define IRUserFieldKey @"user"
 #define IRLikedByCurrentUserFieldKey @"liked_by_current_user"
+#define IRSharedByCurrentUserFieldKey @"shared_by_current_user"
 
 #define IRPostResourceURL @"post/"
 #define IRFeedResourceURL @"feed/"
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSNumber *shares;
 @property (strong, nonatomic) NSNumber *likes;
 @property (strong, nonatomic) NSNumber *likedByCurrentUser;
+@property (strong, nonatomic) NSNumber *sharedByCurrentUser;
 
 - (id)initWithText:(NSString*)text
               user:(NSString*)user;

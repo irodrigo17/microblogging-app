@@ -12,6 +12,7 @@
 #import "IRMicroblogClient.h"
 #import "IRLike.h"
 #import "IRFollow.h"
+#import "IRShare.h"
 #import "IRPaginatedArray.h"
 
 @interface IRPostDetailsViewController ()
@@ -114,6 +115,9 @@
     [self.followButton setTitle:followButtonTitle forState:UIControlStateNormal];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     self.followButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
+    NSString *shareButtonTitle = [self.post.sharedByCurrentUser boolValue] ? @"Unshare" : @"Share";
+    [self.shareButton setTitle:shareButtonTitle forState:UIControlStateNormal];
+    self.shareButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
 }
 
 - (void)loadUserWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
@@ -203,7 +207,45 @@
 }
 
 - (IBAction)share {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    [SVProgressHUD showDefault];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    if([self.post.sharedByCurrentUser boolValue]){
+        // find share instance
+        NSDictionary *params = @{@"user":user.modelId, @"post":self.post.modelId};
+        [[IRMicroblogClient sharedClient] getPath:IRShareResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRShare class]];
+            IRLike *share = [array.objects lastObject];
+            if(share){
+                // delete share instance
+                [[IRMicroblogClient sharedClient] deletePath:share.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [SVProgressHUD dismiss];
+                    [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete share instance."];
+                }];
+            }
+            else{
+                // nothing to do here, share was already deleted, just refresh data
+                IRWLog(@"Share instance with user: %@ and post: %@ already deleted.", self.user.resourceURI, self.post.resourceURI);
+                [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't load share instance."];
+        }];
+    }
+    else{
+        // create share instance
+        IRShare *share = [[IRShare alloc] initWithPost:self.post.resourceURI user:user.resourceURI];
+        // post share instance
+        [[IRMicroblogClient sharedClient] postPath:IRShareResourceURL parameters:[share dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // reload post
+            [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't POST share."];
+        }];
+    }
 }
 
 - (IBAction)follow {

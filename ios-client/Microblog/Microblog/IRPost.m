@@ -36,6 +36,7 @@
         self.likes = [dictionary valueForKey:IRLikesFieldKey];
         self.replies = [dictionary valueForKey:IRRepliesFieldKey];
         self.likedByCurrentUser = [dictionary valueForKey:IRLikedByCurrentUserFieldKey];
+        self.sharedByCurrentUser = [dictionary valueForKey:IRSharedByCurrentUserFieldKey];
         // get dates
         NSString *createdDate = [dictionary valueForKey:IRCreatedDateFieldKey];
         ISO8601DateFormatter *df = [IRDateFormatterCache sharedISO8601DateFormatter];
