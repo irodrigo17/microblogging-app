@@ -317,7 +317,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sn0-5X-7Rv">
                             <connections>
-                                <segue destination="ybc-M7-YgF" kind="push" id="aL6-gy-p0V"/>
+                                <segue destination="ybc-M7-YgF" kind="push" identifier="IRPushNewPostFromTable" id="aL6-gy-p0V"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -505,7 +505,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="reply" destination="JpK-cL-CGC" eventType="touchUpInside" id="QAe-aN-f6F"/>
+                                    <segue destination="ybc-M7-YgF" kind="push" identifier="IRPushNewPostFromDetail" id="0io-O6-pEA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -693,7 +693,6 @@
             <relationships>
                 <relationship kind="action" name="follow"/>
                 <relationship kind="action" name="like"/>
-                <relationship kind="action" name="reply"/>
                 <relationship kind="action" name="share"/>
                 <relationship kind="action" name="viewOriginalPost"/>
                 <relationship kind="action" name="viewReplies"/>
@@ -749,4 +748,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="0io-O6-pEA"/>
+    </inferredMetricsTieBreakers>
 </document>

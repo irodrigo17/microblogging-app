@@ -7,6 +7,7 @@
 //
 
 #import "IRPostDetailsViewController.h"
+#import "IRNewPostViewController.h"
 #import "IRDateFormatterCache.h"
 #import "IRUser.h"
 #import "IRMicroblogClient.h"
@@ -14,6 +15,8 @@
 #import "IRFollow.h"
 #import "IRShare.h"
 #import "IRPaginatedArray.h"
+
+#define IRPushNewPostFromDetail @"IRPushNewPostFromDetail"
 
 @interface IRPostDetailsViewController ()
 
@@ -40,7 +43,6 @@
 - (IBAction)like;
 - (IBAction)share;
 - (IBAction)follow;
-- (IBAction)reply;
 
 @end
 
@@ -94,6 +96,14 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:IRPushNewPostFromDetail]){
+        IRNewPostViewController *vc = segue.destinationViewController;
+        vc.inReplyTo = self.post;
+    }
 }
 
 #pragma mark - Private methods
@@ -291,10 +301,6 @@
             [UIAlertView showSimpleAlertViewWithMessage:message];
         }];
     }
-}
-
-- (IBAction)reply {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
 }
 
 @end

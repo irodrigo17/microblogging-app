@@ -7,8 +7,10 @@
 //
 
 #import "IRViewController.h"
+#import "IRPost.h"
 
 @interface IRNewPostViewController : IRViewController
 
+@property (strong, nonatomic) IRPost *inReplyTo;
 
 @end

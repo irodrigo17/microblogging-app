@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRNewPostViewController.m"
-         timestampString = "380295327.283954"
+         timestampString = "380605338.461212"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "-postMessage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380590040.169743"
+         timestampString = "380605459.887716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
          landmarkName = "-like"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380590040.169743"
+         timestampString = "380605459.887716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "286"
-         endingLineNumber = "286"
+         startingLineNumber = "296"
+         endingLineNumber = "296"
          landmarkName = "-follow"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,12 +60,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
-         timestampString = "380590040.169743"
+         timestampString = "380605459.887716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "265"
-         endingLineNumber = "265"
+         startingLineNumber = "275"
+         endingLineNumber = "275"
          landmarkName = "-follow"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Microblog/IRNewPostViewController.m"
+         timestampString = "380605065.410234"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-postMessage:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

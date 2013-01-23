@@ -74,9 +74,10 @@
     // post message to server
     [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    IRPost *message = [[IRPost alloc] initWithText:self.textView.text
+    IRPost *post = [[IRPost alloc] initWithText:self.textView.text
                                               user:user.resourceURI];
-    [[IRMicroblogClient sharedClient] postPath:IRPostResourceURL parameters:[message dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    post.inReplyTo = self.inReplyTo.resourceURI;
+    [[IRMicroblogClient sharedClient] postPath:IRPostResourceURL parameters:[post dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
