@@ -134,7 +134,6 @@
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning Check this tableView:willSelectRowAtIndexPath: -> prepareForSegue:sender: flow
     self.selectedPost = [self.posts objectAtIndex:indexPath.row];
     return indexPath;
 }

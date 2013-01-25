@@ -18,6 +18,7 @@
 #define IRFollowersFieldKey @"followers"
 #define IRFollowingFieldKey @"following"
 #define IRFollowedByCurrentUserFieldKey @"followed_by_current_user"
+#define IRPostsCountFieldKey @"posts_count"
 
 #define IRUserResourceURL @"user/"
 
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) NSNumber *followers;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSNumber *followedByCurrentUser;
+@property (strong, nonatomic) NSNumber *postsCount;
 
 - (id)initWithFirstName:(NSString *)firstName
                lastName:(NSString *)lastName

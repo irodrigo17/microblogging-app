@@ -43,6 +43,8 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810316B2315F003EC623 /* IRUsersViewController.m */; };
+		63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810716B23173003EC623 /* IRUserDetailsViewController.m */; };
 		63BA96D816AA731000C77FCF /* IRPaginatedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BA96D716AA731000C77FCF /* IRPaginatedArray.m */; };
 		63BA96DC16AA734600C77FCF /* IRPaginationMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BA96DB16AA734600C77FCF /* IRPaginationMetadata.m */; };
 		63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2038D169BA9B500C8337D /* IRModelTests.m */; };
@@ -138,6 +140,10 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63AF810216B2315F003EC623 /* IRUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUsersViewController.h; sourceTree = "<group>"; };
+		63AF810316B2315F003EC623 /* IRUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUsersViewController.m; sourceTree = "<group>"; };
+		63AF810616B23173003EC623 /* IRUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserDetailsViewController.h; sourceTree = "<group>"; };
+		63AF810716B23173003EC623 /* IRUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUserDetailsViewController.m; sourceTree = "<group>"; };
 		63BA96D616AA731000C77FCF /* IRPaginatedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPaginatedArray.h; sourceTree = "<group>"; };
 		63BA96D716AA731000C77FCF /* IRPaginatedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPaginatedArray.m; sourceTree = "<group>"; };
 		63BA96DA16AA734600C77FCF /* IRPaginationMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRPaginationMetadata.h; sourceTree = "<group>"; };
@@ -297,6 +303,10 @@
 				63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */,
 				63485188169D1F4F00C3AAD0 /* IRPostDetailsViewController.h */,
 				63485189169D1F4F00C3AAD0 /* IRPostDetailsViewController.m */,
+				63AF810216B2315F003EC623 /* IRUsersViewController.h */,
+				63AF810316B2315F003EC623 /* IRUsersViewController.m */,
+				63AF810616B23173003EC623 /* IRUserDetailsViewController.h */,
+				63AF810716B23173003EC623 /* IRUserDetailsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -607,6 +617,8 @@
 				6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */,
 				63CCC46F16ACC49A006A3093 /* IRFollow.m in Sources */,
 				63282BA316AF511E008CE032 /* IRShare.m in Sources */,
+				63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */,
+				63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
