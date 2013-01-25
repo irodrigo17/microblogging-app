@@ -14,37 +14,25 @@
 - (void)testInitWithDictionary
 {
     // complete dictionary
-    NSString *name = @"John Doe";
+    NSString *firstName = @"John";
+    NSString *lastName = @"Doe";
     NSString *email = @"jdoe@email.com";
-    NSString *pass = @"pass";
-    NSNumber *userId = [NSNumber numberWithInt:1];    
+    NSNumber *userId = [NSNumber numberWithInt:1];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
-                         name, @"name", 
-                         email, @"email", 
-                         pass, @"password", 
-                         userId, @"id", 
+                         firstName, IRFirstNameFieldKey,
+                         lastName, IRLastNameFieldKey,
+                         email, IREmailFieldKey,
+                         userId, IRIdFieldKey,
                          nil];
     IRUser *user = [[IRUser alloc] initWithDictionary:dic];
-    STAssertEquals(name, user.name, @"Error");
+    STAssertEquals(firstName, user.firstName, @"Error");
+    STAssertEquals(lastName, user.lastName, @"Error");
     STAssertEquals(email, user.email, @"Error");
-    STAssertEquals(pass, user.password, @"Error");
     STAssertEquals(userId, user.modelId, @"Error");
     
     // nil dictionary
     user = [[IRUser alloc] initWithDictionary:nil];
     STAssertNotNil(user, @"Error");
-    
-    // incomplee dictionary
-    name = @"John Doe";
-    email = @"jdoe@email.com";
-    dic = [NSDictionary dictionaryWithObjectsAndKeys:
-           name, @"name", 
-           email, @"email", 
-           nil];
-    user = [[IRUser alloc] initWithDictionary:dic];
-    STAssertEquals(name, user.name, @"Error");
-    STAssertEquals(email, user.email, @"Error");
-    STAssertNil(user.password, @"Error");
     
 }
 
@@ -52,38 +40,28 @@
 {
     // complete dictionary
     IRUser *user = [[IRUser alloc] init];
-    user.name = @"John Doe";
+    user.firstName = @"John";
+    user.lastName = @"Doe";
     user.email = @"jdoe@email.com";
     user.password = @"pass";
     user.modelId = [NSNumber numberWithInt:1];
     
     NSDictionary *dic = [user dictionaryRepresentation];
-    NSString *name = [dic valueForKey:@"name"];
-    NSString *email = [dic valueForKey:@"email"];
-    NSString *pass = [dic valueForKey:@"password"];
-    NSNumber *userId = [dic valueForKey:@"id"];
+    NSString *firstName = [dic valueForKey:IRFirstNameFieldKey];
+    NSString *lastName = [dic valueForKey:IRLastNameFieldKey];
+    NSString *email = [dic valueForKey:IREmailFieldKey];
+    NSString *pass = [dic valueForKey:IRPasswordFieldKey];
     
-    STAssertEquals(user.name, name, @"Error");
+    STAssertEquals(user.firstName, firstName, @"Error");
+    STAssertEquals(user.lastName, lastName, @"Error");
     STAssertEquals(user.email, email, @"Error");
     STAssertEquals(user.password, pass, @"Error");
-    STAssertEquals(user.modelId, userId, @"Error");
     
     // empty dictionary
     user = [[IRUser alloc] init];
     dic = [user dictionaryRepresentation];
+    STAssertNotNil(dic, nil);
     STAssertFalse([dic count], @"Error, dic should be empty. dic: %@", dic);
-    
-    // incomplete dictionary
-    user = [[IRUser alloc] init];
-    user.name = @"John Doe";
-    user.email = @"jdoe@email.com";
-    
-    dic = [user dictionaryRepresentation];
-    name = [dic valueForKey:@"name"];
-    email = [dic valueForKey:@"email"];
-    
-    STAssertEquals(user.name, name, @"Error");
-    STAssertEquals(user.email, email, @"Error");
     
 }
 

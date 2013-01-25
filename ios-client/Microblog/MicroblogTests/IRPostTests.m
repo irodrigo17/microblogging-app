@@ -35,14 +35,16 @@
 - (void)testDictionaryRepresentation
 {
     // post data and model id
-    IRPost *post = [[IRPost alloc] initWithText:@"Some text"];
+    IRPost *post = [[IRPost alloc] initWithText:@"Some text" user:@"/api/v1/user/1/"];
     post.modelId = [NSNumber numberWithInt:9];
+    
     NSDictionary *dic = [post dictionaryRepresentation];
     NSString *text = [dic valueForKey:IRTextFieldKey];
-    NSNumber *postId = [dic valueForKey:IRIdFieldKey];
+    NSString *user = [dic valueForKey:IRUserFieldKey];
     
-    STAssertTrue([postId isEqualToNumber:post.modelId], @"Error");
+    STAssertTrue([dic count] == 2, nil);
     STAssertTrue([text isEqualToString:post.text], @"Error");
+    STAssertTrue([user isEqualToString:post.user], @"Error");
     
     // no data
     post = [[IRPost alloc] init];
