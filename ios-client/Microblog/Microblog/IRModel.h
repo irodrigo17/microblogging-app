@@ -19,4 +19,6 @@
 
 - (id)NSNullToNil:(id)object;
 
++ (NSNumber*)idFromResourceURI:(NSString*)resourceURI;
+
 @end

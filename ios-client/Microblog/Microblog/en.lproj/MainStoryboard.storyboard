@@ -265,14 +265,51 @@
         <!--Posts View Controller - Posts-->
         <scene sceneID="LSD-5V-04y">
             <objects>
-                <tableViewController id="wbI-gA-G2Z" customClass="IRPostsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="IRPostsViewController" id="wbI-gA-G2Z" customClass="IRPostsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="63" sectionHeaderHeight="22" sectionFooterHeight="22" id="e8A-pq-mJ3">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Wn6-GY-2jn">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NDs-g0-kyT">
+                                    <rect key="frame" x="20" y="10" width="44" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="All">
+                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="loadAllPosts" destination="wbI-gA-G2Z" eventType="touchUpInside" id="Aq7-rJ-ymQ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lh9-lm-oM4">
+                                    <rect key="frame" x="72" y="10" width="60" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="Feed">
+                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="loadFeed" destination="wbI-gA-G2Z" eventType="touchUpInside" id="wuR-XQ-ceQ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IRMessageCell" textLabel="tVb-Df-6ca" rowHeight="63" style="IBUITableViewCellStyleDefault" id="oeU-bo-XPY">
-                                <rect key="frame" x="0.0" y="22" width="320" height="63"/>
+                                <rect key="frame" x="0.0" y="75" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="62"/>
@@ -281,7 +318,7 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tVb-Df-6ca">
                                             <rect key="frame" x="10" y="0.0" width="280" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
@@ -299,22 +336,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Posts" id="bW1-T7-b2Z">
-                        <barButtonItem key="leftBarButtonItem" id="8jk-KX-ECt">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="R3K-wm-E1K">
-                                <rect key="frame" x="5" y="7" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="Feed"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changePosts:" destination="wbI-gA-G2Z" eventType="valueChanged" id="sbb-ah-bJ9"/>
-                                </connections>
-                            </segmentedControl>
-                            <connections>
-                                <action selector="selectedPosts:" destination="wbI-gA-G2Z" id="k3U-Gm-107"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sn0-5X-7Rv">
                             <connections>
                                 <segue destination="ybc-M7-YgF" kind="push" identifier="IRPushNewPostFromTable" id="aL6-gy-p0V"/>
@@ -329,7 +350,7 @@
         <!--Post Details View Controller - Post Details-->
         <scene sceneID="e1A-JZ-Kz7">
             <objects>
-                <viewController id="JpK-cL-CGC" customClass="IRPostDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IRPostDetailsViewController" id="JpK-cL-CGC" customClass="IRPostDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J1n-63-4Ah">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -635,6 +656,66 @@
             </objects>
             <point key="canvasLocation" x="1301" y="1073"/>
         </scene>
+        <!--Table View Controller - Users-->
+        <scene sceneID="DKM-wi-q95">
+            <objects>
+                <tableViewController id="ofi-2L-nX6" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RDO-xC-Ne9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4d2-ee-Ajj">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="Xoi-j9-CV2" kind="push" id="f2Z-xA-vYm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Users" id="gtA-7z-scU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xMP-tW-vbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1835" y="1710"/>
+        </scene>
+        <!--Navigation Controller - Users-->
+        <scene sceneID="V1T-8G-cqS">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="SOf-EY-eFv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Users" id="Ge8-Q4-13v"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HSz-9E-bYR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ofi-2L-nX6" kind="relationship" relationship="rootViewController" id="olI-13-NUo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HK9-Z6-lzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="1710"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eNX-II-Xwq">
+            <objects>
+                <viewController id="Xoi-j9-CV2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G0Y-iL-MeR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qgj-88-Y96"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rJ2-e9-xxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2366" y="1710"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Nyg-A2-Pil">
             <objects>
@@ -648,6 +729,7 @@
                     <connections>
                         <segue destination="loY-kU-IEA" kind="relationship" relationship="viewControllers" id="aZA-IH-cBE"/>
                         <segue destination="b8f-Js-J86" kind="relationship" relationship="viewControllers" id="ma4-Yh-I3k"/>
+                        <segue destination="SOf-EY-eFv" kind="relationship" relationship="viewControllers" id="eUz-mI-CUc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S22-fp-trF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -712,7 +794,8 @@
         <class className="IRPostsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="changePosts:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="loadAllPosts"/>
+                <relationship kind="action" name="loadFeed"/>
             </relationships>
         </class>
         <class className="IRSignInViewController" superclassName="IRViewController">

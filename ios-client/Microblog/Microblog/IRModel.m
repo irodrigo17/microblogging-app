@@ -32,4 +32,10 @@
     return ([object isKindOfClass:[NSNull class]]) ? nil : object;
 }
 
++ (NSNumber*)idFromResourceURI:(NSString*)resourceURI
+{
+    NSURL *URL = [NSURL URLWithString:resourceURI];
+    return [URL.pathComponents lastObject];
+}
+
 @end

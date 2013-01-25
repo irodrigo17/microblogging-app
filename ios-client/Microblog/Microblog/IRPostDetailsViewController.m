@@ -15,8 +15,11 @@
 #import "IRFollow.h"
 #import "IRShare.h"
 #import "IRPaginatedArray.h"
+#import "IRPostsViewController.h"
 
 #define IRPushNewPostFromDetail @"IRPushNewPostFromDetail"
+#define IRPostsViewControllerId @"IRPostsViewController"
+#define IRPostDetailsViewControllerId @"IRPostDetailsViewController"
 
 @interface IRPostDetailsViewController ()
 
@@ -37,6 +40,8 @@
 - (void)updateUI;
 - (void)loadUserWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
 - (void)reloadPostWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
+- (void)loadPost:(NSString*)postURI;
+- (void)loadPost:(NSString*)postURI withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
 
 - (IBAction)viewReplies;
 - (IBAction)viewOriginalPost;
@@ -70,7 +75,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadUserWithProgressHUD:YES dismissOnSuccess:YES];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    if(self.post){
+        [self reloadPostWithProgressHUD:YES dismissOnSuccess:YES];
+    }
+    else if(self.postURI){
+        [self loadPost:self.postURI];
+    }
 }
 
 - (void)viewDidUnload
@@ -149,15 +165,35 @@
 
 - (void)reloadPostWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
 {
+    [self loadPost:self.post.resourceURI withProgressHUD:showProgressHUD dismissOnSuccess:dismissProgressHUDOnSuccess];
+}
+
+- (void)loadPost:(NSString*)postURI
+{
+    [self loadPost:postURI withProgressHUD:YES dismissOnSuccess:YES];
+}
+
+- (void)loadPost:(NSString*)postURI withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
+{
+    [self loadPost:postURI loadUser:YES withProgressHUD:showProgressHUD dismissOnSuccess:dismissProgressHUDOnSuccess];
+}
+
+- (void)loadPost:(NSString*)postURI loadUser:(BOOL)loadUser withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
+{
     if(showProgressHUD){
         [SVProgressHUD showDefault];
     }
-    [[IRMicroblogClient sharedClient] getPath:self.post.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(dismissProgressHUDOnSuccess){
+    [[IRMicroblogClient sharedClient] getPath:postURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.post = [[IRPost alloc] initWithDictionary:responseObject];
+        if(dismissProgressHUDOnSuccess && !loadUser){
             [SVProgressHUD dismiss];
         }
-        self.post = [[IRPost alloc] initWithDictionary:responseObject];
-        [self updateUI];
+        if(loadUser){
+            [self loadUserWithProgressHUD:NO dismissOnSuccess:YES];
+        }
+        else{
+            [self updateUI];
+        }     
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't reload post."];
@@ -167,11 +203,15 @@
 #pragma mark - Event handling
 
 - (IBAction)viewReplies {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    IRPostsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:IRPostsViewControllerId];
+    vc.originalPost = self.post;
+    [self.navigationController pushViewController:vc animated:YES];    
 }
 
 - (IBAction)viewOriginalPost {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    IRPostDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:IRPostDetailsViewControllerId];
+    vc.postURI = self.post.inReplyTo;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)like {

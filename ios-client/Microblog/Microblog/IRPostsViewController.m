@@ -12,10 +12,9 @@
 #import "UIAlertView+IRUtils.h"
 #import "SVProgressHUD+IRUtils.h"
 #import "IRPostDetailsViewController.h"
-#import "IRPaginatedArray.h"
+
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
-#define IRAllPostsSegmentIndex 0
 
 @interface IRPostsViewController ()
 
@@ -23,11 +22,13 @@
 @property (strong, nonatomic) NSMutableArray *posts; // IRPost
 @property (weak, nonatomic) IRPost *selectedPost;
 
-- (void)loadFeed;
-- (void)loadAllPosts;
-- (void)loadPostsWithPath:(NSString*)path;
+- (IBAction)loadFeed;
+- (IBAction)loadAllPosts;
 
-- (IBAction)changePosts:(UISegmentedControl *)sender;
+- (void)loadPostsWithPath:(NSString*)path;
+- (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
+
+
 
 @end
 
@@ -41,7 +42,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadAllPosts];
+    if(self.originalPost){
+        [self loadRepliesForPost:self.originalPost];
+    }
+    else{
+        [self loadAllPosts];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -52,28 +58,30 @@
     }
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 #pragma mark - Private methods
-
-- (void)loadFeed
-{
-    [self loadPostsWithPath:IRFeedResourceURL];
-}
-
-- (void)loadAllPosts
-{
-    [self loadPostsWithPath:IRPostResourceURL];
-}
 
 - (void)loadPostsWithPath:(NSString*)path
 {
+    [self loadPostsWithPath:path parameters:nil];
+}
+
+
+- (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters
+{
     // load posts from server
     [SVProgressHUD showDefault];
-    [[IRMicroblogClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         IRPaginatedArray *paginatedPosts = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRPost class]];
         self.pagination = paginatedPosts.meta;
         self.posts = paginatedPosts.objects;
-        [self.tableView reloadData];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"
                "error: %@", operation, error);
@@ -85,13 +93,14 @@
 
 #pragma mark - Event handling
 
-- (IBAction)changePosts:(UISegmentedControl *)sender {
-    if(sender.selectedSegmentIndex == IRAllPostsSegmentIndex){
-        [self loadAllPosts];
-    }
-    else{
-        [self loadFeed];
-    }
+- (void)loadFeed
+{
+    [self loadPostsWithPath:IRFeedResourceURL];
+}
+
+- (void)loadAllPosts
+{
+    [self loadPostsWithPath:IRPostResourceURL];
 }
 
 #pragma mark - Table view data source
@@ -121,45 +130,6 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,6 +142,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - IRPostDetailsViewControllerDelegate methods
+
+- (void)loadRepliesForPost:(IRPost *)post
+{
+    [self loadPostsWithPath:IRPostResourceURL
+                 parameters:@{IRInReplyToFieldKey: post.modelId}];
 }
 
 @end
