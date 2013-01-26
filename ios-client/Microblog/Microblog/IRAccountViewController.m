@@ -79,12 +79,12 @@
 
 - (IBAction)changePassword 
 {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    [UIAlertView showNotImplementedYetAlert];
 }
 
 - (IBAction)editAccountInformation 
 {
-    [UIAlertView showSimpleAlertViewWithMessage:@"Not implemented yet."];
+    [UIAlertView showNotImplementedYetAlert];
 }
 
 @end

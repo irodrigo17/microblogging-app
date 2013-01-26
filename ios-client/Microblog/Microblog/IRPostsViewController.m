@@ -24,6 +24,8 @@
 
 - (IBAction)loadFeed;
 - (IBAction)loadAllPosts;
+- (IBAction)search;
+
 
 - (void)loadPostsWithPath:(NSString*)path;
 - (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
@@ -102,6 +104,11 @@
 {
     [self loadPostsWithPath:IRPostResourceURL];
 }
+
+- (IBAction)search {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
 
 #pragma mark - Table view data source
 

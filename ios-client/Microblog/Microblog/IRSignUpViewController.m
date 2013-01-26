@@ -21,6 +21,8 @@
 
 - (IBAction)signUp;
 - (IBAction)cancel;
+- (IBAction)choosePicture;
+
 
 @end
 
@@ -95,6 +97,10 @@
 - (IBAction)cancel
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)choosePicture {
+    [UIAlertView showNotImplementedYetAlert];
 }
 
 @end

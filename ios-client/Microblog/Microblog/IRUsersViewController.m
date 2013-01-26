@@ -24,10 +24,17 @@
 @property NSMutableArray *users;
 @property IRUser *selectedUser;
 
+- (IBAction)all;
+- (IBAction)following;
+- (IBAction)followers;
+- (IBAction)search;
+
 @end
 
 
 @implementation IRUsersViewController
+
+#pragma mark - View lifecycle
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,7 +54,10 @@
 {
     // load users
     [SVProgressHUD showDefault];
-    [[IRMicroblogClient sharedClient] getPath:IRUserResourceURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+#warning Make HTTP Header athorization work in tastypie.
+    // had to do it the hard way because I don't want to send default auth parameters
+    NSMutableURLRequest *request = [[IRMicroblogClient sharedClient] requestWithMethod:IRGETHTTPMethod path:IRUserResourceURL parameters:nil addAuthQueryParams:NO];
+    AFHTTPRequestOperation *operation = [[IRMicroblogClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
         self.pagination = array.meta;
@@ -57,6 +67,7 @@
         [SVProgressHUD dismiss];
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load users"];
     }];
+    [operation start];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +118,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - View lifecycle
+
+- (IBAction)all {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)following {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)followers {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)search {
+    [UIAlertView showNotImplementedYetAlert];
 }
 
 @end

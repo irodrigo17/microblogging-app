@@ -299,6 +299,7 @@
 }
 
 - (IBAction)follow {
+#warning Create APIWrapper class and move this to a method like toggleFollowWithFollower:(NSString*)followerURI followee:(NSString*)followeeURI succcess:^(AFHTTPRequestOperation *operation, id responseObject)success failure:^(AFHTTPRequestOperation *operation, NSError *error); and do the similar toogleShare and toggleLike methods
     [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     if([self.user.followedByCurrentUser boolValue]){

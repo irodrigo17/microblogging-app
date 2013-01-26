@@ -7,6 +7,9 @@
 //
 
 #import "IRUserDetailsViewController.h"
+#import "UIAlertView+IRUtils.h"
+#import "IRMicroblogClient.h"
+
 
 @interface IRUserDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -19,13 +22,19 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 
-- (IBAction)follow;
+- (IBAction)followAction;
+- (IBAction)followingAction;
+- (IBAction)followersAction;
+- (IBAction)postsAction;
 
 - (void)updateUI;
+
 
 @end
 
 @implementation IRUserDetailsViewController
+
+#pragma mark - View Lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,12 +66,29 @@
     [self setFollowers:nil];
     [self setPosts:nil];
     [self setFollowButton:nil];
+    [self setFollowing:nil];
     [super viewDidUnload];
 }
 
-- (IBAction)follow {
-    
+#pragma mark - Event handling
+
+- (IBAction)followAction {
+    [UIAlertView showNotImplementedYetAlert];
 }
+
+- (IBAction)followersAction {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)followingAction {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)postsAction {
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+#pragma mark - Event handling methods
 
 - (void)updateUI
 {
@@ -73,7 +99,10 @@
     self.following.text = [self.user.following stringValue];
     self.followers.text = [self.user.followers stringValue];
     self.posts.text = [self.user.postsCount stringValue];
-    self.followButton.enabled = [self.user.followedByCurrentUser boolValue];
+    NSString *followButtonTitle = [self.user.followedByCurrentUser boolValue] ? @"Unfollow" : @"Follow";
+    [self.followButton setTitle:followButtonTitle forState:UIControlStateNormal];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    self.followButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
 }
 
 @end

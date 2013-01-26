@@ -11,6 +11,12 @@
 #import "IRHTTPStatusCodes.h"
 #import "IRUser.h"
 
+#define IRGETHTTPMethod @"GET"
+#define IRPOSTHTTPMethod @"POST"
+#define IRPUTHTTPMethod @"PUT"
+#define IRPATCHHTTPMethod @"PATCH"
+#define IRDELETEHTTPMethod @"DELETE"
+
 @interface IRMicroblogClient : AFHTTPClient
 
 @property (strong, nonatomic) IRUser *user; // the signed in user
@@ -26,5 +32,7 @@
  * Clears authentication parameters (username and APIKey) and user.
  */
 - (void)logout;
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters addAuthQueryParams:(BOOL)addAuthQueryParams;
 
 @end
