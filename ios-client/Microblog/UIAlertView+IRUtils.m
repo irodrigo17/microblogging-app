@@ -21,4 +21,10 @@
     [alert show];
 }
 
+
++ (void)showNotImplementedYetAlert
+{
+    [self showSimpleAlertViewWithMessage:@"Not implemented yet."];
+}
+
 @end

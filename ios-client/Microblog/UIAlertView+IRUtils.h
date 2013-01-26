@@ -18,4 +18,6 @@
  */
 + (void)showSimpleAlertViewWithMessage:(NSString*)message;
 
++ (void)showNotImplementedYetAlert;
+
 @end
