@@ -17,6 +17,9 @@
 #define IRPATCHHTTPMethod @"PATCH"
 #define IRDELETEHTTPMethod @"DELETE"
 
+#define IRBaseURLProd @"http://shielded-retreat-4808.herokuapp.com/api/v1/"
+#define IRBaseURLDev @"http://localhost:8000/api/v1/"
+
 @interface IRMicroblogClient : AFHTTPClient
 
 @property (strong, nonatomic) IRUser *user; // the signed in user
@@ -34,5 +37,7 @@
 - (void)logout;
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters addAuthQueryParams:(BOOL)addAuthQueryParams;
+
+- (void)updateBaseURL:(NSString*)baseURL;
 
 @end

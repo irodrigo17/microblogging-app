@@ -56,7 +56,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ijf-C3-WTJ">
-                                        <rect key="frame" x="20" y="145" width="280" height="37"/>
+                                        <rect key="frame" x="164" y="145" width="136" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Sign in">
@@ -71,7 +71,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Z3-ND-CoJ">
-                                        <rect key="frame" x="20" y="200" width="280" height="37"/>
+                                        <rect key="frame" x="20" y="145" width="136" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Sign up">
@@ -85,6 +85,17 @@
                                             <segue destination="bjd-6c-Afx" kind="modal" identifier="IRModalSignUp" id="AgN-bw-W64"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ZcE-wa-SAz">
+                                        <rect key="frame" x="20" y="189" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Production"/>
+                                            <segment title="Development"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="switchServers:" destination="2" eventType="valueChanged" id="jz3-jk-Eon"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1038,107 +1049,6 @@
             <point key="canvasLocation" x="1301" y="445"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="IRAccountViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRAccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changePassword"/>
-                <relationship kind="action" name="editAccountInformation"/>
-                <relationship kind="action" name="signOut"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="IRNewPostViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRNewPostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="postMessage:"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="IRPostDetailsViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="follow"/>
-                <relationship kind="action" name="like"/>
-                <relationship kind="action" name="share"/>
-                <relationship kind="action" name="viewOriginalPost"/>
-                <relationship kind="action" name="viewReplies"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="likesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="originalPostButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="repliesButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="repliesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sharesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="IRPostsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRPostsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loadAllPosts"/>
-                <relationship kind="action" name="loadFeed"/>
-                <relationship kind="action" name="search"/>
-            </relationships>
-        </class>
-        <class className="IRSignInViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignInViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="login"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="IRSignUpViewController" superclassName="IRViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRSignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel"/>
-                <relationship kind="action" name="choosePicture"/>
-                <relationship kind="action" name="signUp"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordConfirmationTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="IRUserDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRUserDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="followAction"/>
-                <relationship kind="action" name="followersAction"/>
-                <relationship kind="action" name="followingAction"/>
-                <relationship kind="action" name="postsAction"/>
-                <relationship kind="outlet" name="email" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="followers" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="following" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="posts" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="IRUsersViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRUsersViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="all"/>
-                <relationship kind="action" name="followers"/>
-                <relationship kind="action" name="following"/>
-                <relationship kind="action" name="search"/>
-            </relationships>
-        </class>
-        <class className="IRViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRViewController.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

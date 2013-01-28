@@ -11,12 +11,17 @@
 
 #define IRModalSignUp @"IRModalSignUp"
 
+#define IRProductionSegmentIndex 0
+#define IRDevelopmentSegmentIndex 1
+
 @interface IRSignInViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 - (IBAction)login;
+- (IBAction)switchServers:(UISegmentedControl*)sender;
+
 
 - (void)loginWithUsername:(NSString*)username password:(NSString*)password;
 
@@ -71,6 +76,15 @@
     [self.view endEditing:YES];
     [self loginWithUsername:self.usernameTextField.text password:self.passwordTextField.text];
     
+}
+
+- (IBAction)switchServers:(UISegmentedControl*)sender {
+    if(sender.selectedSegmentIndex == IRProductionSegmentIndex){
+        [[IRMicroblogClient sharedClient] updateBaseURL:IRBaseURLProd];
+    }
+    else{
+        [[IRMicroblogClient sharedClient] updateBaseURL:IRBaseURLDev];
+    }
 }
 
 #pragma mark - IRSignUpViewControllerDelegate methods

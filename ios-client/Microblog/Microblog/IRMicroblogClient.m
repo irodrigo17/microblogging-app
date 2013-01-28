@@ -20,13 +20,12 @@
 
 @implementation IRMicroblogClient
 
-static NSString * const IRMicroblogBaseURLString = @"http://localhost:8000/api/v1/";
+static IRMicroblogClient *_sharedClient = nil;
 
 + (IRMicroblogClient*)sharedClient{
-    static IRMicroblogClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:IRMicroblogBaseURLString]];
+        _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:IRBaseURLProd]];
     });    
     return _sharedClient;
 }
@@ -78,6 +77,11 @@ static NSString * const IRMicroblogBaseURLString = @"http://localhost:8000/api/v
         request.URL = [NSURL URLWithString:newURLString];
     }
     return request;
+}
+
+- (void)updateBaseURL:(NSString*)baseURL
+{
+    _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
 }
 
 @end
