@@ -17,7 +17,7 @@
 #define IRPATCHHTTPMethod @"PATCH"
 #define IRDELETEHTTPMethod @"DELETE"
 
-#define IRBaseURLProd @"http://shielded-retreat-4808.herokuapp.com/api/v1/"
+#define IRBaseURLProd @"http://microblog-ir.herokuapp.com/api/v1/"
 #define IRBaseURLDev @"http://localhost:8000/api/v1/"
 
 @interface IRMicroblogClient : AFHTTPClient

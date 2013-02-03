@@ -67,6 +67,7 @@ static IRMicroblogClient *_sharedClient = nil;
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters addAuthQueryParams:(BOOL)addAuthQueryParams
 {
+#warning Refactor to use super
     NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
     if(addAuthQueryParams && self.username && self.APIKey){
         NSDictionary *authParams = @{@"username":self.username, @"api_key":self.APIKey};
