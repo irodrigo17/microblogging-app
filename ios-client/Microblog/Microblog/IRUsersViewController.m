@@ -147,10 +147,8 @@
 - (void)loadUsersWithPath:(NSString *)path parameters:(NSDictionary *)parameters
 {
     [SVProgressHUD showDefault];
-#warning Make HTTP Header athorization work in tastypie.
     // had to do it the hard way because I don't want to send default auth parameters
-    NSMutableURLRequest *request = [[IRMicroblogClient sharedClient] requestWithMethod:IRGETHTTPMethod path:path parameters:parameters addAuthQueryParams:NO];
-    AFHTTPRequestOperation *operation = [[IRMicroblogClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
         self.pagination = array.meta;
@@ -160,7 +158,6 @@
         [SVProgressHUD dismiss];
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load users"];
     }];
-    [operation start];
 }
 
 @end

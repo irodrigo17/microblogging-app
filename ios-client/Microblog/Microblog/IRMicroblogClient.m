@@ -60,26 +60,6 @@ static IRMicroblogClient *_sharedClient = nil;
     [self setDefaultHeader:IRAuthorizationHeaderKey value:nil];
 }
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    return [self requestWithMethod:method path:path parameters:parameters addAuthQueryParams:YES];
-}
-
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters addAuthQueryParams:(BOOL)addAuthQueryParams
-{
-#warning Refactor to use super
-    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
-    if(addAuthQueryParams && self.username && self.APIKey){
-        NSDictionary *authParams = @{@"username":self.username, @"api_key":self.APIKey};
-        NSString *oldURLString = [request.URL absoluteString];
-        BOOL hasQuery = [oldURLString rangeOfString:@"?"].location != NSNotFound;
-        NSString *format = hasQuery ? @"&%@" : @"?%@";
-        NSString *newURLString = [oldURLString stringByAppendingFormat:format, AFQueryStringFromParametersWithEncoding(authParams, self.stringEncoding)];
-        request.URL = [NSURL URLWithString:newURLString];
-    }
-    return request;
-}
-
 - (void)updateBaseURL:(NSString*)baseURL
 {
     _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];

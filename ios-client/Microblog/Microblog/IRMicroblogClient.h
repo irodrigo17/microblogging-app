@@ -36,8 +36,6 @@
  */
 - (void)logout;
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters addAuthQueryParams:(BOOL)addAuthQueryParams;
-
 - (void)updateBaseURL:(NSString*)baseURL;
 
 @end

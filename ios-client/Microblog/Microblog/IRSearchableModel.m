@@ -20,7 +20,8 @@
 
 + (NSString*)searchPathWithBasePath:(NSString*)basePath
 {
-    return [basePath stringByAppendingPathComponent:IRSearchPath];
+#warning Find a more solid implementation that always returns the path with a trailing /
+    return [basePath stringByAppendingString:IRSearchPath];
 }
 
 + (NSString*)searchQueryParameterKey
