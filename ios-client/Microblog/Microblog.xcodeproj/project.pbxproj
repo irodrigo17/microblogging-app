@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6300C5F916AB52AA0034F1B2 /* IRLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6300C5F816AB52AA0034F1B2 /* IRLike.m */; };
+		631AB08A16BEE185004CB64D /* IRSearchableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 631AB08916BEE184004CB64D /* IRSearchableModel.m */; };
 		63282B9D16AF4F6F008CE032 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63282B9C16AF4F6F008CE032 /* SystemConfiguration.framework */; };
 		63282BA016AF4F97008CE032 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63282B9F16AF4F97008CE032 /* MobileCoreServices.framework */; };
 		63282BA316AF511E008CE032 /* IRShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 63282BA216AF511E008CE032 /* IRShare.m */; };
@@ -77,6 +78,8 @@
 /* Begin PBXFileReference section */
 		6300C5F716AB52AA0034F1B2 /* IRLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLike.h; sourceTree = "<group>"; };
 		6300C5F816AB52AA0034F1B2 /* IRLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLike.m; sourceTree = "<group>"; };
+		631AB08816BEE182004CB64D /* IRSearchableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSearchableModel.h; sourceTree = "<group>"; };
+		631AB08916BEE184004CB64D /* IRSearchableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRSearchableModel.m; sourceTree = "<group>"; };
 		63282B9C16AF4F6F008CE032 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63282B9F16AF4F97008CE032 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		63282BA116AF511E008CE032 /* IRShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRShare.h; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				63CCC46E16ACC49A006A3093 /* IRFollow.m */,
 				63282BA116AF511E008CE032 /* IRShare.h */,
 				63282BA216AF511E008CE032 /* IRShare.m */,
+				631AB08816BEE182004CB64D /* IRSearchableModel.h */,
+				631AB08916BEE184004CB64D /* IRSearchableModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				63282BA316AF511E008CE032 /* IRShare.m in Sources */,
 				63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */,
 				63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */,
+				631AB08A16BEE185004CB64D /* IRSearchableModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

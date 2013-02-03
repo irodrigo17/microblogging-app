@@ -8,6 +8,8 @@
 
 #import "IRFollow.h"
 
+#define IRFollowResourceURL @"follow/"
+
 @implementation IRFollow
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
@@ -36,6 +38,11 @@
     [dic setValue:self.follower forKey:IRFollowerFieldKey];
     [dic setValue:self.followee forKey:IRFolloweeFieldKey];
     return dic;
+}
+
++ (NSString*)resourcePath
+{
+    return IRFollowResourceURL;
 }
 
 @end

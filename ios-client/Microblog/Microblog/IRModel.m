@@ -38,4 +38,10 @@
     return [URL.pathComponents lastObject];
 }
 
++ (NSString*)resourcePath
+{
+    IRWLog(@"Override me")
+    return nil;
+}
+
 @end

@@ -10,7 +10,7 @@
 #import "IRPaginatedArray.h"
 #import "IRPost.h"
 
-@interface IRPostsViewController : UITableViewController
+@interface IRPostsViewController : UITableViewController <UISearchBarDelegate>
 
 /**
  * Set this property before the view appears to load the replies for the given post.

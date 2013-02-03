@@ -8,6 +8,8 @@
 
 #import "IRLike.h"
 
+#define IRLikeResourceURL @"like/"
+
 @implementation IRLike
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
@@ -36,6 +38,11 @@
     [dic setValue:self.user forKey:IRUserFieldKey];
     [dic setValue:self.post forKey:IRPostFieldKey];
     return dic;
+}
+
++ (NSString*)resourcePath
+{
+    return IRLikeResourceURL;
 }
 
 @end

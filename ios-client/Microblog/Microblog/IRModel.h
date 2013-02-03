@@ -21,4 +21,9 @@
 
 + (NSNumber*)idFromResourceURI:(NSString*)resourceURI;
 
+/**
+ * This method should be overriden by subclasses.
+ */
++ (NSString*)resourcePath;
+
 @end

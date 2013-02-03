@@ -77,7 +77,7 @@
     IRPost *post = [[IRPost alloc] initWithText:self.textView.text
                                               user:user.resourceURI];
     post.inReplyTo = self.inReplyTo.resourceURI;
-    [[IRMicroblogClient sharedClient] postPath:IRPostResourceURL parameters:[post dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] postPath:[IRPost resourcePath] parameters:[post dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -18,7 +18,7 @@
 #define IRDELETEHTTPMethod @"DELETE"
 
 #define IRBaseURLProd @"http://microblog-ir.herokuapp.com/api/v1/"
-#define IRBaseURLDev @"http://localhost:8000/api/v1/"
+#define IRBaseURLDev @"http://localhost:5000/api/v1/"
 
 @interface IRMicroblogClient : AFHTTPClient
 

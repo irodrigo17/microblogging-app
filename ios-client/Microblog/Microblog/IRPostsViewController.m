@@ -24,7 +24,6 @@
 
 - (IBAction)loadFeed;
 - (IBAction)loadAllPosts;
-- (IBAction)search;
 
 
 - (void)loadPostsWithPath:(NSString*)path;
@@ -97,16 +96,12 @@
 
 - (void)loadFeed
 {
-    [self loadPostsWithPath:IRFeedResourceURL];
+    [self loadPostsWithPath:[IRPost feedResourcePath]];
 }
 
 - (void)loadAllPosts
 {
-    [self loadPostsWithPath:IRPostResourceURL];
-}
-
-- (IBAction)search {
-    [UIAlertView showNotImplementedYetAlert];
+    [self loadPostsWithPath:[IRPost resourcePath]];
 }
 
 
@@ -154,8 +149,17 @@
 
 - (void)loadRepliesForPost:(IRPost *)post
 {
-    [self loadPostsWithPath:IRPostResourceURL
+    [self loadPostsWithPath:[IRPost resourcePath]
                  parameters:@{IRInReplyToFieldKey: post.modelId}];
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self loadPostsWithPath:[IRPost feedResourceSearchPath]
+                 parameters:@{[IRPost searchQueryParameterKey]: searchBar.text}];
 }
 
 @end

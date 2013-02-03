@@ -8,8 +8,6 @@
 
 #import "IRModel.h"
 
-#define IRShareResourceURL @"share/"
-
 #define IRUserFieldKey @"user"
 #define IRPostFieldKey @"post"
 

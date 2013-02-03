@@ -9,6 +9,8 @@
 #import "IRPost.h"
 #import "IRDateFormatterCache.h"
 
+#define IRPostResourceURL @"post/"
+#define IRFeedResourceURL @"feed/"
 
 @implementation IRPost
 
@@ -58,6 +60,21 @@
     [dic setValue:self.user forKey:IRUserFieldKey];
     [dic setValue:self.inReplyTo forKey:IRInReplyToFieldKey];
     return dic;
+}
+
++ (NSString*)resourcePath
+{
+    return IRPostResourceURL;
+}
+
++ (NSString*)feedResourcePath
+{
+    return IRFeedResourceURL;
+}
+
++ (NSString*)feedResourceSearchPath
+{
+    return [self searchPathWithBasePath:[self feedResourcePath]];
 }
 
 @end

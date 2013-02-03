@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IRModel.h"
+#import "IRSearchableModel.h"
 
 #define IRTextFieldKey @"text"
 #define IRCreatedDateFieldKey @"created_date"
@@ -20,10 +20,8 @@
 #define IRLikedByCurrentUserFieldKey @"liked_by_current_user"
 #define IRSharedByCurrentUserFieldKey @"shared_by_current_user"
 
-#define IRPostResourceURL @"post/"
-#define IRFeedResourceURL @"feed/"
 
-@interface IRPost : IRModel <IRDictianaryRepresentation>
+@interface IRPost : IRSearchableModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *text; // Max 200 chars.
 @property (strong, nonatomic) NSString *user; // The resource URI of the user.
@@ -38,5 +36,8 @@
 
 - (id)initWithText:(NSString*)text
               user:(NSString*)user;
+
++ (NSString*)feedResourcePath;
++ (NSString*)feedResourceSearchPath;
 
 @end

@@ -29,6 +29,9 @@
 - (IBAction)followers;
 - (IBAction)search;
 
+- (void)loadUsers;
+- (void)loadUsersWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
+
 @end
 
 
@@ -52,22 +55,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     // load users
-    [SVProgressHUD showDefault];
-#warning Make HTTP Header athorization work in tastypie.
-    // had to do it the hard way because I don't want to send default auth parameters
-    NSMutableURLRequest *request = [[IRMicroblogClient sharedClient] requestWithMethod:IRGETHTTPMethod path:IRUserResourceURL parameters:nil addAuthQueryParams:NO];
-    AFHTTPRequestOperation *operation = [[IRMicroblogClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
-        IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
-        self.pagination = array.meta;
-        self.users = array.objects;
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        [UIAlertView showSimpleAlertViewWithMessage:@"Can't load users"];
-    }];
-    [operation start];
+    [self loadUsers];
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,6 +126,41 @@
 
 - (IBAction)search {
     [UIAlertView showNotImplementedYetAlert];
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self loadUsersWithPath:[IRUser searchPath]
+                 parameters:@{[IRUser searchQueryParameterKey]: searchBar.text}];
+}
+
+#pragma mark - Private methods
+
+- (void)loadUsers
+{
+    return [self loadUsersWithPath:[IRUser resourcePath] parameters:nil];
+}
+
+- (void)loadUsersWithPath:(NSString *)path parameters:(NSDictionary *)parameters
+{
+    [SVProgressHUD showDefault];
+#warning Make HTTP Header athorization work in tastypie.
+    // had to do it the hard way because I don't want to send default auth parameters
+    NSMutableURLRequest *request = [[IRMicroblogClient sharedClient] requestWithMethod:IRGETHTTPMethod path:path parameters:parameters addAuthQueryParams:NO];
+    AFHTTPRequestOperation *operation = [[IRMicroblogClient sharedClient] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
+        self.pagination = array.meta;
+        self.users = array.objects;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't load users"];
+    }];
+    [operation start];
 }
 
 @end

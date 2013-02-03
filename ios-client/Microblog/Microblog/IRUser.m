@@ -8,6 +8,8 @@
 
 #import "IRUser.h"
 
+#define IRUserResourceURL @"user/"
+
 @implementation IRUser
 
 - (id)initWithFirstName:(NSString *)firstName
@@ -52,6 +54,11 @@
     [dic setValue:self.password forKey:IRPasswordFieldKey];
     [dic setValue:self.username forKey:IRUsernameFieldKey];
     return dic;
+}
+
++ (NSString*)resourcePath
+{
+    return IRUserResourceURL;
 }
 
 @end

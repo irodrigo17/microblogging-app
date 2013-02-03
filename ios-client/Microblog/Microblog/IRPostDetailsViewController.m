@@ -220,7 +220,7 @@
     if([self.post.likedByCurrentUser boolValue]){
         // find like instance
         NSDictionary *params = @{@"user":user.modelId, @"post":self.post.modelId};
-        [[IRMicroblogClient sharedClient] getPath:IRLikeResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] getPath:[IRLike resourcePath] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRLike class]];
             IRLike *like = [array.objects lastObject];
             if(like){
@@ -245,7 +245,7 @@
         // create like instance
         IRLike *like = [[IRLike alloc] initWithPost:self.post.resourceURI user:user.resourceURI];
         // post like instance
-        [[IRMicroblogClient sharedClient] postPath:IRLikeResourceURL parameters:[like dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] postPath:[IRLike resourcePath] parameters:[like dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // reload post
             [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -262,7 +262,7 @@
     if([self.post.sharedByCurrentUser boolValue]){
         // find share instance
         NSDictionary *params = @{@"user":user.modelId, @"post":self.post.modelId};
-        [[IRMicroblogClient sharedClient] getPath:IRShareResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] getPath:[IRShare resourcePath] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRShare class]];
             IRLike *share = [array.objects lastObject];
             if(share){
@@ -288,7 +288,7 @@
         // create share instance
         IRShare *share = [[IRShare alloc] initWithPost:self.post.resourceURI user:user.resourceURI];
         // post share instance
-        [[IRMicroblogClient sharedClient] postPath:IRShareResourceURL parameters:[share dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] postPath:[IRShare resourcePath] parameters:[share dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // reload post
             [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -305,7 +305,7 @@
     if([self.user.followedByCurrentUser boolValue]){
         // find follow instance
         NSDictionary *params = @{@"follower":user.modelId, @"followee":self.user.modelId};
-        [[IRMicroblogClient sharedClient] getPath:IRFollowResourceURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] getPath:[IRFollow resourcePath] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRFollow class]];
             IRFollow *follow = [array.objects lastObject];
             if(follow){
@@ -331,7 +331,7 @@
         // create follow instance
         IRFollow *follow = [[IRFollow alloc] initWithFollower:user.resourceURI followee:self.user.resourceURI];
         // post follow instance
-        [[IRMicroblogClient sharedClient] postPath:IRFollowResourceURL parameters:[follow dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[IRMicroblogClient sharedClient] postPath:[IRFollow resourcePath] parameters:[follow dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self loadUserWithProgressHUD:NO dismissOnSuccess:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];

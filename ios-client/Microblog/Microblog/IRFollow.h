@@ -8,8 +8,6 @@
 
 #import "IRModel.h"
 
-#define IRFollowResourceURL @"follow/"
-
 #define IRFollowerFieldKey @"follower"
 #define IRFolloweeFieldKey @"followee"
 

@@ -79,7 +79,7 @@
                                             password:self.passwordTextField.text];
     // post user
     [SVProgressHUD showDefault];
-    [[IRMicroblogClient sharedClient] postPath:IRUserResourceURL parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[IRMicroblogClient sharedClient] postPath:[IRUser resourcePath] parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IRDLog(@"Sign up success!\noperation: %@\nresponseObject: %@", operation, responseObject);
         [SVProgressHUD dismiss];
         [self.delegate didSignupWithUsername:user.username password:user.password];

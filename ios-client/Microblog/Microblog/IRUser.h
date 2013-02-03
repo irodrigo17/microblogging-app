@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IRDictianaryRepresentation.h"
-#import "IRModel.h"
+#import "IRSearchableModel.h"
 
 #define IRFirstNameFieldKey @"first_name"
 #define IRLastNameFieldKey @"last_name"
@@ -20,9 +20,8 @@
 #define IRFollowedByCurrentUserFieldKey @"followed_by_current_user"
 #define IRPostsCountFieldKey @"posts_count"
 
-#define IRUserResourceURL @"user/"
 
-@interface IRUser : IRModel <IRDictianaryRepresentation>
+@interface IRUser : IRSearchableModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;

@@ -8,8 +8,6 @@
 
 #import "IRModel.h"
 
-#define IRLikeResourceURL @"like/"
-
 #define IRUserFieldKey @"user"
 #define IRPostFieldKey @"post"
 
