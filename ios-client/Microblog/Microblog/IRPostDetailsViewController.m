@@ -35,13 +35,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 
-@property (strong, nonatomic) IRUser *user;
-
 - (void)updateUI;
-- (void)loadUserWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
-- (void)reloadPostWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
 - (void)loadPost:(NSString*)postURI;
-- (void)loadPost:(NSString*)postURI withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess;
+- (void)reloadPost;
 
 - (IBAction)viewReplies;
 - (IBAction)viewOriginalPost;
@@ -82,7 +78,7 @@
 {
     [super viewWillAppear:YES];
     if(self.post){
-        [self reloadPostWithProgressHUD:YES dismissOnSuccess:YES];
+        [self updateUI];
     }
     else if(self.postURI){
         [self loadPost:self.postURI];
@@ -126,7 +122,7 @@
 
 - (void)updateUI
 {
-    self.usernameLabel.text = [NSString stringWithFormat:@"%@ wrote:", self.user.username];
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@ wrote:", self.post.user.username];
     self.textView.text = self.post.text;
     NSDateFormatter *df = [IRDateFormatterCache sharedDateFormatter];
     self.dateLabel.text = [df stringFromDate:self.post.createdDate];
@@ -137,68 +133,32 @@
     self.repliesButton.enabled = [self.post.replies integerValue] > 0;
     NSString *likeButtonTitle = [self.post.likedByCurrentUser boolValue] ? @"Unlike" : @"Like";
     [self.likeButton setTitle:likeButtonTitle forState:UIControlStateNormal];
-    NSString *followButtonTitle = [self.user.followedByCurrentUser boolValue] ? @"Unfollow" : @"Follow";
+    NSString *followButtonTitle = [self.post.user.followedByCurrentUser boolValue] ? @"Unfollow" : @"Follow";
     [self.followButton setTitle:followButtonTitle forState:UIControlStateNormal];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    self.followButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
+    self.followButton.enabled = ![self.post.user.resourceURI isEqualToString:user.resourceURI];
     NSString *shareButtonTitle = [self.post.sharedByCurrentUser boolValue] ? @"Unshare" : @"Share";
     [self.shareButton setTitle:shareButtonTitle forState:UIControlStateNormal];
-    self.shareButton.enabled = ![self.user.resourceURI isEqualToString:user.resourceURI];
-}
-
-- (void)loadUserWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
-{
-    if(showProgressHUD){
-        [SVProgressHUD showDefault];
-    }
-    [[IRMicroblogClient sharedClient] getPath:self.post.user parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(dismissProgressHUDOnSuccess){
-            [SVProgressHUD dismiss];
-        }
-        self.user = [[IRUser alloc] initWithDictionary:responseObject];
-        [self updateUI];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        [UIAlertView showSimpleAlertViewWithMessage:@"Can't load user."];
-    }];
-}
-
-- (void)reloadPostWithProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
-{
-    [self loadPost:self.post.resourceURI withProgressHUD:showProgressHUD dismissOnSuccess:dismissProgressHUDOnSuccess];
+    self.shareButton.enabled = ![self.post.user.resourceURI isEqualToString:user.resourceURI];
 }
 
 - (void)loadPost:(NSString*)postURI
 {
-    [self loadPost:postURI withProgressHUD:YES dismissOnSuccess:YES];
-}
-
-- (void)loadPost:(NSString*)postURI withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
-{
-    [self loadPost:postURI loadUser:YES withProgressHUD:showProgressHUD dismissOnSuccess:dismissProgressHUDOnSuccess];
-}
-
-- (void)loadPost:(NSString*)postURI loadUser:(BOOL)loadUser withProgressHUD:(BOOL)showProgressHUD dismissOnSuccess:(BOOL)dismissProgressHUDOnSuccess
-{
-    if(showProgressHUD){
-        [SVProgressHUD showDefault];
-    }
+    [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] getPath:postURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.post = [[IRPost alloc] initWithDictionary:responseObject];
-        if(dismissProgressHUDOnSuccess && !loadUser){
-            [SVProgressHUD dismiss];
-        }
-        if(loadUser){
-            [self loadUserWithProgressHUD:NO dismissOnSuccess:YES];
-        }
-        else{
-            [self updateUI];
-        }     
+        [self updateUI];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        [UIAlertView showSimpleAlertViewWithMessage:@"Can't reload post."];
+        [UIAlertView showSimpleAlertViewWithMessage:@"Can't load post."];
     }];
 }
+
+- (void)reloadPost
+{
+    [self loadPost:self.post.resourceURI];
+}
+
 
 #pragma mark - Event handling
 
@@ -226,15 +186,15 @@
             if(like){
                 // delete like instance
                 [[IRMicroblogClient sharedClient] deletePath:like.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+                    [self reloadPost];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     [SVProgressHUD dismiss];
                     [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete like instance."];
                 }];
             }
             else{
-                IRWLog(@"like instance with user: %@ and post: %@ already deleted", self.user.resourceURI, self.post.resourceURI);
-                [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+                IRWLog(@"like instance with user: %@ and post: %@ already deleted", self.post.user.resourceURI, self.post.resourceURI);
+                [self reloadPost];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
@@ -247,7 +207,7 @@
         // post like instance
         [[IRMicroblogClient sharedClient] postPath:[IRLike resourcePath] parameters:[like dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // reload post
-            [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+            [self reloadPost];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
             [UIAlertView showSimpleAlertViewWithMessage:@"Can't POST like."];
@@ -268,7 +228,7 @@
             if(share){
                 // delete share instance
                 [[IRMicroblogClient sharedClient] deletePath:share.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+                    [self reloadPost];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     [SVProgressHUD dismiss];
                     [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete share instance."];
@@ -276,8 +236,8 @@
             }
             else{
                 // nothing to do here, share was already deleted, just refresh data
-                IRWLog(@"Share instance with user: %@ and post: %@ already deleted.", self.user.resourceURI, self.post.resourceURI);
-                [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+                IRWLog(@"Share instance with user: %@ and post: %@ already deleted.", self.post.user.resourceURI, self.post.resourceURI);
+                [self reloadPost];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
@@ -290,7 +250,7 @@
         // post share instance
         [[IRMicroblogClient sharedClient] postPath:[IRShare resourcePath] parameters:[share dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // reload post
-            [self reloadPostWithProgressHUD:NO dismissOnSuccess:YES];
+            [self reloadPost];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
             [UIAlertView showSimpleAlertViewWithMessage:@"Can't POST share."];
@@ -302,16 +262,16 @@
 #warning Create APIWrapper class and move this to a method like toggleFollowWithFollower:(NSString*)followerURI followee:(NSString*)followeeURI succcess:^(AFHTTPRequestOperation *operation, id responseObject)success failure:^(AFHTTPRequestOperation *operation, NSError *error); and do the similar toogleShare and toggleLike methods
     [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    if([self.user.followedByCurrentUser boolValue]){
+    if([self.post.user.followedByCurrentUser boolValue]){
         // find follow instance
-        NSDictionary *params = @{@"follower":user.modelId, @"followee":self.user.modelId};
+        NSDictionary *params = @{@"follower":user.modelId, @"followee":self.post.user.modelId};
         [[IRMicroblogClient sharedClient] getPath:[IRFollow resourcePath] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRFollow class]];
             IRFollow *follow = [array.objects lastObject];
             if(follow){
                 // delete follow instance
                 [[IRMicroblogClient sharedClient] deletePath:follow.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [self loadUserWithProgressHUD:NO dismissOnSuccess:YES];                    
+                    [self reloadPost];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     [SVProgressHUD dismiss];
                     [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete follow instance."];
@@ -319,8 +279,8 @@
             }
             else{
                 [SVProgressHUD dismiss];
-                IRWLog(@"follow instance with follower: %@ and followee: %@ already deleted", user.resourceURI, self.user.resourceURI);
-                [self loadUserWithProgressHUD:NO dismissOnSuccess:YES]; 
+                IRWLog(@"follow instance with follower: %@ and followee: %@ already deleted", user.resourceURI, self.post.user.resourceURI);
+                [self reloadPost];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
@@ -329,10 +289,10 @@
     }
     else{
         // create follow instance
-        IRFollow *follow = [[IRFollow alloc] initWithFollower:user.resourceURI followee:self.user.resourceURI];
+        IRFollow *follow = [[IRFollow alloc] initWithFollower:user.resourceURI followee:self.post.user.resourceURI];
         // post follow instance
         [[IRMicroblogClient sharedClient] postPath:[IRFollow resourcePath] parameters:[follow dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self loadUserWithProgressHUD:NO dismissOnSuccess:YES];
+            [self reloadPost];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD dismiss];
             NSString *message = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];

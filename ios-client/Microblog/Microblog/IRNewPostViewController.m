@@ -75,7 +75,7 @@
     [SVProgressHUD showDefault];
     IRUser *user = [IRMicroblogClient sharedClient].user;
     IRPost *post = [[IRPost alloc] initWithText:self.textView.text
-                                              user:user.resourceURI];
+                                           user:user.resourceURI];
     post.inReplyTo = self.inReplyTo.resourceURI;
     [[IRMicroblogClient sharedClient] postPath:[IRPost resourcePath] parameters:[post dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];

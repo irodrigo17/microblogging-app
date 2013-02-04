@@ -8,6 +8,7 @@
 
 #import "IRPost.h"
 #import "IRDateFormatterCache.h"
+#import "IRUser.h"
 
 #define IRPostResourceURL @"post/"
 #define IRFeedResourceURL @"feed/"
@@ -17,12 +18,12 @@
 @synthesize text = _text;
 
 - (id)initWithText:(NSString*)text
-              user:(NSString*)user
+              user:(NSString*)userURI
 {
     self = [super init];
     if(self){
         self.text = text;
-        self.user = user;
+        self.userURI = userURI;
     }
     return self;
 }
@@ -32,7 +33,8 @@
     self = [super initWithDictionary:dictionary];
     if(self){
         self.text = [dictionary valueForKey:IRTextFieldKey];
-        self.user = [dictionary valueForKey:IRUserFieldKey];
+        NSDictionary *userDic = [dictionary valueForKey:IRUserFieldKey];
+        self.user = [[IRUser alloc] initWithDictionary:userDic];
         self.inReplyTo = [self NSNullToNil:[dictionary valueForKey:IRInReplyToFieldKey]];
         self.shares = [dictionary valueForKey:IRSharesFieldKey];
         self.likes = [dictionary valueForKey:IRLikesFieldKey];
@@ -57,7 +59,12 @@
 {
     NSMutableDictionary *dic = [super dictionaryRepresentation];
     [dic setValue:self.text forKey:IRTextFieldKey];
-    [dic setValue:self.user forKey:IRUserFieldKey];
+    if(self.userURI){
+        [dic setValue:self.userURI forKey:IRUserFieldKey];
+    }
+    else if(self.user){
+        [dic setValue:self.user.resourceURI forKey:IRUserFieldKey];
+    }
     [dic setValue:self.inReplyTo forKey:IRInReplyToFieldKey];
     return dic;
 }

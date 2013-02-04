@@ -21,10 +21,14 @@
 #define IRSharedByCurrentUserFieldKey @"shared_by_current_user"
 
 
+@class IRUser;
+
+
 @interface IRPost : IRSearchableModel <IRDictianaryRepresentation>
 
 @property (strong, nonatomic) NSString *text; // Max 200 chars.
-@property (strong, nonatomic) NSString *user; // The resource URI of the user.
+@property (strong, nonatomic) NSString *userURI; // The resource URI of the user, used for posting
+@property (strong, nonatomic) IRUser *user; // The full user
 @property (strong, nonatomic) NSDate *createdDate;
 @property (strong, nonatomic) NSDate *modifiedDate;
 @property (strong, nonatomic) NSString *inReplyTo; // Optional.
@@ -35,7 +39,7 @@
 @property (strong, nonatomic) NSNumber *sharedByCurrentUser;
 
 - (id)initWithText:(NSString*)text
-              user:(NSString*)user;
+              user:(NSString*)userURI;
 
 + (NSString*)feedResourcePath;
 + (NSString*)feedResourceSearchPath;

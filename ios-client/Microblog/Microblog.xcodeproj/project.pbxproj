@@ -44,6 +44,7 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		63AED0CE16BF420100D9C6D4 /* IRAPIStressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AED0CD16BF420100D9C6D4 /* IRAPIStressTests.m */; };
 		63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810316B2315F003EC623 /* IRUsersViewController.m */; };
 		63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810716B23173003EC623 /* IRUserDetailsViewController.m */; };
 		63BA96D816AA731000C77FCF /* IRPaginatedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BA96D716AA731000C77FCF /* IRPaginatedArray.m */; };
@@ -143,6 +144,8 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		63AED0CC16BF420100D9C6D4 /* IRAPIStressTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRAPIStressTests.h; sourceTree = "<group>"; };
+		63AED0CD16BF420100D9C6D4 /* IRAPIStressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRAPIStressTests.m; sourceTree = "<group>"; };
 		63AF810216B2315F003EC623 /* IRUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUsersViewController.h; sourceTree = "<group>"; };
 		63AF810316B2315F003EC623 /* IRUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUsersViewController.m; sourceTree = "<group>"; };
 		63AF810616B23173003EC623 /* IRUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserDetailsViewController.h; sourceTree = "<group>"; };
@@ -380,6 +383,7 @@
 		63759070169791E400C3BE51 /* MicroblogTests */ = {
 			isa = PBXGroup;
 			children = (
+				63AED0CB16BF41D600D9C6D4 /* APIClient */,
 				63E62899169B9E5B00595534 /* Models */,
 				63759071169791E400C3BE51 /* Supporting Files */,
 			);
@@ -442,6 +446,15 @@
 				637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */,
 			);
 			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		63AED0CB16BF41D600D9C6D4 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				63AED0CC16BF420100D9C6D4 /* IRAPIStressTests.h */,
+				63AED0CD16BF420100D9C6D4 /* IRAPIStressTests.m */,
+			);
+			name = APIClient;
 			sourceTree = "<group>";
 		};
 		63E62899169B9E5B00595534 /* Models */ = {
@@ -635,6 +648,7 @@
 				63E628A2169B9F1700595534 /* IRUserTests.m in Sources */,
 				63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */,
 				63C20391169BBFB300C8337D /* IRPostTests.m in Sources */,
+				63AED0CE16BF420100D9C6D4 /* IRAPIStressTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
