@@ -12,9 +12,11 @@
 #import "UIAlertView+IRUtils.h"
 #import "SVProgressHUD+IRUtils.h"
 #import "IRPostDetailsViewController.h"
+#import "IRLoadingCell.h"
 
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
+
 
 @interface IRPostsViewController ()
 
@@ -25,13 +27,13 @@
 - (IBAction)loadFeed;
 - (IBAction)loadAllPosts;
 
-
 - (void)loadPostsWithPath:(NSString*)path;
 - (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
-
-
+- (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD;
+- (void)loadNextPage;
 
 @end
+
 
 @implementation IRPostsViewController
 
@@ -43,6 +45,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // laod posts
+    self.posts = [NSMutableArray array];
     if(self.originalPost){
         [self loadRepliesForPost:self.originalPost];
     }
@@ -70,26 +74,40 @@
     [self loadPostsWithPath:path parameters:nil];
 }
 
-
 - (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters
 {
+    [self loadPostsWithPath:path parameters:parameters progressHUD:YES];
+}
+
+- (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD
+{
     // load posts from server
-    [SVProgressHUD showDefault];
+    if(progressHUD){
+        [SVProgressHUD showDefault];
+    }
     [[IRMicroblogClient sharedClient] getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
+        if(progressHUD){
+            [SVProgressHUD dismiss];
+        }
         IRPaginatedArray *paginatedPosts = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRPost class]];
         self.pagination = paginatedPosts.meta;
-        self.posts = paginatedPosts.objects;
+        [self.posts addObjectsFromArray:paginatedPosts.objects];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
-        }];        
+        }];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"
                "error: %@", operation, error);
-        [SVProgressHUD dismiss];
-        self.posts = nil;
+        if(progressHUD){
+            [SVProgressHUD dismiss];
+        }
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load posts."];
     }];
+}
+
+- (void)loadNextPage
+{
+    [self loadPostsWithPath:self.pagination.next parameters:nil progressHUD:NO];
 }
 
 #pragma mark - Event handling
@@ -114,21 +132,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.posts count];
+    NSUInteger extraCell = self.pagination.next ? 1 : 0;
+    return [self.posts count] + extraCell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"IRMessageCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    UITableViewCell *cell;
+    if(indexPath.row < [self.posts count]){
+        static NSString *CellIdentifier = @"IRPostCell";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        IRPost *post = [self.posts objectAtIndex:indexPath.row];
+        cell.textLabel.text = post.text;
     }
-    
-    IRPost *message = [self.posts objectAtIndex:indexPath.row];
-    cell.textLabel.text = message.text;
-    
+    else{
+        static NSString *CellIdentifier = @"IRLoadingCell";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        [((IRLoadingCell*)cell).activityIndicatior startAnimating];
+    }
     return cell;
 }
 
@@ -143,6 +173,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row >= [self.posts count]){
+        // laod next page
+        [self loadNextPage];
+    }
 }
 
 #pragma mark - IRPostDetailsViewControllerDelegate methods

@@ -13,6 +13,7 @@
 #import "IRPaginatedArray.h"
 #import "IRMicroblogClient.h"
 #import "IRUserDetailsViewController.h"
+#import "IRLoadingCell.h"
 
 
 #define IRPushUserDetails @"IRPushUserDetails"
@@ -31,6 +32,8 @@
 
 - (void)loadUsers;
 - (void)loadUsersWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
+- (void)loadUsersWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD;
+- (void)loadNextPage;
 
 @end
 
@@ -51,12 +54,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     // load users
+    self.users = [NSMutableArray array];
     [self loadUsers];
 }
 
@@ -83,17 +88,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.users count];
+    NSUInteger extraCell = self.pagination.next ? 1 : 0;
+    return [self.users count] + extraCell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"IRUserCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    IRUser *user = [self.users objectAtIndex:indexPath.row];
-    cell.textLabel.text = user.username;
-    
+    UITableViewCell *cell;
+    if(indexPath.row < [self.users count]){
+        static NSString *CellIdentifier = @"IRUserCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        IRUser *user = [self.users objectAtIndex:indexPath.row];
+        cell.textLabel.text = user.username;
+    }
+    else{
+        static NSString *CellIdentifier = @"IRLoadingCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        [((IRLoadingCell*)cell).activityIndicatior startAnimating];
+    }
     return cell;
 }
 
@@ -108,6 +126,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row >= [self.users count]){
+        // laod next page
+        [self loadNextPage];
+    }
 }
 
 #pragma mark - View lifecycle
@@ -146,18 +172,34 @@
 
 - (void)loadUsersWithPath:(NSString *)path parameters:(NSDictionary *)parameters
 {
-    [SVProgressHUD showDefault];
+    [self loadUsersWithPath:path parameters:parameters progressHUD:YES];
+}
+
+- (void)loadUsersWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD
+{
+    if(progressHUD){
+        [SVProgressHUD showDefault];
+    }
     // had to do it the hard way because I don't want to send default auth parameters
     [[IRMicroblogClient sharedClient] getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
+        if(progressHUD){
+            [SVProgressHUD dismiss];
+        }
         IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
         self.pagination = array.meta;
-        self.users = array.objects;
+        [self.users addObjectsFromArray:array.objects];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
+        if(progressHUD){
+            [SVProgressHUD dismiss];
+        }
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load users"];
     }];
+}
+
+- (void)loadNextPage
+{
+    [self loadUsersWithPath:self.pagination.next parameters:nil progressHUD:NO];
 }
 
 @end

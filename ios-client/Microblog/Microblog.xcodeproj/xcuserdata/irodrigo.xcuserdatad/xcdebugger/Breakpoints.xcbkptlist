@@ -72,19 +72,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Microblog/IRPostsViewController.m"
-         timestampString = "381616859.797964"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
-         landmarkName = "-loadPostsWithPath:parameters:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Microblog/IRPostDetailsViewController.m"
          timestampString = "381636300.685605"
          startingColumnNumber = "9223372036854775807"

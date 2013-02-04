@@ -23,4 +23,7 @@
 @property (strong, nonatomic) NSString *previous;
 @property (strong, nonatomic) NSNumber *totalCount;
 
+#warning Duplicated method.
+- (id)NSNullToNil:(id)object;
+
 @end

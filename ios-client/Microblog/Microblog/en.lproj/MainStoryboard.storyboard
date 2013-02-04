@@ -349,7 +349,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IRMessageCell" textLabel="tVb-Df-6ca" rowHeight="74" style="IBUITableViewCellStyleDefault" id="oeU-bo-XPY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IRPostCell" textLabel="tVb-Df-6ca" rowHeight="74" style="IBUITableViewCellStyleDefault" id="oeU-bo-XPY">
                                 <rect key="frame" x="0.0" y="111" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -368,6 +368,24 @@
                                 </view>
                                 <connections>
                                     <segue destination="JpK-cL-CGC" kind="push" identifier="IRPushPostDetailsSegue" id="FYl-Xw-wUZ"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IRLoadingCell" rowHeight="48" id="YDc-F8-sEm" customClass="IRLoadingCell">
+                                <rect key="frame" x="0.0" y="185" width="320" height="48"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="p6V-Nv-ERm">
+                                            <rect key="frame" x="150" y="14" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="activityIndicatior" destination="p6V-Nv-ERm" id="sGT-iY-JhW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -800,6 +818,24 @@
                                 </view>
                                 <connections>
                                     <segue destination="Xoi-j9-CV2" kind="push" identifier="IRPushUserDetails" id="f2Z-xA-vYm"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IRLoadingCell" rowHeight="42" id="ygO-B2-8ch" customClass="IRLoadingCell">
+                                <rect key="frame" x="0.0" y="170" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="lSo-Tp-Fae">
+                                            <rect key="frame" x="151" y="11" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="activityIndicatior" destination="lSo-Tp-Fae" id="b3j-Ih-lpe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

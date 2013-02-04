@@ -45,6 +45,7 @@
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
 		63AED0CE16BF420100D9C6D4 /* IRAPIStressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AED0CD16BF420100D9C6D4 /* IRAPIStressTests.m */; };
+		63AED0D416BF5DE100D9C6D4 /* IRLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AED0D316BF5DE100D9C6D4 /* IRLoadingCell.m */; };
 		63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810316B2315F003EC623 /* IRUsersViewController.m */; };
 		63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AF810716B23173003EC623 /* IRUserDetailsViewController.m */; };
 		63BA96D816AA731000C77FCF /* IRPaginatedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BA96D716AA731000C77FCF /* IRPaginatedArray.m */; };
@@ -146,6 +147,8 @@
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		63AED0CC16BF420100D9C6D4 /* IRAPIStressTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRAPIStressTests.h; sourceTree = "<group>"; };
 		63AED0CD16BF420100D9C6D4 /* IRAPIStressTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRAPIStressTests.m; sourceTree = "<group>"; };
+		63AED0D216BF5DE100D9C6D4 /* IRLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRLoadingCell.h; sourceTree = "<group>"; };
+		63AED0D316BF5DE100D9C6D4 /* IRLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRLoadingCell.m; sourceTree = "<group>"; };
 		63AF810216B2315F003EC623 /* IRUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUsersViewController.h; sourceTree = "<group>"; };
 		63AF810316B2315F003EC623 /* IRUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRUsersViewController.m; sourceTree = "<group>"; };
 		63AF810616B23173003EC623 /* IRUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserDetailsViewController.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				6375905E169791E400C3BE51 /* MainStoryboard.storyboard */,
+				63AED0D216BF5DE100D9C6D4 /* IRLoadingCell.h */,
+				63AED0D316BF5DE100D9C6D4 /* IRLoadingCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				63AF810416B2315F003EC623 /* IRUsersViewController.m in Sources */,
 				63AF810816B23173003EC623 /* IRUserDetailsViewController.m in Sources */,
 				631AB08A16BEE185004CB64D /* IRSearchableModel.m in Sources */,
+				63AED0D416BF5DE100D9C6D4 /* IRLoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
