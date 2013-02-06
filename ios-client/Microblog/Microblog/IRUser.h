@@ -15,8 +15,8 @@
 #define IREmailFieldKey @"email"
 #define IRUsernameFieldKey @"username"
 #define IRPasswordFieldKey @"password"
-#define IRFollowersFieldKey @"followers"
-#define IRFollowingFieldKey @"following"
+#define IRFollowersFieldKey @"followers_count"
+#define IRFollowingFieldKey @"following_count"
 #define IRFollowedByCurrentUserFieldKey @"followed_by_current_user"
 #define IRPostsCountFieldKey @"posts_count"
 
