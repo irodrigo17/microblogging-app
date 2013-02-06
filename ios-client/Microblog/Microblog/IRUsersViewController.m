@@ -28,7 +28,6 @@
 - (IBAction)all;
 - (IBAction)following;
 - (IBAction)followers;
-- (IBAction)search;
 
 - (void)loadUsers;
 - (void)loadUsersWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
@@ -139,19 +138,20 @@
 #pragma mark - View lifecycle
 
 - (IBAction)all {
-    [UIAlertView showNotImplementedYetAlert];
+    self.users = [NSMutableArray array];
+    [self loadUsersWithPath:[IRUser resourcePath] parameters:nil progressHUD:YES];
 }
 
 - (IBAction)following {
-    [UIAlertView showNotImplementedYetAlert];
+    self.users = [NSMutableArray array];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    [self loadUsersWithPath:[IRUser resourcePath] parameters:@{@"followed_by": user.modelId} progressHUD:YES];
 }
 
 - (IBAction)followers {
-    [UIAlertView showNotImplementedYetAlert];
-}
-
-- (IBAction)search {
-    [UIAlertView showNotImplementedYetAlert];
+    self.users = [NSMutableArray array];
+    IRUser *user = [IRMicroblogClient sharedClient].user;
+    [self loadUsersWithPath:[IRUser resourcePath] parameters:@{@"following": user.modelId} progressHUD:YES];
 }
 
 #pragma mark - UISearchBarDelegate methods
@@ -159,6 +159,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    self.users = [NSMutableArray array];
     [self loadUsersWithPath:[IRUser searchPath]
                  parameters:@{[IRUser searchQueryParameterKey]: searchBar.text}];
 }

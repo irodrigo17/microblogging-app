@@ -114,11 +114,13 @@
 
 - (void)loadFeed
 {
+    self.posts = [NSMutableArray array];
     [self loadPostsWithPath:[IRPost feedResourcePath]];
 }
 
 - (void)loadAllPosts
 {
+    self.posts = [NSMutableArray array];
     [self loadPostsWithPath:[IRPost resourcePath]];
 }
 
@@ -187,6 +189,7 @@
 
 - (void)loadRepliesForPost:(IRPost *)post
 {
+    self.posts = [NSMutableArray array];
     [self loadPostsWithPath:[IRPost resourcePath]
                  parameters:@{IRInReplyToFieldKey: post.modelId}];
 }
@@ -196,6 +199,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    self.posts = [NSMutableArray array];
     [self loadPostsWithPath:[IRPost feedResourceSearchPath]
                  parameters:@{[IRPost searchQueryParameterKey]: searchBar.text}];
 }
