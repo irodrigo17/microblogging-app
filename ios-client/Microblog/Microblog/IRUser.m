@@ -9,6 +9,8 @@
 #import "IRUser.h"
 
 #define IRUserResourceURL @"user/"
+#define IRFollowersNestedResourcePath @"followers/"
+#define IRFollowingNestedResourcePath @"following/"
 
 @implementation IRUser
 
@@ -59,6 +61,16 @@
 + (NSString*)resourcePath
 {
     return IRUserResourceURL;
+}
+
+- (NSString*)followersURI
+{
+    return [self.resourceURI stringByAppendingString:IRFollowersNestedResourcePath];
+}
+
+- (NSString*)followingURI
+{
+    return [self.resourceURI stringByAppendingString:IRFollowingNestedResourcePath];
 }
 
 @end

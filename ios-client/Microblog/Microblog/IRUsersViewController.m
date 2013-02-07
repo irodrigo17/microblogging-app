@@ -145,13 +145,13 @@
 - (IBAction)following {
     self.users = [NSMutableArray array];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    [self loadUsersWithPath:[IRUser resourcePath] parameters:@{@"followed_by": user.modelId} progressHUD:YES];
+    [self loadUsersWithPath:[user followingURI] parameters:nil progressHUD:YES];
 }
 
 - (IBAction)followers {
     self.users = [NSMutableArray array];
     IRUser *user = [IRMicroblogClient sharedClient].user;
-    [self loadUsersWithPath:[IRUser resourcePath] parameters:@{@"following": user.modelId} progressHUD:YES];
+    [self loadUsersWithPath:[user followersURI] parameters:nil progressHUD:YES];
 }
 
 #pragma mark - UISearchBarDelegate methods

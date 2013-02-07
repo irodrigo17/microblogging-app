@@ -39,4 +39,7 @@
                   email:(NSString *)email
                password:(NSString *)password;
 
+- (NSString*)followersURI;
+- (NSString*)followingURI;
+
 @end
