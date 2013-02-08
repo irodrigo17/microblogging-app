@@ -55,6 +55,7 @@
     [dic setValue:self.email forKey:IREmailFieldKey];
     [dic setValue:self.password forKey:IRPasswordFieldKey];
     [dic setValue:self.username forKey:IRUsernameFieldKey];
+    [dic setValue:self.avatarURL forKey:IRAvatarURLFieldKey];
     return dic;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "IRAppDelegate.h"
+#import "GCAccount.h"
 
 @implementation IRAppDelegate
 
@@ -14,7 +15,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // setup chute
+    [[GCAccount sharedManager] setAccessToken:kChuteAccessToken];
     return YES;
 }
 							

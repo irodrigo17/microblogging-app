@@ -19,6 +19,7 @@
 #define IRFollowingFieldKey @"following_count"
 #define IRFollowedByCurrentUserFieldKey @"followed_by_current_user"
 #define IRPostsCountFieldKey @"posts_count"
+#define IRAvatarURLFieldKey @"avatar_url"
 
 
 @interface IRUser : IRSearchableModel <IRDictianaryRepresentation>
@@ -32,10 +33,11 @@
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSNumber *followedByCurrentUser;
 @property (strong, nonatomic) NSNumber *postsCount;
+@property (strong, nonatomic) NSString *avatarURL;
 
 - (id)initWithFirstName:(NSString *)firstName
                lastName:(NSString *)lastName
-               username:(NSString*)username
+               username:(NSString *)username
                   email:(NSString *)email
                password:(NSString *)password;
 

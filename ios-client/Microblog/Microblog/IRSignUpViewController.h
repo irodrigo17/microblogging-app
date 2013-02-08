@@ -7,6 +7,8 @@
 //
 
 #import "IRViewController.h"
+#import "AvatarPickerPlus.h"
+
 
 @protocol IRSignUpViewControllerDelegate <NSObject>
 
@@ -16,7 +18,7 @@
 
 @end
 
-@interface IRSignUpViewController : IRViewController <UITextFieldDelegate>
+@interface IRSignUpViewController : IRViewController <UITextFieldDelegate, AvatarPickerPlusDelegate>
 
 @property (weak, nonatomic) id<IRSignUpViewControllerDelegate> delegate;
 

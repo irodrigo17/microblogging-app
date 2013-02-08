@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UIButton *pictureButton;
+
+@property (strong, nonatomic) NSString *avatarURL;
 
 - (IBAction)signUp;
 - (IBAction)cancel;
@@ -62,6 +65,7 @@
     [self setPasswordConfirmationTextField:nil];
     [self setFirstNameTextField:nil];
     [self setUsernameTextField:nil];
+    [self setPictureButton:nil];
     [super viewDidUnload];
 }
 
@@ -77,6 +81,7 @@
                                             username:self.usernameTextField.text
                                                email:self.emailTextField.text
                                             password:self.passwordTextField.text];
+    user.avatarURL = self.avatarURL;
     // post user
     [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] postPath:[IRUser resourcePath] parameters:[user dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -100,7 +105,26 @@
 }
 
 - (IBAction)choosePicture {
-    [UIAlertView showNotImplementedYetAlert];
+    [self showAvatarPickerPlus];
+}
+
+#pragma mark - AvatarPickerPlus methods
+
+-(void)showAvatarPickerPlus{
+    AvatarPickerPlus *picker = [[AvatarPickerPlus alloc] init];
+    [picker setDelegate:self];
+    [picker setDefaultAccessToken:kChuteAccessToken];
+    [self presentModalViewController:picker animated:YES];
+}
+
+-(void)AvatarPickerController:(AvatarPickerPlus *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    [self.pictureButton setImage:[info objectForKey:AvatarPickerImage] forState:UIControlStateNormal];
+    self.avatarURL = [info objectForKey:AvatarPickerURLString];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)AvatarPickerControllerDidCancel:(AvatarPickerPlus *)picker{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
