@@ -91,6 +91,9 @@
         }
         IRPaginatedArray *paginatedPosts = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRPost class]];
         self.pagination = paginatedPosts.meta;
+        if(!self.posts){
+            self.posts = [NSMutableArray array];
+        }
         [self.posts addObjectsFromArray:paginatedPosts.objects];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
