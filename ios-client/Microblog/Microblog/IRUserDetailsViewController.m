@@ -9,6 +9,9 @@
 #import "IRUserDetailsViewController.h"
 #import "UIAlertView+IRUtils.h"
 #import "IRMicroblogClient.h"
+#import "IRUsersViewController.h"
+
+#define IRUsersViewControllerId @"IRUsersViewController"
 
 
 @interface IRUserDetailsViewController ()
@@ -77,11 +80,15 @@
 }
 
 - (IBAction)followersAction {
-    [UIAlertView showNotImplementedYetAlert];
+    IRUsersViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:IRUsersViewControllerId];
+    vc.usersPath = [self.user followersURI];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)followingAction {
-    [UIAlertView showNotImplementedYetAlert];
+    IRUsersViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:IRUsersViewControllerId];
+    vc.usersPath = [self.user followingURI];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)postsAction {
