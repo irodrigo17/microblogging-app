@@ -53,15 +53,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     // load users
-    self.users = [NSMutableArray array];
-    [self loadUsers];
+    if(self.usersPath){
+        [self loadUsersWithPath:self.usersPath parameters:nil progressHUD:YES];
+        self.usersPath = nil;
+    }
+    else{
+        [self all];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,6 +192,9 @@
         }
         IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRUser class]];
         self.pagination = array.meta;
+        if(!self.users){
+            self.users = [NSMutableArray array];
+        }
         [self.users addObjectsFromArray:array.objects];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

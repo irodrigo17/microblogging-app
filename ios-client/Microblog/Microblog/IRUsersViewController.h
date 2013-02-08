@@ -10,4 +10,6 @@
 
 @interface IRUsersViewController : UITableViewController <UISearchBarDelegate>
 
+@property (strong, nonatomic) NSString *usersPath;
+
 @end
