@@ -16,6 +16,8 @@
 #import "IRShare.h"
 #import "IRPaginatedArray.h"
 #import "IRPostsViewController.h"
+#import "IRAPIWrapper.h"
+
 
 #define IRPushNewPostFromDetail @"IRPushNewPostFromDetail"
 #define IRPostsViewControllerId @"IRPostsViewController"
@@ -259,49 +261,17 @@
 }
 
 - (IBAction)follow {
-#warning Create APIWrapper class and move this to a method like toggleFollowWithFollower:(NSString*)followerURI followee:(NSString*)followeeURI succcess:^(AFHTTPRequestOperation *operation, id responseObject)success failure:^(AFHTTPRequestOperation *operation, NSError *error); and do the similar toogleShare and toggleLike methods
     [SVProgressHUD showDefault];
-    IRUser *user = [IRMicroblogClient sharedClient].user;
-    if([self.post.user.followedByCurrentUser boolValue]){
-        // find follow instance
-        NSDictionary *params = @{@"follower":user.modelId, @"followee":self.post.user.modelId};
-        [[IRMicroblogClient sharedClient] getPath:[IRFollow resourcePath] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            IRPaginatedArray *array = [[IRPaginatedArray alloc] initWithDictionary:responseObject andClass:[IRFollow class]];
-            IRFollow *follow = [array.objects lastObject];
-            if(follow){
-                // delete follow instance
-                [[IRMicroblogClient sharedClient] deletePath:follow.resourceURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [self reloadPost];
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    [SVProgressHUD dismiss];
-                    [UIAlertView showSimpleAlertViewWithMessage:@"Can't delete follow instance."];
-                }];
-            }
-            else{
-                [SVProgressHUD dismiss];
-                IRWLog(@"follow instance with follower: %@ and followee: %@ already deleted", user.resourceURI, self.post.user.resourceURI);
-                [self reloadPost];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [SVProgressHUD dismiss];
-            [UIAlertView showSimpleAlertViewWithMessage:@"Can't load follow instance."];
-        }];
-    }
-    else{
-        // create follow instance
-        IRFollow *follow = [[IRFollow alloc] initWithFollower:user.resourceURI followee:self.post.user.resourceURI];
-        // post follow instance
-        [[IRMicroblogClient sharedClient] postPath:[IRFollow resourcePath] parameters:[follow dictionaryRepresentation] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self reloadPost];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [SVProgressHUD dismiss];
-            NSString *message = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];
-            if(!message || operation.response.statusCode == 500){
-                message = @"Can't post follow.";
-            }
-            [UIAlertView showSimpleAlertViewWithMessage:message];
-        }];
-    }
+    IRUser *follower = [IRMicroblogClient sharedClient].user;
+    IRUser *followee = self.post.user;
+    [[IRAPIWrapper sharedInstance] toggleFollowWithFollower:follower followee:followee success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        [self reloadPost];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSString *message = [NSString stringWithFormat:@"Can't %@ user.", [self.followButton.titleLabel.text lowercaseString]];
+        [UIAlertView showSimpleAlertViewWithMessage:message];
+    }];
 }
 
 @end

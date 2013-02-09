@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IRDictianaryRepresentation.h"
+#import "NSDictionary+NoNSNull.h"
 
 #define IRIdFieldKey @"id"
 #define IRResourceURIFieldKey @"resource_uri"
@@ -16,8 +17,6 @@
 
 @property (strong, nonatomic) NSNumber *modelId;
 @property (strong, nonatomic) NSString *resourceURI;
-
-- (id)NSNullToNil:(id)object;
 
 + (NSNumber*)idFromResourceURI:(NSString*)resourceURI;
 

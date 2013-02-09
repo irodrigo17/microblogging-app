@@ -41,8 +41,9 @@
         self.username = [dictionary valueForKey:IRUsernameFieldKey];
         self.followers = [dictionary valueForKey:IRFollowersFieldKey];
         self.following = [dictionary valueForKey:IRFollowingFieldKey];
-        self.followedByCurrentUser = [self NSNullToNil:[dictionary valueForKey:IRFollowedByCurrentUserFieldKey]];
+        self.followedByCurrentUser = [dictionary valueForKeyNoNSNull:IRFollowedByCurrentUserFieldKey];
         self.postsCount = [dictionary valueForKey:IRPostsCountFieldKey];
+        self.avatarURL = [dictionary valueForKeyNoNSNull:IRAvatarURLFieldKey];
     }
     return self;
 }
@@ -72,6 +73,11 @@
 - (NSString*)followingURI
 {
     return [self.resourceURI stringByAppendingString:IRFollowingNestedResourcePath];
+}
+
+- (NSString*)fullName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
 @end

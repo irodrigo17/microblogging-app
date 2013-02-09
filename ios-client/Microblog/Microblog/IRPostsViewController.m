@@ -13,23 +13,38 @@
 #import "SVProgressHUD+IRUtils.h"
 #import "IRPostDetailsViewController.h"
 #import "IRLoadingCell.h"
+#import "IRPostCell.h"
 
 
 #define IRPushPostDetailsSegue @"IRPushPostDetailsSegue"
 
+typedef enum IRPostSource {
+    IRPostSourceFeed = 0,
+    IRPostSourceAll
+} IRPostSource;
 
 @interface IRPostsViewController ()
 
 @property (strong, nonatomic) IRPaginationMetadata *pagination;
 @property (strong, nonatomic) NSMutableArray *posts; // IRPost
 @property (weak, nonatomic) IRPost *selectedPost;
+@property (assign, nonatomic) BOOL showAllPosts;
 
-- (IBAction)loadFeed;
-- (IBAction)loadAllPosts;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sourceButton;
 
+
+- (IBAction)changeSource:(UIBarButtonItem *)sender;
+
+- (void)loadFeed;
+- (void)loadAllPosts;
 - (void)loadPostsWithPath:(NSString*)path;
 - (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters;
 - (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD;
+- (void)loadPostsWithPath:(NSString*)path
+               parameters:(NSDictionary*)parameters
+              progressHUD:(BOOL)progressHUD
+                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (void)loadNextPage;
 
 @end
@@ -51,7 +66,7 @@
         [self loadRepliesForPost:self.originalPost];
     }
     else{
-        [self loadAllPosts];
+        [self loadFeed];
     }
 }
 
@@ -64,6 +79,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setSourceButton:nil];
     [super viewDidUnload];
 }
 
@@ -79,7 +95,18 @@
     [self loadPostsWithPath:path parameters:parameters progressHUD:YES];
 }
 
-- (void)loadPostsWithPath:(NSString*)path parameters:(NSDictionary*)parameters progressHUD:(BOOL)progressHUD
+- (void)loadPostsWithPath:(NSString*)path
+               parameters:(NSDictionary*)parameters
+              progressHUD:(BOOL)progressHUD
+{
+    [self loadPostsWithPath:path parameters:parameters progressHUD:progressHUD success:nil failure:nil];
+}
+
+- (void)loadPostsWithPath:(NSString*)path
+               parameters:(NSDictionary*)parameters
+              progressHUD:(BOOL)progressHUD
+                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     // load posts from server
     if(progressHUD){
@@ -98,6 +125,9 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];
         }];
+        if(success){
+            success(operation, responseObject);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         IRELog(@"operation: %@\n"
                "error: %@", operation, error);
@@ -105,6 +135,9 @@
             [SVProgressHUD dismiss];
         }
         [UIAlertView showSimpleAlertViewWithMessage:@"Can't load posts."];
+        if(failure){
+            failure(operation, error);
+        }
     }];
 }
 
@@ -127,6 +160,24 @@
     [self loadPostsWithPath:[IRPost resourcePath]];
 }
 
+- (IBAction)changeSource:(UIBarButtonItem *)sender {
+    if(self.showAllPosts){
+        [self loadPostsWithPath:[IRPost feedResourcePath] parameters:nil progressHUD:YES success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.sourceButton setTitle:@"All"];
+            self.navigationItem.title = @"Feed";
+            self.showAllPosts = !self.showAllPosts;
+        } failure:nil];
+    }
+    else{
+        [self loadPostsWithPath:[IRPost resourcePath] parameters:nil progressHUD:YES success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.sourceButton setTitle:@"Feed"];
+            self.navigationItem.title = @"Posts";
+            self.showAllPosts = !self.showAllPosts;
+        } failure:nil];
+        
+    }
+}
+
 
 #pragma mark - Table view data source
 
@@ -143,28 +194,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
     if(indexPath.row < [self.posts count]){
         static NSString *CellIdentifier = @"IRPostCell";
         
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        IRPostCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[IRPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
         IRPost *post = [self.posts objectAtIndex:indexPath.row];
-        cell.textLabel.text = post.text;
+        cell.post = post;
+        return cell;
     }
     else{
         static NSString *CellIdentifier = @"IRLoadingCell";
         
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         [((IRLoadingCell*)cell).activityIndicatior startAnimating];
+        return cell;
     }
-    return cell;
 }
 
 #pragma mark - Table view delegate

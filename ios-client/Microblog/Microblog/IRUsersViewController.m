@@ -14,6 +14,7 @@
 #import "IRMicroblogClient.h"
 #import "IRUserDetailsViewController.h"
 #import "IRLoadingCell.h"
+#import "IRUserCell.h"
 
 
 #define IRPushUserDetails @"IRPushUserDetails"
@@ -97,25 +98,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
     if(indexPath.row < [self.users count]){
         static NSString *CellIdentifier = @"IRUserCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        IRUserCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[IRUserCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         IRUser *user = [self.users objectAtIndex:indexPath.row];
-        cell.textLabel.text = user.username;
+        cell.user = user;
+        return cell;
     }
     else{
         static NSString *CellIdentifier = @"IRLoadingCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         [((IRLoadingCell*)cell).activityIndicatior startAnimating];
-    }
-    return cell;
+        return cell;
+    }    
 }
 
 #pragma mark - Table view delegate

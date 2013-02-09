@@ -27,11 +27,6 @@
     return dic;
 }
 
-- (id)NSNullToNil:(id)object
-{
-    return ([object isKindOfClass:[NSNull class]]) ? nil : object;
-}
-
 + (NSNumber*)idFromResourceURI:(NSString*)resourceURI
 {
     NSURL *URL = [NSURL URLWithString:resourceURI];

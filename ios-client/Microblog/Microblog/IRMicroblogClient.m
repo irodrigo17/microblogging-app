@@ -25,7 +25,7 @@ static IRMicroblogClient *_sharedClient = nil;
 + (IRMicroblogClient*)sharedClient{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:IRBaseURLProd]];
+        _sharedClient = [[IRMicroblogClient alloc] initWithBaseURL:[NSURL URLWithString:IRBaseURLDev]];
     });    
     return _sharedClient;
 }

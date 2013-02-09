@@ -44,4 +44,6 @@
 - (NSString*)followersURI;
 - (NSString*)followingURI;
 
+- (NSString*)fullName;
+
 @end

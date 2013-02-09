@@ -35,7 +35,7 @@
         self.text = [dictionary valueForKey:IRTextFieldKey];
         NSDictionary *userDic = [dictionary valueForKey:IRUserFieldKey];
         self.user = [[IRUser alloc] initWithDictionary:userDic];
-        self.inReplyTo = [self NSNullToNil:[dictionary valueForKey:IRInReplyToFieldKey]];
+        self.inReplyTo = [dictionary valueForKeyNoNSNull:IRInReplyToFieldKey];
         self.shares = [dictionary valueForKey:IRSharesFieldKey];
         self.likes = [dictionary valueForKey:IRLikesFieldKey];
         self.replies = [dictionary valueForKey:IRRepliesFieldKey];

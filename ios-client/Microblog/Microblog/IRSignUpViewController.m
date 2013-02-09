@@ -18,13 +18,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
-@property (weak, nonatomic) IBOutlet UIButton *pictureButton;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 
 @property (strong, nonatomic) NSString *avatarURL;
 
 - (IBAction)signUp;
 - (IBAction)cancel;
-- (IBAction)choosePicture;
+- (IBAction)choosePicture:(UITapGestureRecognizer *)sender;
 
 
 @end
@@ -51,7 +51,8 @@
         [self.passwordConfirmationTextField becomeFirstResponder];
     }
     else if(textField == self.passwordConfirmationTextField){
-        [self signUp];
+        [textField resignFirstResponder];
+        [self choosePicture];
     }
     return YES;
 }
@@ -65,7 +66,7 @@
     [self setPasswordConfirmationTextField:nil];
     [self setFirstNameTextField:nil];
     [self setUsernameTextField:nil];
-    [self setPictureButton:nil];
+    [self setProfilePicture:nil];
     [super viewDidUnload];
 }
 
@@ -108,6 +109,10 @@
     [self showAvatarPickerPlus];
 }
 
+- (IBAction)choosePicture:(UITapGestureRecognizer *)sender {
+    [self showAvatarPickerPlus];
+}
+
 #pragma mark - AvatarPickerPlus methods
 
 -(void)showAvatarPickerPlus{
@@ -118,7 +123,7 @@
 }
 
 -(void)AvatarPickerController:(AvatarPickerPlus *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    [self.pictureButton setImage:[info objectForKey:AvatarPickerImage] forState:UIControlStateNormal];
+    [self.profilePicture setImage:[info objectForKey:AvatarPickerImage]];
     self.avatarURL = [info objectForKey:AvatarPickerURLString];
     [self dismissModalViewControllerAnimated:YES];
 }
