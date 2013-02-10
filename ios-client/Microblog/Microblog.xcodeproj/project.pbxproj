@@ -138,6 +138,8 @@
 		63C2038E169BA9B500C8337D /* IRModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2038D169BA9B500C8337D /* IRModelTests.m */; };
 		63C20391169BBFB300C8337D /* IRPostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C20390169BBFB300C8337D /* IRPostTests.m */; };
 		63CCC46F16ACC49A006A3093 /* IRFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CCC46E16ACC49A006A3093 /* IRFollow.m */; };
+		63CDFB7D16C73F600074572A /* BButton+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CDFB7A16C73F600074572A /* BButton+FontAwesome.m */; };
+		63CDFB7E16C73F600074572A /* BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CDFB7C16C73F600074572A /* BButton.m */; };
 		63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */; };
 		63E628A2169B9F1700595534 /* IRUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E628A1169B9F1700595534 /* IRUserTests.m */; };
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
@@ -405,6 +407,10 @@
 		63C20390169BBFB300C8337D /* IRPostTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRPostTests.m; sourceTree = "<group>"; };
 		63CCC46D16ACC49A006A3093 /* IRFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRFollow.h; sourceTree = "<group>"; };
 		63CCC46E16ACC49A006A3093 /* IRFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRFollow.m; sourceTree = "<group>"; };
+		63CDFB7916C73F600074572A /* BButton+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BButton+FontAwesome.h"; sourceTree = "<group>"; };
+		63CDFB7A16C73F600074572A /* BButton+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BButton+FontAwesome.m"; sourceTree = "<group>"; };
+		63CDFB7B16C73F600074572A /* BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BButton.h; sourceTree = "<group>"; };
+		63CDFB7C16C73F600074572A /* BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BButton.m; sourceTree = "<group>"; };
 		63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRNewPostViewController.h; sourceTree = "<group>"; };
 		63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRNewPostViewController.m; sourceTree = "<group>"; };
 		63E628A0169B9F1700595534 /* IRUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRUserTests.h; sourceTree = "<group>"; };
@@ -719,6 +725,7 @@
 		6375909E169793A500C3BE51 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				63CDFB7816C73F600074572A /* BButton */,
 				63A1219C16C4A3D80070BDC6 /* AvatarPickerPlus */,
 				63A120CE16C4A0650070BDC6 /* Chute SDK */,
 				63E731E516989F6A00492E23 /* ISO8601DateFormatter */,
@@ -1043,6 +1050,17 @@
 			name = APIClient;
 			sourceTree = "<group>";
 		};
+		63CDFB7816C73F600074572A /* BButton */ = {
+			isa = PBXGroup;
+			children = (
+				63CDFB7916C73F600074572A /* BButton+FontAwesome.h */,
+				63CDFB7A16C73F600074572A /* BButton+FontAwesome.m */,
+				63CDFB7B16C73F600074572A /* BButton.h */,
+				63CDFB7C16C73F600074572A /* BButton.m */,
+			);
+			path = BButton;
+			sourceTree = "<group>";
+		};
 		63E62899169B9E5B00595534 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,6 +1322,8 @@
 				631480FC16C6CD0F000E28D8 /* IRAPIWrapper.m in Sources */,
 				6314810216C6D43B000E28D8 /* AFHTTPRequestOperation+IRUtils.m in Sources */,
 				6314810516C6D522000E28D8 /* NSError+IRAPIClientUtils.m in Sources */,
+				63CDFB7D16C73F600074572A /* BButton+FontAwesome.m in Sources */,
+				63CDFB7E16C73F600074572A /* BButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

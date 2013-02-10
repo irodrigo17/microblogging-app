@@ -17,7 +17,7 @@
 #import "IRPaginatedArray.h"
 #import "IRPostsViewController.h"
 #import "IRAPIWrapper.h"
-
+#import "BButton.h"
 
 #define IRPushNewPostFromDetail @"IRPushNewPostFromDetail"
 #define IRPostsViewControllerId @"IRPostsViewController"
@@ -28,14 +28,14 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sharesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *likesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *repliesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *repliesButton;
 @property (weak, nonatomic) IBOutlet UIButton *originalPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (weak, nonatomic) IBOutlet BButton *sharesButton;
+@property (weak, nonatomic) IBOutlet BButton *likesButton;
+@property (strong, nonatomic) IBOutletCollection(BButton) NSArray *buttons;
 
 - (void)updateUI;
 - (void)loadPost:(NSString*)postURI;
@@ -73,7 +73,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    for(BButton *button in self.buttons){
+        button.color = IRLightGray;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,14 +95,15 @@
     [self setDateLabel:nil];
     [self setPost:nil];
     [self setUsernameLabel:nil];
-    [self setSharesLabel:nil];
-    [self setLikesLabel:nil];
-    [self setRepliesLabel:nil];
     [self setRepliesButton:nil];
     [self setOriginalPostButton:nil];
     [self setLikeButton:nil];
     [self setShareButton:nil];
     [self setFollowButton:nil];
+    [self setSharesButton:nil];
+    [self setLikesButton:nil];
+    [self setRepliesButton:nil];
+    [self setButtons:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -124,13 +127,13 @@
 
 - (void)updateUI
 {
-    self.usernameLabel.text = [NSString stringWithFormat:@"%@ wrote:", self.post.user.username];
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@", self.post.user.username];
     self.textView.text = self.post.text;
     NSDateFormatter *df = [IRDateFormatterCache sharedDateFormatter];
     self.dateLabel.text = [df stringFromDate:self.post.createdDate];
-    self.sharesLabel.text = [self.post.shares description];
-    self.likesLabel.text = [self.post.likes description];
-    self.repliesLabel.text = [self.post.replies description];
+    [self.sharesButton setTitle:[NSString stringWithFormat:@"%@ Shares", self.post.shares] forState:UIControlStateNormal];
+    [self.likesButton setTitle:[NSString stringWithFormat:@"%@ Likes", self.post.likes] forState:UIControlStateNormal];
+    [self.repliesButton setTitle:[NSString stringWithFormat:@"%@ Replies", self.post.replies] forState:UIControlStateNormal];
     self.originalPostButton.enabled = self.post.inReplyTo != nil;
     self.repliesButton.enabled = [self.post.replies integerValue] > 0;
     NSString *likeButtonTitle = [self.post.likedByCurrentUser boolValue] ? @"Unlike" : @"Like";
@@ -148,6 +151,7 @@
 {
     [SVProgressHUD showDefault];
     [[IRMicroblogClient sharedClient] getPath:postURI parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         self.post = [[IRPost alloc] initWithDictionary:responseObject];
         [self updateUI];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

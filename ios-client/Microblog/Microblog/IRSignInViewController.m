@@ -8,6 +8,7 @@
 
 #import "IRSignInViewController.h"
 #import "IRMicroblogClient.h"
+#import "BButton.h"
 
 #define IRModalSignUp @"IRModalSignUp"
 
@@ -18,18 +19,30 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet BButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet BButton *forgotUsernameButton;
 
 - (IBAction)login;
 - (IBAction)switchServers:(UISegmentedControl*)sender;
+- (IBAction)forgotPassword;
+- (IBAction)forgotUsername;
 
 
 - (void)loginWithUsername:(NSString*)username password:(NSString*)password;
+
 
 @end
 
 @implementation IRSignInViewController
 
 #pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.forgotPasswordButton.color = IRLightGray;
+    self.forgotUsernameButton.color = IRLightGray;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -43,6 +56,8 @@
 {
     [self setUsernameTextField:nil];
     [self setPasswordTextField:nil];
+    [self setForgotPasswordButton:nil];
+    [self setForgotUsernameButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,6 +100,16 @@
     else{
         [[IRMicroblogClient sharedClient] updateBaseURL:IRBaseURLDev];
     }
+}
+
+- (IBAction)forgotPassword
+{
+    [UIAlertView showNotImplementedYetAlert];
+}
+
+- (IBAction)forgotUsername
+{
+    [UIAlertView showNotImplementedYetAlert];
 }
 
 #pragma mark - IRSignUpViewControllerDelegate methods

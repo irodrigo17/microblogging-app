@@ -15,7 +15,7 @@
 #import "IRUserDetailsViewController.h"
 #import "IRLoadingCell.h"
 #import "IRUserCell.h"
-
+#import "BButton.h"
 
 #define IRPushUserDetails @"IRPushUserDetails"
 
@@ -25,6 +25,7 @@
 @property IRPaginationMetadata *pagination;
 @property NSMutableArray *users;
 @property IRUser *selectedUser;
+@property (strong, nonatomic) IBOutletCollection(BButton) NSArray *buttons;
 
 - (IBAction)all;
 - (IBAction)following;
@@ -54,6 +55,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // style buttons
+    for(BButton *button in self.buttons){
+        button.color = IRLightGray;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -211,4 +216,8 @@
     [self loadUsersWithPath:self.pagination.next parameters:nil progressHUD:NO];
 }
 
+- (void)viewDidUnload {
+    [self setButtons:nil];
+    [super viewDidUnload];
+}
 @end

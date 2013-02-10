@@ -30,10 +30,8 @@ typedef enum IRPostSource {
 @property (weak, nonatomic) IRPost *selectedPost;
 @property (assign, nonatomic) BOOL showAllPosts;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sourceButton;
 
-
-- (IBAction)changeSource:(UIBarButtonItem *)sender;
+- (void)changeSource:(UIBarButtonItem *)sender;
 
 - (void)loadFeed;
 - (void)loadAllPosts;
@@ -57,17 +55,34 @@ typedef enum IRPostSource {
 
 #pragma mark - View lifecycle
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // add source button if needed
+    if([self.navigationController.viewControllers count] == 1){
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"All" style:UIBarButtonItemStyleBordered target:self action:@selector(changeSource:)];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     // laod posts
     self.posts = [NSMutableArray array];
     if(self.originalPost){
+        self.navigationItem.title = @"Replies";
+        self.tableView.tableHeaderView = nil;
         [self loadRepliesForPost:self.originalPost];
     }
     else{
+        self.navigationItem.title = @"Feed";
         [self loadFeed];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -79,7 +94,6 @@ typedef enum IRPostSource {
 }
 
 - (void)viewDidUnload {
-    [self setSourceButton:nil];
     [super viewDidUnload];
 }
 
@@ -160,17 +174,17 @@ typedef enum IRPostSource {
     [self loadPostsWithPath:[IRPost resourcePath]];
 }
 
-- (IBAction)changeSource:(UIBarButtonItem *)sender {
+- (void)changeSource:(UIBarButtonItem *)sender {
     if(self.showAllPosts){
         [self loadPostsWithPath:[IRPost feedResourcePath] parameters:nil progressHUD:YES success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.sourceButton setTitle:@"All"];
+            [self.navigationItem.leftBarButtonItem setTitle:@"All"];
             self.navigationItem.title = @"Feed";
             self.showAllPosts = !self.showAllPosts;
         } failure:nil];
     }
     else{
         [self loadPostsWithPath:[IRPost resourcePath] parameters:nil progressHUD:YES success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.sourceButton setTitle:@"Feed"];
+            [self.navigationItem.leftBarButtonItem setTitle:@"Feed"];
             self.navigationItem.title = @"Posts";
             self.showAllPosts = !self.showAllPosts;
         } failure:nil];

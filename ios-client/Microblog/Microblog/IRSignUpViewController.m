@@ -23,8 +23,7 @@
 @property (strong, nonatomic) NSString *avatarURL;
 
 - (IBAction)signUp;
-- (IBAction)cancel;
-- (IBAction)choosePicture:(UITapGestureRecognizer *)sender;
+- (IBAction)choosePicture;
 
 
 @end
@@ -100,16 +99,7 @@
     }];
 }
 
-- (IBAction)cancel
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)choosePicture {
-    [self showAvatarPickerPlus];
-}
-
-- (IBAction)choosePicture:(UITapGestureRecognizer *)sender {
+- (IBAction)choosePicture{
     [self showAvatarPickerPlus];
 }
 
