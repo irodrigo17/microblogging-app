@@ -21,6 +21,8 @@
 #define IRPostsCountFieldKey @"posts_count"
 #define IRAvatarURLFieldKey @"avatar_url"
 
+#define IRMinPasswordLength 4
+
 
 @interface IRUser : IRSearchableModel <IRDictianaryRepresentation>
 

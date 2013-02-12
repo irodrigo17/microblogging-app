@@ -2,89 +2,38 @@
 //  IRAccountViewController.m
 //  Microblog
 //
-//  Created by Ignacio Rodrigo on 1/5/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Created by Ignacio Rodrigo on 2/10/13.
+//
 //
 
 #import "IRAccountViewController.h"
 #import "IRMicroblogClient.h"
 
+#define IRLogoutCellRow 2
+
 @interface IRAccountViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-
-- (IBAction)signOut;
-- (IBAction)changePassword;
-- (IBAction)editAccountInformation;
+- (void)logout;
 
 @end
 
 @implementation IRAccountViewController
-@synthesize nameLabel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.row == IRLogoutCellRow){
+        [self logout];
     }
-    return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+#pragma mark - Private methods
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    NSString *name = [IRMicroblogClient sharedClient].user.username;
-    self.nameLabel.text = [self.nameLabel.text stringByReplacingOccurrencesOfString:@"[name]" withString:name];
-}
-
-
-- (void)viewDidUnload
-{
-    [self setNameLabel:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - Event handling
-
-- (IBAction)signOut {
+- (void)logout{
     [[IRMicroblogClient sharedClient] logout];
     [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)changePassword 
-{
-    [UIAlertView showNotImplementedYetAlert];
-}
-
-- (IBAction)editAccountInformation 
-{
-    [UIAlertView showNotImplementedYetAlert];
 }
 
 @end

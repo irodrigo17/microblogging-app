@@ -52,6 +52,11 @@
 		6375909D169793A000C3BE51 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 63759094169793A000C3BE51 /* UIImageView+AFNetworking.m */; };
 		637590A4169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */; };
 		637590A5169793E600C3BE51 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */; };
+		638B1FEE16C818BB00E56DD1 /* IRAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638B1FED16C818BB00E56DD1 /* IRAccountViewController.m */; };
+		638B1FF116C81B4D00E56DD1 /* IREditAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638B1FF016C81B4D00E56DD1 /* IREditAccountViewController.m */; };
+		638B1FF416C81BEE00E56DD1 /* IREditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638B1FF316C81BEE00E56DD1 /* IREditPasswordViewController.m */; };
+		638DAF1116C95A6B008CD200 /* UIImageView+ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DAF1016C95A6B008CD200 /* UIImageView+ActivityIndicator.m */; };
+		638DAF1416C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DAF1316C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.m */; };
 		63A1215816C4A0650070BDC6 /* GC_UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A120D116C4A0650070BDC6 /* GC_UIImage+Extras.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		63A1215916C4A0650070BDC6 /* GCAssetUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A120D516C4A0650070BDC6 /* GCAssetUploader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		63A1215A16C4A0650070BDC6 /* GCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A120D716C4A0650070BDC6 /* GCError.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -145,7 +150,6 @@
 		63E731D916987CB600492E23 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63E731D616987CB600492E23 /* SVProgressHUD.bundle */; };
 		63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731D816987CB600492E23 /* SVProgressHUD.m */; };
 		63E731E016987D4500492E23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E731DF16987D4500492E23 /* QuartzCore.framework */; };
-		63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731E31698972D00492E23 /* IRAccountViewController.m */; };
 		63E731EA16989F8500492E23 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E731E716989F8500492E23 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		63E731EB16989F8500492E23 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63E731E816989F8500492E23 /* LICENSE.txt */; };
 		63E731EC16989F8500492E23 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63E731E916989F8500492E23 /* README.txt */; };
@@ -247,6 +251,16 @@
 		637590A1169793E600C3BE51 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		637590A2169793E600C3BE51 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
 		637590A3169793E600C3BE51 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		638B1FEC16C818BB00E56DD1 /* IRAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRAccountViewController.h; sourceTree = "<group>"; };
+		638B1FED16C818BB00E56DD1 /* IRAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRAccountViewController.m; sourceTree = "<group>"; };
+		638B1FEF16C81B4D00E56DD1 /* IREditAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IREditAccountViewController.h; sourceTree = "<group>"; };
+		638B1FF016C81B4D00E56DD1 /* IREditAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IREditAccountViewController.m; sourceTree = "<group>"; };
+		638B1FF216C81BEE00E56DD1 /* IREditPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IREditPasswordViewController.h; sourceTree = "<group>"; };
+		638B1FF316C81BEE00E56DD1 /* IREditPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IREditPasswordViewController.m; sourceTree = "<group>"; };
+		638DAF0F16C95A6B008CD200 /* UIImageView+ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ActivityIndicator.h"; sourceTree = "<group>"; };
+		638DAF1016C95A6B008CD200 /* UIImageView+ActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ActivityIndicator.m"; sourceTree = "<group>"; };
+		638DAF1216C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+IRAFNetworkingUtils.h"; sourceTree = "<group>"; };
+		638DAF1316C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+IRAFNetworkingUtils.m"; sourceTree = "<group>"; };
 		63A120D016C4A0650070BDC6 /* GC_UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GC_UIImage+Extras.h"; sourceTree = "<group>"; };
 		63A120D116C4A0650070BDC6 /* GC_UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GC_UIImage+Extras.m"; sourceTree = "<group>"; };
 		63A120D416C4A0650070BDC6 /* GCAssetUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAssetUploader.h; sourceTree = "<group>"; };
@@ -421,8 +435,6 @@
 		63E731D816987CB600492E23 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		63E731DF16987D4500492E23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		63E731E11698904700492E23 /* IRHTTPStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRHTTPStatusCodes.h; sourceTree = "<group>"; };
-		63E731E21698972C00492E23 /* IRAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRAccountViewController.h; sourceTree = "<group>"; };
-		63E731E31698972D00492E23 /* IRAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRAccountViewController.m; sourceTree = "<group>"; };
 		63E731E616989F8500492E23 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
 		63E731E716989F8500492E23 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		63E731E816989F8500492E23 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -505,6 +517,8 @@
 				634AC60C16A8E5D300052AE4 /* UIAlertView+IRUtils.m */,
 				631480F616C6A259000E28D8 /* NSDictionary+NoNSNull.h */,
 				631480F716C6A259000E28D8 /* NSDictionary+NoNSNull.m */,
+				638DAF0F16C95A6B008CD200 /* UIImageView+ActivityIndicator.h */,
+				638DAF1016C95A6B008CD200 /* UIImageView+ActivityIndicator.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -565,6 +579,8 @@
 				6314810116C6D43B000E28D8 /* AFHTTPRequestOperation+IRUtils.m */,
 				6314810316C6D521000E28D8 /* NSError+IRAPIClientUtils.h */,
 				6314810416C6D521000E28D8 /* NSError+IRAPIClientUtils.m */,
+				638DAF1216C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.h */,
+				638DAF1316C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.m */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -594,8 +610,6 @@
 				63EBE9131697B2C20088C4E1 /* IRSignUpViewController.m */,
 				63EBE9161697B75D0088C4E1 /* IRPostsViewController.h */,
 				63EBE9171697B75D0088C4E1 /* IRPostsViewController.m */,
-				63E731E21698972C00492E23 /* IRAccountViewController.h */,
-				63E731E31698972D00492E23 /* IRAccountViewController.m */,
 				63DE1A5D1698DE720083E0EC /* IRNewPostViewController.h */,
 				63DE1A5E1698DE720083E0EC /* IRNewPostViewController.m */,
 				63485188169D1F4F00C3AAD0 /* IRPostDetailsViewController.h */,
@@ -604,6 +618,12 @@
 				63AF810316B2315F003EC623 /* IRUsersViewController.m */,
 				63AF810616B23173003EC623 /* IRUserDetailsViewController.h */,
 				63AF810716B23173003EC623 /* IRUserDetailsViewController.m */,
+				638B1FEC16C818BB00E56DD1 /* IRAccountViewController.h */,
+				638B1FED16C818BB00E56DD1 /* IRAccountViewController.m */,
+				638B1FEF16C81B4D00E56DD1 /* IREditAccountViewController.h */,
+				638B1FF016C81B4D00E56DD1 /* IREditAccountViewController.m */,
+				638B1FF216C81BEE00E56DD1 /* IREditPasswordViewController.h */,
+				638B1FF316C81BEE00E56DD1 /* IREditPasswordViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -652,10 +672,10 @@
 		63759052169791E400C3BE51 /* Microblog */ = {
 			isa = PBXGroup;
 			children = (
-				6353D2D31697AE6100F415D3 /* Controllers */,
-				6353D2D21697AE5800F415D3 /* Views */,
-				6353D2CE1697A1CB00F415D3 /* APIClient */,
 				6353D2C216979FA700F415D3 /* Models */,
+				6353D2D21697AE5800F415D3 /* Views */,
+				6353D2D31697AE6100F415D3 /* Controllers */,
+				6353D2CE1697A1CB00F415D3 /* APIClient */,
 				6353D2BE16979DFB00F415D3 /* Utils */,
 				6375905B169791E400C3BE51 /* IRAppDelegate.h */,
 				6375905C169791E400C3BE51 /* IRAppDelegate.m */,
@@ -1247,7 +1267,6 @@
 				63EBE9141697B2C20088C4E1 /* IRSignUpViewController.m in Sources */,
 				63EBE9181697B75E0088C4E1 /* IRPostsViewController.m in Sources */,
 				63E731DA16987CB600492E23 /* SVProgressHUD.m in Sources */,
-				63E731E41698972D00492E23 /* IRAccountViewController.m in Sources */,
 				63E731EA16989F8500492E23 /* ISO8601DateFormatter.m in Sources */,
 				63E731EF1698A02F00492E23 /* IRDateFormatterCache.m in Sources */,
 				63DE1A5F1698DE720083E0EC /* IRNewPostViewController.m in Sources */,
@@ -1324,6 +1343,11 @@
 				6314810516C6D522000E28D8 /* NSError+IRAPIClientUtils.m in Sources */,
 				63CDFB7D16C73F600074572A /* BButton+FontAwesome.m in Sources */,
 				63CDFB7E16C73F600074572A /* BButton.m in Sources */,
+				638B1FEE16C818BB00E56DD1 /* IRAccountViewController.m in Sources */,
+				638B1FF116C81B4D00E56DD1 /* IREditAccountViewController.m in Sources */,
+				638B1FF416C81BEE00E56DD1 /* IREditPasswordViewController.m in Sources */,
+				638DAF1116C95A6B008CD200 /* UIImageView+ActivityIndicator.m in Sources */,
+				638DAF1416C96CF1008CD200 /* UIImageView+IRAFNetworkingUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

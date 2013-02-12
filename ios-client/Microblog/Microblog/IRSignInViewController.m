@@ -145,7 +145,14 @@
         }];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
-        [UIAlertView showSimpleAlertViewWithMessage:@"Can't sign in."];
+        NSString *message;
+        if(operation.response.statusCode == 401){
+            message = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];
+        }
+        if(!message){
+            message = @"Can't sign in.";
+        }
+        [UIAlertView showSimpleAlertViewWithMessage:message];
         
     }];
 }
