@@ -104,7 +104,9 @@
 
 - (IBAction)forgotPassword
 {
-    [UIAlertView showNotImplementedYetAlert];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset Password" message:@"Enter your email address to reset your password:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset Password", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
 }
 
 - (IBAction)forgotUsername
@@ -156,5 +158,24 @@
         
     }];
 }
+
+#pragma mark - UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        [SVProgressHUD showDefault];
+        NSString *email = [alertView textFieldAtIndex:0].text;
+        [[IRMicroblogClient sharedClient] postPath:@"lostpassword/" parameters:@{@"email":email} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Email sent. Please check your inbox for instructions."];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD dismiss];
+            [UIAlertView showSimpleAlertViewWithMessage:@"Can't reset password."];
+        }];
+    }
+}
+
+
 
 @end

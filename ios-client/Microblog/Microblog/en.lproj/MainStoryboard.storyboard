@@ -1294,7 +1294,7 @@
                 <relationship kind="action" name="save:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="confirmation" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="currentPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="newPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updatedPassword" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="IRLoadingCell" superclassName="UITableViewCell">
